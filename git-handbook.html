@@ -1253,81 +1253,127 @@
       </ul>
 
       <h4 id="p3-3-merge">マージ — main に取り込む</h4>
-      <p>PR が承認されたら、ホスティングサービスの画面で<strong>マージ</strong>し、feature の変更を main に取り込みます。マージには方式がいくつかあり、実行する前に選びます。</p>
+      <p>PR が承認されたら、ホスティングサービスの画面で<strong>マージ</strong>し、feature の変更を main に取り込みます。画面には選択肢が3つ並びます。どれを選ぶかを判断するには、Git のマージそのものを先に知っておく必要があります。ここでは<strong>マージコミットとは何か</strong>と、<strong>Git の合流のしかたは何種類あるか</strong>を確認してから、画面の3つの選択肢に戻ります。</p>
+
+      <h5>マージコミットとは</h5>
+      <p>通常のコミットは、直前のコミット1つを<strong>親</strong>として持ちます。<code>git commit</code> を実行するたびに、親が1つのコミットが1個ずつ増えます。</p>
+      <p>これに対して<strong>マージコミット</strong>は、<strong>2つのブランチの合流点として作られる、親を2つ持つコミット</strong>です。片方の親が取り込み先(main)の先端で、もう片方が取り込み元(feature)の先端です。マージコミットが1つあれば、どのブランチとどのブランチがどの時点で合流したかを追えます。</p>
+      <div class="tbl-wrap"><table>
+        <thead><tr><th>コミットの種類</th><th>親の数</th><th>作られるとき</th></tr></thead>
+        <tbody>
+          <tr><td>通常のコミット</td><td>1つ</td><td><code>git commit</code> を実行したとき</td></tr>
+          <tr><td>マージコミット</td><td>2つ</td><td>マージで2つのブランチが合流したとき</td></tr>
+        </tbody>
+      </table></div>
+
+      <h5>Git の2つの合流のしかた</h5>
+      <p>手元で <code>git merge</code> を実行すると、Git は <strong>Fast-forward</strong> か <strong>3-way</strong> のどちらかで合流します。どちらにするかは指定できません。<strong>分岐したあとに取り込み先のブランチが進んだかどうか</strong>を見て、Git が自動的に決めます。</p>
+      <div class="tbl-wrap"><table>
+        <thead><tr><th>分岐後の取り込み先(main)</th><th>合流のしかた</th><th>マージコミット</th></tr></thead>
+        <tbody>
+          <tr><td>進んでいない</td><td>Fast-forward</td><td>作られない</td></tr>
+          <tr><td>進んでいる</td><td>3-way</td><td>1つ作られる</td></tr>
+        </tbody>
+      </table></div>
+
+      <h5>Fast-forward — ラベルを前へ動かすだけ</h5>
+      <p>分岐したあと、main 側にコミットが1つも追加されていない場合の合流です。feature の先端は、main の先端から一直線につながっています。Git は <strong>main のラベルを feature の先端へ動かすだけ</strong>で合流を終えられます。新しいコミットは作られないので、マージコミットもできません。履歴は1本のまま残ります。</p>
+      <figure>
+        <svg viewBox="0 0 620 236" role="img" aria-label="Fast-forward マージで main のラベルが feature の先端へ動く図">
+          <line x1="50" y1="170" x2="240" y2="170" stroke="#C3CDD5" stroke-width="2"/>
+          <path d="M170 170 C215 170 220 70 265 70 H450" fill="none" stroke="#7C5CBF" stroke-width="2"/>
+          <circle cx="90" cy="170" r="12" fill="#0E7C86"/>
+          <circle cx="170" cy="170" r="12" fill="#0E7C86"/>
+          <circle cx="300" cy="70" r="11" fill="#7C5CBF"/>
+          <circle cx="375" cy="70" r="11" fill="#7C5CBF"/>
+          <circle cx="450" cy="70" r="11" fill="#7C5CBF"/>
+          <text x="375" y="44" text-anchor="middle" class="svg-ms" fill="#7C5CBF">feature で追加した3コミット</text>
+          <text x="170" y="146" text-anchor="middle" class="svg-s">分岐点</text>
+          <rect x="105" y="188" width="130" height="26" rx="6" fill="#EEF2F5" stroke="#8A9AA6"/>
+          <text x="170" y="205" text-anchor="middle" class="svg-ms" fill="#5B6B78">main(マージ前)</text>
+          <text x="170" y="230" text-anchor="middle" class="svg-s">分岐後に main は進んでいない</text>
+          <rect x="392" y="96" width="116" height="26" rx="6" fill="#E1F0F1" stroke="#0E7C86"/>
+          <text x="450" y="113" text-anchor="middle" class="svg-ms" fill="#0A585F">main(マージ後)</text>
+          <path d="M240 200 C350 214 450 208 466 130" fill="none" stroke="#0E7C86" stroke-width="1.8" stroke-dasharray="5 3" marker-end="url(#mgff1)"/>
+          <text x="290" y="132" text-anchor="middle" class="svg-s" fill="#0A585F">ラベルを前へ動かすだけ</text>
+          <text x="290" y="152" text-anchor="middle" class="svg-s">マージコミットは作られない</text>
+          <defs><marker id="mgff1" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0 0 L6 3 L0 6" fill="none" stroke="#0E7C86" stroke-width="1.5"/></marker></defs>
+        </svg>
+        <figcaption>main は分岐後に進んでいないので、<strong>main のラベルを feature の先端へ動かすだけ</strong>で合流が終わる。マージコミットは作られず、履歴は1本のまま。</figcaption>
+      </figure>
+
+      <h5>3-way — 両方が進んだときの合流</h5>
+      <p>分岐したあと、main 側にもコミットが追加されている場合の合流です。ラベルを動かすだけでは、両方の変更を1つにできません。Git は<strong>分岐点・main の先端・feature の先端の3点</strong>を突き合わせて内容を統合し、<strong>両者を親に持つマージコミットを1つ</strong>作ります。この3点を使うことが 3-way という名前の由来です。</p>
+      <p>ここで押さえておくのは、<strong>feature の個々のコミットが main の履歴にそのまま残る</strong>ことです。マージコミットは合流点として増えるだけで、feature 側のコミットを置き換えるわけではありません。マージ後に main で <code>git log</code> を実行すると、feature で作ったコミットが1つずつ表示されます。</p>
+      <figure>
+        <svg viewBox="0 0 620 244" role="img" aria-label="3-way マージで feature の3コミットが main の履歴に残り、マージコミットが2つの親を持つ図">
+          <rect x="60" y="44" width="460" height="152" rx="12" fill="#F6F4FB" stroke="#C9BEE6" stroke-dasharray="5 4"/>
+          <text x="74" y="62" class="svg-ms" fill="#5b3fa0" font-weight="600">マージ後の main の履歴</text>
+          <line x1="78" y1="164" x2="190" y2="164" stroke="#C3CDD5" stroke-width="2"/>
+          <path d="M197 164 H446" fill="none" stroke="#0E7C86" stroke-width="2" marker-end="url(#mg3a)"/>
+          <path d="M105 164 C155 164 158 96 205 96 H390" fill="none" stroke="#7C5CBF" stroke-width="2"/>
+          <path d="M390 96 C445 96 458 104 462 143" fill="none" stroke="#7C5CBF" stroke-width="2" marker-end="url(#mg3b)"/>
+          <circle cx="105" cy="164" r="12" fill="#0E7C86"/>
+          <circle cx="185" cy="164" r="12" fill="#0E7C86"/>
+          <circle cx="250" cy="96" r="11" fill="#7C5CBF"/>
+          <circle cx="320" cy="96" r="11" fill="#7C5CBF"/>
+          <circle cx="390" cy="96" r="11" fill="#7C5CBF"/>
+          <circle cx="465" cy="164" r="13" fill="#C9820A"/>
+          <text x="320" y="74" text-anchor="middle" class="svg-ms" fill="#7C5CBF">feature の3コミット</text>
+          <text x="105" y="190" text-anchor="middle" class="svg-s">分岐点</text>
+          <text x="200" y="190" text-anchor="middle" class="svg-s" fill="#0A585F">main も進んだ</text>
+          <text x="330" y="152" text-anchor="middle" class="svg-s" fill="#0A585F">main から</text>
+          <text x="430" y="120" text-anchor="end" class="svg-s" fill="#5b3fa0">feature から</text>
+          <text x="465" y="190" text-anchor="middle" class="svg-s" fill="#8A5A06">マージコミット</text>
+          <text x="300" y="224" text-anchor="middle" class="svg-s">feature の3コミットは、マージ後も main の履歴に残る</text>
+          <defs>
+            <marker id="mg3a" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0 0 L6 3 L0 6" fill="none" stroke="#0E7C86" stroke-width="1.5"/></marker>
+            <marker id="mg3b" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0 0 L6 3 L0 6" fill="none" stroke="#7C5CBF" stroke-width="1.5"/></marker>
+          </defs>
+        </svg>
+        <figcaption>マージコミットは <strong>main 側と feature 側の両方から線を受ける</strong>(親が2つ)。破線の枠内がマージ後の main の履歴で、<strong>feature の3コミットもその中に含まれる</strong>。</figcaption>
+      </figure>
+      <p>3-way マージは、サイクル4で <code>feature/greeting-en</code> に main を取り込むときに実際に起きます。</p>
+
+      <h5>画面の3つの選択肢</h5>
       <figure>
         <img src="pr-merge.png" alt="マージボックス。Merge pull request ボタンと、Create a merge commit / Squash and merge / Rebase and merge の3つが並ぶドロップダウン">
         <figcaption>マージボタンの右の <code>▼</code> を押すと、方式を選べる。本書では <code>Create a merge commit</code> を選ぶ。</figcaption>
       </figure>
+      <p>画面の3つと、いま見た Fast-forward / 3-way は1対1では対応しません。<code>Create a merge commit</code> は、Fast-forward で済む状況でも<strong>必ずマージコミットを作ります</strong>。そのため、リモートの main は常にマージコミットで進みます。</p>
       <div class="tbl-wrap"><table>
-        <thead><tr><th>画面の選択肢</th><th>Git が行うこと</th></tr></thead>
+        <thead><tr><th>画面の選択肢</th><th>リモートの main で起きること</th><th>手元で <code>git pull</code> したときの表示</th></tr></thead>
         <tbody>
-          <tr><td>Create a merge commit</td><td>両者を親に持つ<strong>マージコミット</strong>を1つ作る。main 側が進んでいなければ、手元では <strong>Fast-forward</strong> で追いつける</td></tr>
-          <tr><td>Squash and merge</td><td>feature の複数コミットを<strong>1つにまとめて</strong> main に載せる。マージコミットは作られない</td></tr>
-          <tr><td>Rebase and merge</td><td>feature のコミットを main の先端に付け替える。本書では扱わない</td></tr>
+          <tr><td>Create a merge commit</td><td>親を2つ持つ<strong>マージコミット</strong>が1つ増える</td><td><code>Fast-forward</code>(手元の main は分岐後に進んでいないため)</td></tr>
+          <tr><td>Squash and merge</td><td>まとめられた通常のコミットが1つ増える</td><td><code>Fast-forward</code></td></tr>
+          <tr><td>Rebase and merge</td><td>feature のコミットが main の先端に付け替わる。本書では扱わない</td><td><code>Fast-forward</code></td></tr>
         </tbody>
       </table></div>
-      <p>表の右側にある「Git が行うこと」を、もう少し詳しく見ておきます。合流のされ方には、おもに <strong>Fast-forward</strong>・<strong>3-way</strong>・<strong>Squash</strong> の3種類があります。</p>
-      <h5>Fast-forward マージ</h5>
-      <p>分岐したあと、<strong>main 側にコミットが追加されていない</strong>場合の合流です。Git は、<strong>main のラベルを feature の先端へ進めるだけ</strong>で済みます。新しいマージコミットは作られず、履歴は一本のまま保たれます。</p>
+      <p>3列目がどれも <code>Fast-forward</code> になるのは、<strong>手元の main が分岐後に進んでいない</strong>からです。進んだのはリモートの main だけで、手元の main は分岐点に置かれたままです。画面で <code>Create a merge commit</code> を選んでも、手元では main のラベルを動かすだけで追いつけます。この表示は、次の「fetch と merge」で実際に確認します。</p>
+
+      <h5>Squash — まとめてから載せる</h5>
+      <p><code>Squash and merge</code> は、Fast-forward や 3-way とは別の方式です。2つのブランチを合流させるのではなく、<strong>feature のコミットを1つにまとめ直してから</strong> main に載せます。main に増えるのは<strong>通常のコミット1つだけ</strong>で、マージコミットは作られません。</p>
       <figure>
-        <svg viewBox="0 0 620 150" role="img" aria-label="fast-forwardマージの図">
-          <line x1="75" y1="78" x2="470" y2="78" stroke="#C3CDD5" stroke-width="2"/>
-          <circle cx="115" cy="78" r="13" fill="#0E7C86"/>
-          <circle cx="255" cy="78" r="13" fill="#7C5CBF"/>
-          <circle cx="395" cy="78" r="13" fill="#7C5CBF"/>
-          <text x="325" y="50" text-anchor="middle" class="svg-ms" fill="#7C5CBF">feature で追加したコミット</text>
-          <rect x="86" y="98" width="60" height="22" rx="6" fill="#EEF2F5" stroke="#8A9AA6"/>
-          <text x="116" y="113" text-anchor="middle" class="svg-ms" fill="#5B6B78" font-size="10">元の main</text>
-          <path d="M150 109 Q272 133 364 109" fill="none" stroke="#0E7C86" stroke-width="1.7" stroke-dasharray="4 3" marker-end="url(#pff)"/>
-          <rect x="366" y="98" width="58" height="22" rx="6" fill="#E1F0F1" stroke="#0E7C86"/>
-          <text x="395" y="113" text-anchor="middle" class="svg-ms" fill="#0A585F" font-size="10">main</text>
-          <defs><marker id="pff" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0 0 L6 3 L0 6" fill="none" stroke="#0E7C86" stroke-width="1.5"/></marker></defs>
+        <svg viewBox="0 0 620 196" role="img" aria-label="Squash マージで feature の3コミットが1つの通常コミットにまとまって main に載る図">
+          <line x1="55" y1="150" x2="560" y2="150" stroke="#C3CDD5" stroke-width="2"/>
+          <path d="M105 150 C155 150 158 56 205 56 H320" fill="none" stroke="#7C5CBF" stroke-width="2"/>
+          <circle cx="205" cy="56" r="10" fill="#7C5CBF"/>
+          <circle cx="262" cy="56" r="10" fill="#7C5CBF"/>
+          <circle cx="320" cy="56" r="10" fill="#7C5CBF"/>
+          <text x="262" y="32" text-anchor="middle" class="svg-ms" fill="#7C5CBF">feature の3コミット</text>
+          <circle cx="105" cy="150" r="11" fill="#0E7C86"/>
+          <circle cx="470" cy="150" r="12" fill="#0E7C86" stroke="#C9820A" stroke-width="3"/>
+          <text x="105" y="176" text-anchor="middle" class="svg-s">分岐点</text>
+          <text x="470" y="178" text-anchor="middle" class="svg-s" fill="#8A5A06">まとめた通常のコミットが1つ</text>
+          <text x="566" y="154" class="svg-ms" fill="#0A585F" font-weight="600">main</text>
+          <path d="M330 60 C420 60 440 80 458 136" fill="none" stroke="#1F8F63" stroke-width="1.8" stroke-dasharray="5 3" marker-end="url(#mgsq1)"/>
+          <rect x="205" y="104" width="210" height="26" rx="6" fill="#EAF6F0" stroke="#1F8F63"/>
+          <text x="310" y="121" text-anchor="middle" class="svg-ms" fill="#166b48">Squash(3コミット → 1コミット)</text>
+          <defs><marker id="mgsq1" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0 0 L6 3 L0 6" fill="none" stroke="#1F8F63" stroke-width="1.5"/></marker></defs>
         </svg>
-        <figcaption>main が分岐後に進んでいないので、main を feature の先端へ動かすだけ。マージコミットはできず、履歴は一本のまま。</figcaption>
+        <figcaption>feature の3コミットを<strong>1つのコミットにまとめて</strong> main に載せる。マージコミットは作られず、個々の3コミットは main には残らない。</figcaption>
       </figure>
-      <h5>3-way マージ</h5>
-      <p>分岐したあと、<strong>main 側と feature 側の両方にコミットが追加された</strong>場合の合流です。両方の変更を突き合わせて統合するため、<strong>両者を親に持つ新しいマージコミットが1つ</strong>作られます。このとき、<strong>feature の個々のコミットはそのまま main の履歴に残ります</strong>。</p>
-      <figure>
-        <svg viewBox="0 0 620 180" role="img" aria-label="3-wayマージでfeatureの3コミットがそのままmainの履歴に残る図">
-          <line x1="55" y1="128" x2="565" y2="128" stroke="#C3CDD5" stroke-width="2"/>
-          <path d="M95 128 Q150 128 165 66 L320 66" fill="none" stroke="#7C5CBF" stroke-width="2"/>
-          <path d="M320 66 Q500 66 505 118" fill="none" stroke="#C9820A" stroke-width="2"/>
-          <circle cx="95" cy="128" r="11" fill="#0E7C86"/>
-          <circle cx="200" cy="128" r="11" fill="#0E7C86"/>
-          <circle cx="505" cy="128" r="12" fill="#C9820A"/>
-          <circle cx="210" cy="66" r="10" fill="#7C5CBF"/>
-          <circle cx="265" cy="66" r="10" fill="#7C5CBF"/>
-          <circle cx="320" cy="66" r="10" fill="#7C5CBF"/>
-          <text x="95" y="152" text-anchor="middle" class="svg-s">分岐点</text>
-          <text x="200" y="152" text-anchor="middle" class="svg-s" fill="#0E7C86">main も進んだ</text>
-          <text x="265" y="44" text-anchor="middle" class="svg-ms" fill="#7C5CBF">feature の3コミット</text>
-          <text x="265" y="94" text-anchor="middle" class="svg-s" font-size="9" fill="#7C5CBF">そのまま残る</text>
-          <text x="505" y="152" text-anchor="middle" class="svg-s" fill="#8A5A06">マージコミット</text>
-        </svg>
-        <figcaption>両者を親に持つマージコミットが1つできる。feature の3つのコミットは<strong>1つずつそのまま main の履歴に残る</strong>。</figcaption>
-      </figure>
-      <h5>Squash マージ</h5>
-      <p><strong>Squash マージ</strong>は、feature ブランチの<strong>複数のコミットを1つにまとめてから</strong> main に取り込む方法です。main には、まとめられた<strong>1つの通常コミット</strong>として入り、マージコミットにはなりません。</p>
-      <figure>
-        <svg viewBox="0 0 620 175" role="img" aria-label="squashマージでfeatureの3コミットが1つにまとまってmainに入る図">
-          <line x1="55" y1="52" x2="330" y2="52" stroke="#C3CDD5" stroke-width="2"/>
-          <circle cx="100" cy="52" r="10" fill="#7C5CBF"/>
-          <circle cx="160" cy="52" r="10" fill="#7C5CBF"/>
-          <circle cx="220" cy="52" r="10" fill="#7C5CBF"/>
-          <text x="160" y="30" text-anchor="middle" class="svg-ms" fill="#7C5CBF">feature の3コミット</text>
-          <line x1="55" y1="128" x2="565" y2="128" stroke="#C3CDD5" stroke-width="2"/>
-          <circle cx="100" cy="128" r="11" fill="#0E7C86"/>
-          <circle cx="490" cy="128" r="12" fill="#0E7C86" stroke="#C9820A" stroke-width="3"/>
-          <text x="571" y="132" class="svg-ms" fill="#0E7C86" font-weight="600">main</text>
-          <text x="100" y="152" text-anchor="middle" class="svg-s">分岐点</text>
-          <text x="490" y="152" text-anchor="middle" class="svg-s" fill="#8A5A06">1つにまとめた1コミット</text>
-          <path d="M226 62 Q410 72 478 112" fill="none" stroke="#1F8F63" stroke-width="1.8" stroke-dasharray="5 3" marker-end="url(#psq)"/>
-          <text x="372" y="86" text-anchor="middle" class="svg-ms" fill="#166b48" font-size="10">Squash（3コミット → 1コミット）</text>
-          <defs><marker id="psq" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0 0 L6 3 L0 6" fill="none" stroke="#1F8F63" stroke-width="1.5"/></marker></defs>
-        </svg>
-        <figcaption>feature の3コミットを<strong>1つのコミットにまとめて</strong> main に載せる。個々の3コミットは main には残らない。GitHub / GitLab の PR では「Squash and merge」として選べる。</figcaption>
-      </figure>
-      <p>細かい試行錯誤のコミットを main 側では1つに集約でき、履歴を簡潔に保てます。ただし、<strong>元のブランチの個々のコミット履歴は main には残らない</strong>点に注意してください。「1機能＝1コミット」で main をきれいに保ちたいチームでよく使われます。</p>
+      <p>細かい試行錯誤のコミットを main 側では1つに集約でき、履歴を簡潔に保てます。「1機能＝1コミット」で main をそろえたいチームで使われます。ただし、main に載るのは中身が同じ<strong>別のコミット</strong>です。Git からは feature が未マージのままに見えるので、<code>git branch -d</code> での削除が失敗します。</p>
       <div class="box stumble">
         <div class="box-t"><svg class="ico" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 9v4M12 17h.01"/><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg>ボタンの表示は前回選んだ方式で変わる</div>
         <p>マージボタンには、そのリポジトリで<strong>最後に選んだ方式</strong>が表示されます。<code>Squash and merge</code> と出ていても、右の <code>▼</code> から <code>Create a merge commit</code> を選び直せます。押す前に、いま何が選ばれているかを確かめてください。</p>
