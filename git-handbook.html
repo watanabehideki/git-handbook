@@ -324,15 +324,13 @@
       <a href="#p4">4 · 発展</a>
       <a href="#p4-1" class="sub">HEAD</a>
       <a href="#p4-2" class="sub">commit --amend</a>
-      <a href="#p4-3" class="sub">restore</a>
-      <a href="#p4-4" class="sub">revert</a>
-      <a href="#p4-5" class="sub">reset</a>
-      <a href="#p4-6" class="sub">stash</a>
-      <a href="#p4-7" class="sub">コンフリクト</a>
-      <a href="#p4-8" class="sub">タグ</a>
-      <a href="#p4-9" class="sub">clone --shared</a>
-      <a href="#p4-10" class="sub">worktree</a>
-      <a href="#p4-11" class="sub">エイリアス</a>
+      <a href="#p4-3" class="sub">revert</a>
+      <a href="#p4-4" class="sub">reset</a>
+      <a href="#p4-5" class="sub">stash</a>
+      <a href="#p4-6" class="sub">タグ</a>
+      <a href="#p4-7" class="sub">clone --shared</a>
+      <a href="#p4-8" class="sub">worktree</a>
+      <a href="#p4-9" class="sub">エイリアス</a>
       <a href="#appendix" class="lead">付録</a>
       <a href="#cheatsheet">コマンド早見表</a>
       <a href="#glossary">用語集</a>
@@ -379,7 +377,7 @@
         <li class="toc-item"><span class="toc-badge">1</span><div><div class="toc-title"><a href="#p1">Git とは</a><span class="toc-kind">基礎</span></div><div class="toc-children"><a href="#p1-1">バージョン管理システム</a> <span class="sep">·</span> <a href="#p1-2">Git の成り立ち</a> <span class="sep">·</span> <a href="#p1-3">ホスティングサービス</a></div></div></li>
         <li class="toc-item"><span class="toc-badge">2</span><div><div class="toc-title"><a href="#p2">基本概念</a><span class="toc-kind">基礎</span></div><div class="toc-children"><a href="#p2-1">リポジトリ</a> <span class="sep">·</span> <a href="#p2-2">ワーキングツリー</a> <span class="sep">·</span> <a href="#p2-3">ステージング</a> <span class="sep">·</span> <a href="#p2-4">コミット</a> <span class="sep">·</span> <a href="#p2-5">ブランチ</a> <span class="sep">·</span> <a href="#p2-6">開発の大まかな流れ</a></div></div></li>
         <li class="toc-item"><span class="toc-badge violet">3</span><div><div class="toc-title"><a href="#p3">実践しながら学ぶ</a><span class="toc-kind">実践</span></div><div class="toc-children"><a href="#p3-1">config</a> <span class="sep">·</span> <a href="#p3-2">リポジトリを用意する</a> <span class="sep">·</span> <a href="#p3-3">サイクル1 基本の一周</a> <span class="sep">·</span> <a href="#p3-4">サイクル2 確認と取り消し</a> <span class="sep">·</span> <a href="#p3-5">サイクル3 管理から外す</a> <span class="sep">·</span> <a href="#p3-6">サイクル4 コンフリクト</a></div></div></li>
-        <li class="toc-item"><span class="toc-badge violet">4</span><div><div class="toc-title"><a href="#p4">発展</a><span class="toc-kind">発展</span></div><div class="toc-children"><a href="#p4-1">HEAD</a> <span class="sep">·</span> <a href="#p4-2">commit --amend</a> <span class="sep">·</span> <a href="#p4-3">restore</a> <span class="sep">·</span> <a href="#p4-4">revert</a> <span class="sep">·</span> <a href="#p4-5">reset</a> <span class="sep">·</span> <a href="#p4-6">stash</a> <span class="sep">·</span> <a href="#p4-7">コンフリクト</a> <span class="sep">·</span> <a href="#p4-8">タグ</a> <span class="sep">·</span> <a href="#p4-9">clone --shared</a> <span class="sep">·</span> <a href="#p4-10">worktree</a> <span class="sep">·</span> <a href="#p4-11">エイリアス</a></div></div></li>
+        <li class="toc-item"><span class="toc-badge violet">4</span><div><div class="toc-title"><a href="#p4">発展</a><span class="toc-kind">発展</span></div><div class="toc-children"><a href="#p4-1">HEAD</a> <span class="sep">·</span> <a href="#p4-2">commit --amend</a> <span class="sep">·</span> <a href="#p4-3">revert</a> <span class="sep">·</span> <a href="#p4-4">reset</a> <span class="sep">·</span> <a href="#p4-5">stash</a> <span class="sep">·</span> <a href="#p4-6">タグ</a> <span class="sep">·</span> <a href="#p4-7">clone --shared</a> <span class="sep">·</span> <a href="#p4-8">worktree</a> <span class="sep">·</span> <a href="#p4-9">エイリアス</a></div></div></li>
         <li class="toc-item"><span class="toc-badge muted">A</span><div><div class="toc-title"><a href="#appendix">付録</a><span class="toc-kind">付録</span></div><div class="toc-children"><a href="#cheatsheet">コマンド早見表</a> <span class="sep">·</span> <a href="#glossary">用語集</a></div></div></li>
       </ol>
     </nav>
@@ -1872,7 +1870,7 @@
     <section class="section" id="p4">
       <span class="eyebrow branch"><span class="num">4</span>発展</span>
       <h2>発展</h2>
-      <p>ここからは一歩進んだ内容です。<strong>HEAD</strong> の仕組み、<strong>やり直しと取り消し(amend / revert / reset)</strong>、作業の<strong>一時退避(stash)</strong>を扱います。さらに<strong>コンフリクトの解決</strong>、リリースの<strong>タグ</strong>、<strong>worktree</strong> なども取り上げます。これらは実務でいずれ必要になる操作です。実践章の内容に慣れてから読むのがおすすめです。</p>
+      <p>ここからは一歩進んだ内容です。<strong>HEAD</strong> の仕組み、<strong>やり直しと取り消し(amend / revert / reset)</strong>、作業の<strong>一時退避(stash)</strong>を扱います。さらにリリースの<strong>タグ</strong>や <strong>worktree</strong> なども取り上げます。これらは実務でいずれ必要になる操作です。実践章の内容に慣れてから読むのがおすすめです。</p>
 
       <h3 id="p4-1">HEAD — 今いる位置を知る</h3>
       <p>switch のところで出てきた <strong>HEAD</strong> を、もう少し掘り下げます。HEAD は「今どのコミットにいるか」を指す特別なポインタです。ポインタとは「どこかを指し示す印」のことです。ふだんは現在のブランチを指し、そのブランチが最新コミットを指す、という2段構えになっています。つまりブランチも実はポインタです。コミットするたびに、ブランチと HEAD が新しいコミットへ一緒に進みます。</p>
@@ -1913,43 +1911,7 @@
         <p><code>--amend</code> はコミットを作り直すため、<strong>すでに push 済み</strong>のコミットに使うとリモートと履歴が食い違います。まだ push していない直前のコミットにだけ使いましょう。</p>
       </div>
 
-      <h3 id="p4-3">restore — 変更を元に戻す</h3>
-      <p>間違えた変更を取り消したいときは <code>git restore</code> を使います。<strong>ワーキングツリーの変更を捨てる</strong>のか、<strong>ステージングから外す(アンステージ)</strong>のかで、オプションが変わります。</p>
-      <pre><button class="copy-btn">コピー</button><span class="term-head"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="label">restore</span></span><code><span class="pr">$</span> git restore README.md          <span class="cmt"># ワーキングツリーの変更を取り消して元に戻す</span>
-<span class="pr">$</span> git restore --staged README.md   <span class="cmt"># ステージングから外す(変更自体はワーキングツリーに残る)</span></code></pre>
-      <figure>
-        <svg viewBox="0 0 620 210" role="img" aria-label="git restore の2つの使い方を上下で比べる図">
-          <!-- 上段: restore --staged(アンステージ) -->
-          <rect x="45" y="28" width="150" height="46" rx="9" fill="#F4F7F9" stroke="#8A9AA6"/>
-          <text x="120" y="51" text-anchor="middle" class="svg-ms" fill="#5B6B78">ワーキングツリー</text>
-          <text x="120" y="66" text-anchor="middle" class="svg-s" font-size="8.5" fill="#166b48">変更は残る</text>
-          <rect x="425" y="28" width="150" height="46" rx="9" fill="#E1F0F1" stroke="#0E7C86"/>
-          <text x="500" y="55" text-anchor="middle" class="svg-ms" fill="#0A585F">ステージング</text>
-          <path d="M423 51 H199" stroke="#B8420C" stroke-width="1.8" marker-end="url(#prL)"/>
-          <text x="311" y="20" text-anchor="middle" class="svg-ms" fill="#B8420C" font-size="10">git restore --staged &lt;file&gt;</text>
-          <text x="311" y="94" text-anchor="middle" class="svg-s" font-size="9.5" fill="#5B6B78">アンステージ:ステージングから外すだけ(変更はワーキングツリーに残る)</text>
-          <line x1="40" y1="112" x2="580" y2="112" stroke="#E4E7EA" stroke-width="1"/>
-          <!-- 下段: restore <file>(ワーキングツリーの変更を破棄。ステージングは変えない) -->
-          <rect x="45" y="130" width="150" height="46" rx="9" fill="#F4F7F9" stroke="#8A9AA6"/>
-          <text x="120" y="151" text-anchor="middle" class="svg-ms" fill="#5B6B78">ワーキングツリー</text>
-          <text x="120" y="167" text-anchor="middle" class="svg-s" font-size="8.5" fill="#B8420C">編集した変更</text>
-          <path d="M197 153 H404" stroke="#B8420C" stroke-width="1.8" marker-end="url(#prL)"/>
-          <text x="300" y="122" text-anchor="middle" class="svg-ms" fill="#B8420C" font-size="10">git restore &lt;file&gt;</text>
-          <text x="424" y="159" class="svg-ms" fill="#B8420C" font-size="15" font-weight="700">✕</text>
-          <text x="470" y="157" text-anchor="middle" class="svg-s" font-size="9.5" fill="#B8420C">破棄</text>
-          <text x="311" y="196" text-anchor="middle" class="svg-s" font-size="9.5" fill="#5B6B78">編集した変更を破棄して元に戻す(ステージングは変えない)</text>
-          <defs>
-            <marker id="prL" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0 0 L6 3 L0 6" fill="none" stroke="#B8420C" stroke-width="1.5"/></marker>
-          </defs>
-        </svg>
-        <figcaption>上段の <code>restore --staged</code> は<strong>ステージングから外すだけ</strong>で、変更はワーキングツリーに残る。下段の <code>restore &lt;file&gt;</code> は<strong>ワーキングツリーの変更そのものを破棄して元に戻す</strong>(ステージングは変えない)。</figcaption>
-      </figure>
-      <div class="box stumble">
-        <div class="box-t"><svg class="ico" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 9v4M12 17h.01"/><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg>捨てた変更は戻せない</div>
-        <p><code>git restore &lt;file&gt;</code> で破棄したワーキングツリーの変更は、<strong>元に戻せません</strong>。本当に捨ててよいか、先に <code>git diff</code> などで中身を確かめてから実行しましょう。</p>
-      </div>
-
-      <h3 id="p4-4">revert — 履歴を残して打ち消す</h3>
+      <h3 id="p4-3">revert — 履歴を残して打ち消す</h3>
       <p><code>git revert &lt;commit&gt;</code> は、指定したコミットの変更を打ち消す<strong>新しいコミットを作成</strong>します。元のコミットは履歴に残したまま「取り消し」を1つ足すので、<strong>すでに push 済みのコミットでも安全に取り消せます</strong>。実行にはワーキングツリーをクリーンにしておく必要があります。</p>
       <pre><button class="copy-btn">コピー</button><span class="term-head"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="label">revert</span></span><code><span class="pr">$</span> git revert a1b2c3d           <span class="cmt"># 指定コミットの変更を打ち消すコミットを作る</span>
 <span class="out">[main 5a6b7c8] Revert "README の見出しを修正"</span></code></pre>
@@ -1989,7 +1951,7 @@
       <pre><button class="copy-btn">コピー</button><span class="term-head"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="label">revert の revert</span></span><code><span class="pr">$</span> git revert 5a6b7c8           <span class="cmt"># さっきの取消コミットを、さらに打ち消す</span>
 <span class="out">[main 9f8e7d6] Revert "Revert \"README の見出しを修正\""</span></code></pre>
 
-      <h3 id="p4-5">reset — HEAD を巻き戻す</h3>
+      <h3 id="p4-4">reset — HEAD を巻き戻す</h3>
       <p><code>git reset &lt;commit&gt;</code> は、指定したコミットまで HEAD を戻します。<code>--soft</code> / <code>--mixed</code> / <code>--hard</code> の3モードで、<strong>どこまで戻すか(ワーキングツリー・ステージング・HEAD)</strong>が変わります。</p>
       <figure>
         <svg viewBox="0 0 620 185" role="img" aria-label="reset の3モードがどこまで戻すかの図">
@@ -2024,7 +1986,7 @@
 <span class="pr">$</span> git reset --hard e5f6a7b    <span class="cmt"># 消える前の状態へ戻す</span>
 <span class="cmt"># あるいは git switch -c recover e5f6a7b で新ブランチとして救出</span></code></pre>
 
-      <h3 id="p4-6">stash — 作業を一時退避する</h3>
+      <h3 id="p4-5">stash — 作業を一時退避する</h3>
       <p>変更の途中で急に別のブランチに移りたいけれど、まだコミットはしたくない。そんなときに使うのが <code>git stash</code> です。今の変更をいったん stash 専用の領域に<strong>スタックで退避</strong>し、ワーキングツリーをクリーンな状態に戻します。あとで <code>git stash pop</code> で元に戻せます。</p>
       <pre><button class="copy-btn">コピー</button><span class="term-head"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="label">stash</span></span><code><span class="pr">$</span> git stash                   <span class="cmt"># 今の変更を退避、ワーキングツリーはクリーンに</span>
 <span class="out">Saved working directory and index state WIP on feature/greeting: a1b2c3 ...</span>
@@ -2056,42 +2018,7 @@
         <figcaption>変更を棚に上げてワーキングツリーをクリーンに(<code>stash</code>)、あとで取り出す(<code>pop</code>)。捨ててよければ <code>drop</code>。</figcaption>
       </figure>
 
-      <h3 id="p4-7">コンフリクト — 競合が起きる仕組みと対処</h3>
-      <p>同じファイルの同じ箇所を、main と feature で別々に変更していると、Git はどちらを残すか決められず<strong>コンフリクト</strong>を報告します。これはエラーではなく、<strong>人に選んでもらうための一時停止</strong>です。</p>
-      <figure>
-        <svg viewBox="0 0 620 175" role="img" aria-label="同じ行を別々に変更してコンフリクトが起きる図">
-          <rect x="40" y="40" width="200" height="48" rx="9" fill="#EDE7F8" stroke="#7C5CBF"/>
-          <text x="140" y="60" text-anchor="middle" class="svg-s" fill="#5b3fa0" font-size="10">feature: 1行目を「こんにちは」に</text>
-          <text x="140" y="78" text-anchor="middle" class="svg-ms" fill="#5b3fa0" font-size="10">README.md の1行目</text>
-          <rect x="380" y="40" width="200" height="48" rx="9" fill="#E1F1EA" stroke="#1F8F63"/>
-          <text x="480" y="60" text-anchor="middle" class="svg-s" fill="#166b48" font-size="10">main: 同じ1行目を「Hello」に</text>
-          <text x="480" y="78" text-anchor="middle" class="svg-ms" fill="#166b48" font-size="10">README.md の1行目</text>
-          <path d="M240 88 Q300 118 300 118" fill="none" stroke="#B8420C" stroke-width="1.6"/>
-          <path d="M380 88 Q320 118 320 118" fill="none" stroke="#B8420C" stroke-width="1.6"/>
-          <rect x="230" y="118" width="160" height="30" rx="15" fill="#FBE9E1" stroke="#B8420C"/>
-          <text x="310" y="138" text-anchor="middle" class="svg-ms" fill="#B8420C" font-size="10">CONFLICT（競合）</text>
-          <text x="310" y="166" text-anchor="middle" class="svg-s">同じ箇所への別々の変更 → Git は自動で決められない</text>
-        </svg>
-        <figcaption>同じ行を両側で変えると、Git はどちらが正しいか判断できず、手で解決してもらうために停止する。</figcaption>
-      </figure>
-
-      <h4>コンフリクトの対処(補足)</h4>
-      <p>実践では PR の画面でマージしますが、<strong>ローカルで解決する手順</strong>も知っておくと安心です(ここは読むだけでOK)。<code>git pull</code>(または <code>git fetch</code> + <code>git merge</code>)でコンフリクトが起きたら、次の流れで解決します。</p>
-      <pre><button class="copy-btn">コピー</button><span class="term-head"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="label">コンフリクト解決</span></span><code><span class="pr">$</span> git merge main
-<span class="out">CONFLICT (content): Merge conflict in README.md</span>
-<span class="pr">$</span> git status                  <span class="cmt"># 競合中のファイルを確認</span>
-<span class="cmt"># → ファイルを開き、競合マーカーを見て正しい内容に手で編集</span>
-<span class="pr">$</span> git add README.md           <span class="cmt"># 解決したことを Git に伝える</span>
-<span class="pr">$</span> git commit                  <span class="cmt"># マージを完了(リベース中なら git rebase --continue)</span></code></pre>
-      <p>コンフリクトが起きたファイルには、次の<strong>競合マーカー</strong>が入ります。<code>&lt;&lt;&lt;</code> から <code>&gt;&gt;&gt;</code> までを、最終的に残したい内容だけの形に書き直し、マーカー3行は必ず消します。</p>
-      <pre><button class="copy-btn">コピー</button><span class="term-head"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="label">README.md の中身</span></span><code><span class="st">&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</span>
-  こんにちは                  <span class="cmt"># 今の自分のブランチ側</span>
-<span class="st">=======</span>
-  Hello                      <span class="cmt"># 取り込もうとした相手側</span>
-<span class="st">&gt;&gt;&gt;&gt;&gt;&gt;&gt; main</span></code></pre>
-
-
-      <h3 id="p4-8">タグ</h3>
+      <h3 id="p4-6">タグ</h3>
       <p><strong>タグ</strong>は、特定のコミットに名前をつける参照です。リリースバージョン(例:<code>v1.0.0</code>)などの節目に付けることが多いです。軽量タグ(lightweight)とアノテーションタグ(annotated)の2種類があり、リリース用途にはメッセージや署名を持てる<strong>アノテーションタグ</strong>が推奨されます。</p>
       <figure>
         <svg viewBox="0 0 620 130" role="img" aria-label="コミット履歴にタグを付ける図">
@@ -2119,7 +2046,7 @@
 <span class="out">v1.0.0</span>
 <span class="pr">$</span> git push origin v1.0.0              <span class="cmt"># タグをリモートへ反映</span></code></pre>
 
-      <h3 id="p4-9">git clone --shared</h3>
+      <h3 id="p4-7">git clone --shared</h3>
       <p><code>--shared</code> は、<strong>同じマシン上の既存ローカルリポジトリ</strong>から、オブジェクト(履歴データ)を<strong>共有する形で</strong>複製します。通常の clone がデータを丸ごとコピーするのに対し、<code>--shared</code> は元リポジトリの <code>.git/objects</code> を参照するので、コピーが速くディスク消費も少なくて済みます。</p>
       <figure>
         <svg viewBox="0 0 620 185" role="img" aria-label="通常のcloneとclone --sharedの違いの図">
@@ -2155,7 +2082,7 @@
         <p><code>--shared</code> は元リポジトリの <code>objects</code> に依存します。元を削除したり <code>git gc</code> で整理すると、複製側が壊れてしまいます。<strong>同じマシン上の一時的な用途</strong>(検証・並行作業)向けで、恒久利用や配布には通常の clone を使いましょう。</p>
       </div>
 
-      <h3 id="p4-10">git worktree — 複数ブランチを同時に開く</h3>
+      <h3 id="p4-8">git worktree — 複数ブランチを同時に開く</h3>
       <p><strong>worktree</strong> は、1つのリポジトリから<strong>複数の作業フォルダを同時に</strong>持つ仕組みです。履歴(<code>.git</code>)や設定は共有したまま、作業する場所だけを分けられます。clone を増やすのとは、まったく別のやり方です。</p>
       <figure>
         <svg viewBox="0 0 620 210" role="img" aria-label="1つの.gitから複数の作業フォルダが枝分かれするworktreeの図">
@@ -2198,7 +2125,7 @@
         <p><code>node_modules</code> などの依存は worktree ごとに別なので、作るたびに <code>npm install</code> が必要です。<strong>同じブランチは二重に展開できません</strong>(Git が防いでくれます)。不要になったら手で消さず、<code>git worktree remove</code> を使ってください(手で消すと管理情報が残り、<code>git worktree prune</code> が必要になります)。</p>
       </div>
 
-      <h3 id="p4-11">エイリアスを設定する</h3>
+      <h3 id="p4-9">エイリアスを設定する</h3>
       <p><strong>エイリアス(別名)</strong>は、よく使うコマンドやオプションに短い別名を付ける機能です。タイプ量を減らせます。<code>git config --global alias.&lt;別名&gt; &lt;コマンド&gt;</code> で登録し、設定は <code>~/.gitconfig</code> に保存されます。</p>
       <pre><button class="copy-btn">コピー</button><span class="term-head"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="label">alias の設定</span></span><code><span class="pr">$</span> git config --global alias.st status
 <span class="pr">$</span> git config --global alias.br branch
