@@ -317,6 +317,7 @@
       <a href="#p3-1" class="sub">config</a>
       <a href="#p3-2" class="sub">リポジトリを用意する</a>
       <a href="#p3-3" class="sub">サイクル1 基本の一周</a>
+      <a href="#p3-4" class="sub">サイクル2 確認と取り消し</a>
       <a href="#p4" class="lead">発展</a>
       <a href="#p4">4 · 発展</a>
       <a href="#p4-1" class="sub">HEAD</a>
@@ -375,7 +376,7 @@
       <ol>
         <li class="toc-item"><span class="toc-badge">1</span><div><div class="toc-title"><a href="#p1">Git とは</a><span class="toc-kind">基礎</span></div><div class="toc-children"><a href="#p1-1">バージョン管理システム</a> <span class="sep">·</span> <a href="#p1-2">Git の成り立ち</a> <span class="sep">·</span> <a href="#p1-3">ホスティングサービス</a></div></div></li>
         <li class="toc-item"><span class="toc-badge">2</span><div><div class="toc-title"><a href="#p2">基本概念</a><span class="toc-kind">基礎</span></div><div class="toc-children"><a href="#p2-1">リポジトリ</a> <span class="sep">·</span> <a href="#p2-2">ワーキングツリー</a> <span class="sep">·</span> <a href="#p2-3">ステージング</a> <span class="sep">·</span> <a href="#p2-4">コミット</a> <span class="sep">·</span> <a href="#p2-5">ブランチ</a> <span class="sep">·</span> <a href="#p2-6">開発の大まかな流れ</a></div></div></li>
-        <li class="toc-item"><span class="toc-badge violet">3</span><div><div class="toc-title"><a href="#p3">実践しながら学ぶ</a><span class="toc-kind">実践</span></div><div class="toc-children"><a href="#p3-1">config</a> <span class="sep">·</span> <a href="#p3-2">リポジトリを用意する</a> <span class="sep">·</span> <a href="#p3-3">サイクル1 基本の一周</a></div></div></li>
+        <li class="toc-item"><span class="toc-badge violet">3</span><div><div class="toc-title"><a href="#p3">実践しながら学ぶ</a><span class="toc-kind">実践</span></div><div class="toc-children"><a href="#p3-1">config</a> <span class="sep">·</span> <a href="#p3-2">リポジトリを用意する</a> <span class="sep">·</span> <a href="#p3-3">サイクル1 基本の一周</a> <span class="sep">·</span> <a href="#p3-4">サイクル2 確認と取り消し</a></div></div></li>
         <li class="toc-item"><span class="toc-badge violet">4</span><div><div class="toc-title"><a href="#p4">発展</a><span class="toc-kind">発展</span></div><div class="toc-children"><a href="#p4-1">HEAD</a> <span class="sep">·</span> <a href="#p4-2">commit --amend</a> <span class="sep">·</span> <a href="#p4-3">restore</a> <span class="sep">·</span> <a href="#p4-4">revert</a> <span class="sep">·</span> <a href="#p4-5">reset</a> <span class="sep">·</span> <a href="#p4-6">stash</a> <span class="sep">·</span> <a href="#p4-7">コンフリクト</a> <span class="sep">·</span> <a href="#p4-8">タグ</a> <span class="sep">·</span> <a href="#p4-9">clone --shared</a> <span class="sep">·</span> <a href="#p4-10">worktree</a> <span class="sep">·</span> <a href="#p4-11">エイリアス</a></div></div></li>
         <li class="toc-item"><span class="toc-badge muted">A</span><div><div class="toc-title"><a href="#appendix">付録</a><span class="toc-kind">付録</span></div><div class="toc-children"><a href="#cheatsheet">コマンド早見表</a> <span class="sep">·</span> <a href="#glossary">用語集</a></div></div></li>
       </ol>
@@ -1393,6 +1394,185 @@
         <div class="box-t"><svg class="ico" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2Z"/><path d="M9 21h6"/></svg>これで1周</div>
         <p>お疲れさまでした。<strong>ブランチを切る → 変更する → 記録する → 共有する → main に取り込む → 片付ける</strong>で、開発の1サイクルが完了です。ローカルとリモートのどちらも <code>main</code> だけになり、始めたときと同じ形に戻りました。</p>
         <p>次のサイクル2では、同じ一周をもう一度たどります。今度は<strong>記録する前に変更の中身を確かめる方法</strong>と、<strong>いらなくなった変更を捨てる方法</strong>を加えます。迷ったら、まず <code>git status</code> で現状を確認するのが基本です。</p>
+      </div>
+
+      <h3 id="p3-4">サイクル2 — 確認と取り消し</h3>
+      <p>2周目です。今度は <code>memo.txt</code> を新しく作り、あわせて <code>README.md</code> にも1行足してみます。ところが README への追記は<strong>やめることにした</strong>、という筋で進めます。記録する前に中身を確かめる方法と、いらなくなった変更を捨てる方法をここで覚えます。</p>
+      <pre><button class="copy-btn">コピー</button><span class="term-head"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="label">2周目をはじめる</span></span><code><span class="pr">$</span> git switch -c feature/memo   <span class="cmt"># 最新の main から新しい枝を切る</span>
+<span class="out">Switched to a new branch 'feature/memo'</span>
+<span class="pr">$</span> touch memo.txt                <span class="cmt"># 新しいファイルを作る</span>
+<span class="pr">$</span> echo <span class="st">"使い方はここに書きます。"</span> &gt;&gt; README.md   <span class="cmt"># README にも1行足してみる</span></code></pre>
+
+      <h4 id="p3-4-diff">diff — 変更の中身を確認する</h4>
+      <p><code>git status</code> は「どのファイルが変わったか」を教えてくれますが、<strong>中身がどう変わったか</strong>までは分かりません。それを見るのが <code>git diff</code> です。記録する前に、自分が何を変えたのかをここで確かめます。</p>
+      <pre><button class="copy-btn">コピー</button><span class="term-head"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="label">diff</span></span><code><span class="pr">$</span> git status -s                  <span class="cmt"># まず今の状態を確認</span>
+<span class="hl"> M</span> README.md
+<span class="hl">??</span> memo.txt
+<span class="pr">$</span> git diff                       <span class="cmt"># ワーキングツリーとステージングの差分</span>
+<span class="out">diff --git a/README.md b/README.md</span>
+<span class="out">index 8660881..370ebe4 100644</span>
+<span class="out">--- a/README.md</span>
+<span class="out">+++ b/README.md</span>
+<span class="out">@@ -1 +1,2 @@</span>
+<span class="out"> # Git 練習リポジトリ</span>
+<span class="hl">+使い方はここに書きます。</span></code></pre>
+      <p>出力の読み方は次のとおりです。<code>---</code> の行が変更前、<code>+++</code> の行が変更後のファイルを表します。<code>@@ -1 +1,2 @@</code> は「変更前は1行目から1行、変更後は1行目から2行」という位置の目印です。行頭が <code>+</code> なら追加された行、<code>-</code> なら削除された行、空白なら変わっていない行です。</p>
+      <p>ここで <code>memo.txt</code> が出てこない点に注意してください。<code>git diff</code> が比べるのは<strong>Git が追跡しているファイル</strong>だけです。<code>memo.txt</code> はまだ一度も add していない <code>untracked</code> なので、差分の対象になりません。</p>
+
+      <h5>どこと どこを比べるか</h5>
+      <p><code>git diff</code> は、引数によって比べる対象が変わります。よく使う3つを挙げます。</p>
+      <div class="tbl-wrap"><table>
+        <thead><tr><th>書き方</th><th>比べる対象</th></tr></thead>
+        <tbody>
+          <tr><td><code>git diff</code></td><td>ワーキングツリー ↔ ステージング。<strong>まだ add していない変更</strong>が見える</td></tr>
+          <tr><td><code>git diff --staged</code></td><td>ステージング ↔ 直前のコミット。<strong>これから commit される中身</strong>が見える</td></tr>
+          <tr><td><code>git diff &lt;A&gt;..&lt;B&gt;</code></td><td>ブランチ ↔ ブランチ。<strong>2つの枝の違い</strong>が見える</td></tr>
+        </tbody>
+      </table></div>
+      <p>あとの2つは、このあと add と commit を済ませてから実行したものです。参考として出力を載せておきます。</p>
+      <pre><button class="copy-btn">コピー</button><span class="term-head"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="label">diff --staged / diff A..B</span></span><code><span class="pr">$</span> git diff --staged              <span class="cmt"># add 済みの中身と直前のコミットを比べる</span>
+<span class="out">diff --git a/memo.txt b/memo.txt</span>
+<span class="out">new file mode 100644</span>
+<span class="out">index 0000000..e69de29</span>
+<span class="cmt"># memo.txt は空ファイルなので、追加された行は出ない</span>
+
+<span class="pr">$</span> git diff main..feature/memo    <span class="cmt"># main と作業ブランチの違いを見る</span>
+<span class="out">diff --git a/memo.txt b/memo.txt</span>
+<span class="out">new file mode 100644</span>
+<span class="out">index 0000000..e69de29</span></code></pre>
+
+      <h4 id="p3-4-restore">restore — 変更を元に戻す</h4>
+      <p>差分を見て、<code>README.md</code> への追記はやめることにしました。<code>git restore</code> で、この変更を捨てます。</p>
+      <pre><button class="copy-btn">コピー</button><span class="term-head"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="label">restore</span></span><code><span class="pr">$</span> git restore README.md          <span class="cmt"># README.md の変更を捨てて元に戻す</span>
+<span class="pr">$</span> git status -s                  <span class="cmt"># README.md の行が消え、memo.txt だけになった</span>
+<span class="hl">??</span> memo.txt</code></pre>
+      <p>間違えた変更を取り消したいときは <code>git restore</code> を使います。<strong>ワーキングツリーの変更を捨てる</strong>のか、<strong>ステージングから外す(アンステージ)</strong>のかで、オプションが変わります。</p>
+      <pre><button class="copy-btn">コピー</button><span class="term-head"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="label">restore の2つの形</span></span><code><span class="pr">$</span> git restore <span class="st">&lt;file&gt;</span>            <span class="cmt"># ワーキングツリーの変更を取り消して元に戻す</span>
+<span class="pr">$</span> git restore --staged <span class="st">&lt;file&gt;</span>   <span class="cmt"># ステージングから外す(変更自体はワーキングツリーに残る)</span></code></pre>
+      <figure>
+        <svg viewBox="0 0 620 210" role="img" aria-label="git restore の2つの使い方を上下で比べる図">
+          <!-- 上段: restore --staged(アンステージ) -->
+          <rect x="45" y="28" width="150" height="46" rx="9" fill="#F4F7F9" stroke="#8A9AA6"/>
+          <text x="120" y="51" text-anchor="middle" class="svg-ms" fill="#5B6B78">ワーキングツリー</text>
+          <text x="120" y="66" text-anchor="middle" class="svg-s" font-size="8.5" fill="#166b48">変更は残る</text>
+          <rect x="425" y="28" width="150" height="46" rx="9" fill="#E1F0F1" stroke="#0E7C86"/>
+          <text x="500" y="55" text-anchor="middle" class="svg-ms" fill="#0A585F">ステージング</text>
+          <path d="M423 51 H199" stroke="#B8420C" stroke-width="1.8" marker-end="url(#pr3L)"/>
+          <text x="311" y="20" text-anchor="middle" class="svg-ms" fill="#B8420C" font-size="10">git restore --staged &lt;file&gt;</text>
+          <text x="311" y="94" text-anchor="middle" class="svg-s" font-size="9.5" fill="#5B6B78">アンステージ:ステージングから外すだけ(変更はワーキングツリーに残る)</text>
+          <line x1="40" y1="112" x2="580" y2="112" stroke="#E4E7EA" stroke-width="1"/>
+          <!-- 下段: restore <file>(ワーキングツリーの変更を破棄。ステージングは変えない) -->
+          <rect x="45" y="130" width="150" height="46" rx="9" fill="#F4F7F9" stroke="#8A9AA6"/>
+          <text x="120" y="151" text-anchor="middle" class="svg-ms" fill="#5B6B78">ワーキングツリー</text>
+          <text x="120" y="167" text-anchor="middle" class="svg-s" font-size="8.5" fill="#B8420C">編集した変更</text>
+          <path d="M197 153 H404" stroke="#B8420C" stroke-width="1.8" marker-end="url(#pr3L)"/>
+          <text x="300" y="122" text-anchor="middle" class="svg-ms" fill="#B8420C" font-size="10">git restore &lt;file&gt;</text>
+          <text x="424" y="159" class="svg-ms" fill="#B8420C" font-size="15" font-weight="700">✕</text>
+          <text x="470" y="157" text-anchor="middle" class="svg-s" font-size="9.5" fill="#B8420C">破棄</text>
+          <text x="311" y="196" text-anchor="middle" class="svg-s" font-size="9.5" fill="#5B6B78">編集した変更を破棄して元に戻す(ステージングは変えない)</text>
+          <defs>
+            <marker id="pr3L" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0 0 L6 3 L0 6" fill="none" stroke="#B8420C" stroke-width="1.5"/></marker>
+          </defs>
+        </svg>
+        <figcaption>上段の <code>restore --staged</code> は<strong>ステージングから外すだけ</strong>で、変更はワーキングツリーに残る。下段の <code>restore &lt;file&gt;</code> は<strong>ワーキングツリーの変更そのものを破棄して元に戻す</strong>(ステージングは変えない)。</figcaption>
+      </figure>
+      <div class="box stumble">
+        <div class="box-t"><svg class="ico" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 9v4M12 17h.01"/><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg>捨てた変更は戻せない</div>
+        <p><code>git restore &lt;file&gt;</code> で破棄したワーキングツリーの変更は、<strong>元に戻せません</strong>。本当に捨ててよいか、先に <code>git diff</code> などで中身を確かめてから実行しましょう。</p>
+      </div>
+
+      <h4 id="p3-4-log">log — 履歴を確認する</h4>
+      <p>残った <code>memo.txt</code> を、サイクル1と同じ手順で記録します。</p>
+      <pre><button class="copy-btn">コピー</button><span class="term-head"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="label">記録する</span></span><code><span class="pr">$</span> git add memo.txt               <span class="cmt"># ステージングに追加</span>
+<span class="pr">$</span> git status -s
+<span class="hl">A</span>  memo.txt                      <span class="cmt"># 左列 A＝追加(staged)</span>
+<span class="pr">$</span> git commit -m <span class="st">"memo.txt を追加"</span>
+<span class="out">[feature/memo ac52c03] memo.txt を追加</span>
+<span class="out"> 1 file changed, 0 insertions(+), 0 deletions(-)</span>
+<span class="out"> create mode 100644 memo.txt</span></code></pre>
+      <p>記録できたら、<code>git log</code> で履歴を見てみましょう。新しいコミットから順に、上から並びます。</p>
+      <pre><button class="copy-btn">コピー</button><span class="term-head"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="label">log</span></span><code><span class="pr">$</span> git log                        <span class="cmt"># 新しいコミットから順に表示</span>
+<span class="out">commit ac52c03592e5c37cefa8e505be6c9e3c9546b00e</span>
+<span class="out">Author: Taro Yamada &lt;taro@example.com&gt;</span>
+<span class="out">Date:   Tue Jul 21 23:26:06 2026 +0900</span>
+<span class="out"></span>
+<span class="out">    memo.txt を追加</span>
+<span class="out"></span>
+<span class="out">commit c2bcc62f2c693a7fa491f9a91f7819253ff680bf</span>
+<span class="out">Merge: f229e49 209a548</span>
+<span class="out">Author: Taro Yamada &lt;taro@example.com&gt;</span>
+<span class="out">Date:   Tue Jul 21 23:00:14 2026 +0900</span>
+<span class="out"></span>
+<span class="out">    Merge pull request #8 from you/feature/readme</span>
+<span class="out"></span>
+<span class="out">    README の見出しを修正</span>
+<span class="out"></span>
+<span class="out">commit 209a54879b00cc268812cafca3b5255d51d6e7e5</span>
+<span class="out">Author: Taro Yamada &lt;taro@example.com&gt;</span>
+<span class="out">Date:   Tue Jul 21 22:59:58 2026 +0900</span>
+<span class="out"></span>
+<span class="out">    README の見出しを修正</span>
+<span class="out"></span>
+<span class="out">commit f229e498973aeb934d08c21637f446f8148c565d</span>
+<span class="out">Author: Taro Yamada &lt;taro@example.com&gt;</span>
+<span class="out">Date:   Tue Jul 21 22:59:54 2026 +0900</span>
+<span class="out"></span>
+<span class="out">    最初のコミット</span></code></pre>
+      <p>1つのコミットに、<strong>コミットハッシュ</strong>・<strong>作成者</strong>・<strong>日時</strong>・<strong>メッセージ</strong>が並びます。先頭の40桁の英数字がコミットハッシュで、そのコミットを一意に指す ID です。サイクル1のマージコミットには <code>Merge:</code> の行があり、親となる2つのコミットが書かれています。</p>
+      <p>この形式は履歴が増えると読みづらくなります。<code>--oneline</code> を付けると、1コミット1行の要約になります。ハッシュも先頭7桁に短縮されます。</p>
+      <pre><button class="copy-btn">コピー</button><span class="term-head"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="label">log --oneline</span></span><code><span class="pr">$</span> git log --oneline              <span class="cmt"># 1コミット1行の要約表示</span>
+<span class="out">ac52c03 memo.txt を追加</span>
+<span class="out">c2bcc62 Merge pull request #8 from you/feature/readme</span>
+<span class="out">209a548 README の見出しを修正</span>
+<span class="out">f229e49 最初のコミット</span></code></pre>
+      <div class="box tip">
+        <div class="box-t"><svg class="ico" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2Z"/><path d="M9 21h6"/></svg>短いハッシュでも指定できる</div>
+        <p>コミットを指定するとき、40桁すべてを打つ必要はありません。<code>--oneline</code> に出る先頭7桁のように、<strong>ほかと区別できる長さ</strong>があれば足ります。<code>git show ac52c03</code> のように使えます。</p>
+      </div>
+
+      <h4 id="p3-4-pull">pull — 取得して取り込む</h4>
+      <p>取り込みの前に、push と PR を済ませます。ここはサイクル1と同じ手順です。</p>
+      <pre><button class="copy-btn">コピー</button><span class="term-head"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="label">push</span></span><code><span class="pr">$</span> git push -u origin feature/memo   <span class="cmt"># 初回なので -u 付き</span>
+<span class="out">remote:</span>
+<span class="out">remote: Create a pull request for 'feature/memo' on GitHub by visiting:</span>
+<span class="out">remote:      https://github.com/you/git-practice-repo/pull/new/feature/memo</span>
+<span class="out">remote:</span>
+<span class="out">To github.com:you/git-practice-repo.git</span>
+<span class="out"> * [new branch]      feature/memo -&gt; feature/memo</span>
+<span class="out">branch 'feature/memo' set up to track 'origin/feature/memo'.</span></code></pre>
+      <p>push したら、ホスティングサービスの画面で PR を作り、<code>Create a merge commit</code> でマージします。画面の操作はサイクル1の「PR作成」「マージ」と同じです。</p>
+      <p>マージが済んだら、手元の <code>main</code> を最新にします。サイクル1では <code>git fetch</code> と <code>git merge origin/main</code> の2手に分けました。ここでは <code>git pull</code> の1手で済ませます。</p>
+      <pre><button class="copy-btn">コピー</button><span class="term-head"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="label">pull</span></span><code><span class="pr">$</span> git switch main                <span class="cmt"># 取り込みたいブランチへ移動</span>
+<span class="out">Switched to branch 'main'</span>
+<span class="out">Your branch is up to date with 'origin/main'.</span>   <span class="cmt"># ← 取得前なので、まだ最新に見えている</span>
+<span class="pr">$</span> git pull                       <span class="cmt"># 取得して、今のブランチに取り込む</span>
+<span class="out">From github.com:you/git-practice-repo</span>
+<span class="out">   c2bcc62..0435096  main       -&gt; origin/main</span>   <span class="cmt"># ← ここまでが fetch の働き</span>
+<span class="out">Updating c2bcc62..0435096</span>
+<span class="out">Fast-forward</span>                   <span class="cmt"># ← ここからが merge の働き</span>
+<span class="out"> memo.txt | 0</span>
+<span class="out"> 1 file changed, 0 insertions(+), 0 deletions(-)</span>
+<span class="out"> create mode 100644 memo.txt</span></code></pre>
+      <p>出力の前半が取得、後半が取り込みです。1つのコマンドで2つの仕事をしているのが読み取れます。</p>
+      <div class="box tip">
+        <div class="box-t"><svg class="ico" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2Z"/><path d="M9 21h6"/></svg>fetch + merge ＝ pull</div>
+        <p>サイクル1では <code>git fetch</code> で取ってきて <code>git merge origin/main</code> で取り込む、と2手に分けました。<strong>この2つをまとめたのが <code>git pull</code></strong> です。先に差分を確かめたいときは <code>fetch</code>、そのまま取り込むときは <code>pull</code> と使い分けます。</p>
+        <p>なお本書の練習は1人で進めるため、ブランチを切る前の <code>main</code> はいつも最新です。しかし<strong>チームで開発するときは、他の開発メンバーが <code>main</code> を進めています</strong>。作業ブランチを切る前は、<code>git switch main</code> → <code>git pull</code> で最新にする習慣をつけてください。</p>
+      </div>
+
+      <h5>役目を終えた枝を片付ける</h5>
+      <p>最後に、サイクル1と同じくブランチを削除します。ローカルとリモートの両方を消します。</p>
+      <pre><button class="copy-btn">コピー</button><span class="term-head"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="label">ブランチ削除</span></span><code><span class="pr">$</span> git branch -d feature/memo               <span class="cmt"># ローカルの枝を削除</span>
+<span class="out">Deleted branch feature/memo (was ac52c03).</span>
+<span class="pr">$</span> git push origin --delete feature/memo    <span class="cmt"># リモートの枝も削除</span>
+<span class="out">To github.com:you/git-practice-repo.git</span>
+<span class="out"> - [deleted]         feature/memo</span>
+<span class="pr">$</span> git branch -a                            <span class="cmt"># main だけが残った</span>
+<span class="out">* main</span>
+<span class="out">  remotes/origin/main</span></code></pre>
+      <div class="box tip">
+        <div class="box-t"><svg class="ico" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2Z"/><path d="M9 21h6"/></svg>2周目が完了</div>
+        <p>2周目が終わりました。<code>diff</code> で中身を確かめ、<code>restore</code> でいらない変更を捨て、<code>log</code> で履歴を確認し、<code>pull</code> で手元を最新にしました。ローカルとリモートは、どちらも <code>main</code> だけに戻っています。</p>
       </div>
     </section>
 
