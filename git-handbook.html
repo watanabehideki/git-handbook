@@ -86,10 +86,9 @@
   h2::before{content:""; position:absolute; left:0; top:4px; bottom:12px; width:5px; border-radius:3px; background:var(--accent);}
   /* h3: 節見出し。細い左アクセントバーで見出しと本文を区別 */
   h3{font-size:18.5px; font-weight:600; margin:40px 0 10px; letter-spacing:0; padding-left:12px; border-left:3px solid var(--accent);}
-  /* h4: 小見出し。先頭マーカーで一段下の見出しと分かる */
-  h4{font-size:15.5px; font-weight:600; margin:26px 0 6px; color:var(--accent-ink);}
-  h5{font-size:14px; font-weight:700; margin:22px 0 8px; color:var(--ink); letter-spacing:.01em;}
-  h4::before{content:"◆"; font-size:.62em; color:var(--accent); margin-right:8px; vertical-align:2px;}
+  /* h4: 小見出し。h3 と同じ左バー語彙を、細く・小さく使って一段下と分かる */
+  h4{font-size:15.5px; font-weight:700; margin:26px 0 6px; padding-left:10px; border-left:2px solid var(--accent); color:var(--accent-ink);}
+  h5{font-size:14px; font-weight:600; margin:22px 0 8px; color:var(--ink); letter-spacing:.01em;}
   /* 発展章（violet）の見出しはアクセントをブランチ色にそろえる */
   #p9 h2::before{background:var(--branch);} #p9 h2{border-bottom-color:var(--branch-soft);}
   #p9 h3{border-left-color:var(--branch);}
