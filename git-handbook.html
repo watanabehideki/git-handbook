@@ -923,7 +923,7 @@
       </div>
       <div class="box tip">
         <div class="box-t"><svg class="ico" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2Z"/><path d="M9 21h6"/></svg>練習用リポジトリを用意しよう</div>
-        <p><strong>練習用のリポジトリ</strong>を用意して進めるのがおすすめです。ミスしても影響がなく、思い切って試せます。GitHub や CodeCommit などで、自分用の空リポジトリを1つ作っておきましょう。以降の例では、それを clone して使う前提で説明します。</p>
+        <p><strong>練習用のリポジトリ</strong>を用意して進めるのがおすすめです。ミスしても影響がなく、思い切って試せます。以降の実践では、この <code>git-practice-repo</code> を使って進めます。用意の仕方は次の節で、新規作成・既存リポジトリの利用の両方を説明します。</p>
       </div>
 
       <p>この節では、次のようなファイル構成の練習用リポジトリを想定して進めます。最初から全部を作る必要はありません。コマンドを進めるなかで、少しずつ追加・編集していきます。<code>README.md</code> や <code>memo.txt</code> といった名前は説明のための例です。中身は何でも構いません。</p>
@@ -936,11 +936,11 @@
       <h3 id="p3-1">config — 名前とメールを設定する</h3>
       <p>Git はコミットに「誰が変更したか」を記録します。そのため、最初の一度だけ、コミットに使う<strong>名前とメールアドレス</strong>を登録しておきます。未設定だと、コミットのときに警告やエラーが出ます。</p>
       <pre><button class="copy-btn">コピー</button><span class="term-head"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="label">最初の1回だけ</span></span><code><span class="pr">$</span> git config --global user.name <span class="st">"Taro Yamada"</span>
-<span class="pr">$</span> git config --global user.email <span class="st">"taro@example.com"</span>
+<span class="pr">$</span> git config --global user.email <span class="st">"taro@example.jp"</span>
 
 <span class="pr">$</span> git config --global --list        <span class="cmt"># 設定できたか確認</span>
 <span class="out">user.name=Taro Yamada</span>
-<span class="out">user.email=taro@example.com</span></code></pre>
+<span class="out">user.email=taro@example.jp</span></code></pre>
       <div class="box tip">
         <div class="box-t"><svg class="ico" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2Z"/><path d="M9 21h6"/></svg><code>--global</code> の意味</div>
         <p><code>--global</code> は「このパソコン全体の共通設定」という意味です。名前はチームで誰か分かるものに、メールは GitHub などホスティングサービスのアカウントに登録しているメールアドレスと同じものに合わせると混乱がありません。特定のリポジトリだけ別の設定にしたいときは、そのリポジトリの中で <code>--global</code> を外して実行します。</p>
@@ -988,8 +988,8 @@
       <h4>origin(オリジン)とは</h4>
       <p><strong>origin(オリジン)</strong>とは、クローン元のリモートリポジトリの <strong>URL に対して自動で付けられるエイリアス(別名)</strong>です。毎回長い URL を打つ代わりに、<code>origin</code> と短く書けます。このあとの <code>push</code> / <code>fetch</code> / <code>pull</code> でも、送り先・取得元としてこの <code>origin</code> を使います。<code>origin</code> がどの URL を指しているかは <code>git remote -v</code> で確認できます。なお、このように<strong>リモートリポジトリの URL に名前を付けた参照</strong>のことを、Git では<strong>リモート</strong>と呼びます。<code>origin</code> は、その既定のリモート名です。</p>
       <pre><button class="copy-btn">コピー</button><span class="term-head"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="label">remote</span></span><code><span class="pr">$</span> git remote -v                  <span class="cmt"># 登録済みリモートのエイリアスとURLを確認</span>
-<span class="out">origin  https://example.com/you/git-practice-repo.git (fetch)</span>
-<span class="out">origin  https://example.com/you/git-practice-repo.git (push)</span></code></pre>
+<span class="out">origin  git@github.com:you/git-practice-repo.git (fetch)</span>
+<span class="out">origin  git@github.com:you/git-practice-repo.git (push)</span></code></pre>
       <div class="box tip">
         <div class="box-t"><svg class="ico" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2Z"/><path d="M9 21h6"/></svg><code>origin</code> は既定の名前で、変更できる</div>
         <p><code>origin</code> は clone 時に<strong>自動で付けられる既定のエイリアス名</strong>で、予約語ではありません。好きな名前に変えられます。clone 時に <code>git clone -o &lt;名前&gt; &lt;URL&gt;</code> で別名を指定したり、あとから <code>git remote rename origin &lt;名前&gt;</code> で改名したりできます。また、リモートは複数登録できます。</p>
@@ -1012,7 +1012,8 @@
       </ul>
       <pre><button class="copy-btn">コピー</button><span class="term-head"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="label">branch -a</span></span><code><span class="pr">$</span> git branch -a                  <span class="cmt"># リモート追跡ブランチも含めて一覧</span>
 <span class="out">* main</span>
-<span class="out">  remotes/origin/main</span></code></pre>
+<span class="out">  remotes/origin/main</span>
+<span class="cmt"># (clone で用意した場合は remotes/origin/HEAD -&gt; origin/main の行も加わる)</span></code></pre>
       <figure>
         <svg viewBox="0 0 620 228" role="img" aria-label="ローカルブランチ・リモート追跡ブランチ・リモートブランチの図">
           <rect x="15" y="38" width="300" height="150" rx="10" fill="#F4F7F9" stroke="#DAE1E7"/>
@@ -1131,15 +1132,16 @@
       <p>毎回の長い出力が煩わしいときは、<code>-s</code>(short)で1行ずつ簡潔に表示できます。左の2文字が状態を表し、左列がステージング、右列がワーキングツリーの状態です。</p>
       <pre><button class="copy-btn">コピー</button><span class="term-head"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="label">status -s</span></span><code><span class="pr">$</span> git status -s
 <span class="hl"> M</span> README.md      <span class="cmt"># M=modified(変更)。右列Mなので未ステージング</span>
-<span class="cmt"># 例) ??=untracked(Git が未追跡の新規ファイル) / A=追加(staged) / D=削除</span></code></pre>
+<span class="cmt"># 例) ??=untracked(Git が未追跡の新規ファイル) / A=追加(staged) / D=削除 / MM=一部ステージング済みでさらに変更</span></code></pre>
       <div class="box tip">
         <div class="box-t"><svg class="ico" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2Z"/><path d="M9 21h6"/></svg>出力はヒント</div>
         <p><code>git status</code> の <code>(use "git add ..." ...)</code> のような行は、<strong>次に打つべきコマンドの案内</strong>です。迷ったら、まず status を打って、書いてあるヒントに従えばたいてい先に進めます。</p>
       </div>
 
       <h4 id="p3-3-add">add — 変更をステージングに追加する</h4>
-      <p>変更を記録していきます。まずは <code>git add</code> で、記録したい変更を<strong>ステージング(インデックス)</strong>に追加します。ファイルを個別に指定するほか、ディレクトリ指定や、スペース区切りで複数をまとめて追加できます。カレントディレクトリ以下をすべて追加するときは <code>git add .</code> と書きます。</p>
+      <p>変更を記録していきます。まずは <code>git add</code> で、記録したい変更を<strong>ステージング(インデックス)</strong>に追加します。ファイルを個別に指定するほか、ディレクトリ指定や、スペース区切りで複数をまとめて追加できます。</p>
       <pre><button class="copy-btn">コピー</button><span class="term-head"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="label">add</span></span><code><span class="pr">$</span> git add README.md           <span class="cmt"># このファイルの変更をステージングへ追加</span>
+<span class="pr">$</span> git add .                   <span class="cmt"># カレント以下の変更をまとめてステージングへ追加</span>
 <span class="pr">$</span> git status -s
 <span class="hl">M</span>  README.md                  <span class="cmt"># 左列 M＝staged(ステージング済み)</span></code></pre>
 
@@ -1170,15 +1172,17 @@
       <pre><button class="copy-btn">コピー</button><span class="term-head"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="label">push</span></span><code><span class="pr">$</span> git push -u origin feature/readme   <span class="cmt"># 初回。-u で紐づけ(upstream)も設定</span>
 <span class="out">remote:</span>
 <span class="out">remote: Create a pull request for 'feature/readme' on GitHub by visiting:</span>
-<span class="out">remote:      https://github.com/watanabehideki/git-practice-repo/pull/new/feature/readme</span>
+<span class="out">remote:      https://github.com/you/git-practice-repo/pull/new/feature/readme</span>
 <span class="out">remote:</span>
-<span class="out">To github.com:watanabehideki/git-practice-repo.git</span>
+<span class="out">To github.com:you/git-practice-repo.git</span>
 <span class="out"> * [new branch]      feature/readme -&gt; feature/readme</span>
 <span class="out">branch 'feature/readme' set up to track 'origin/feature/readme'.</span>   <span class="cmt"># ← 紐づけ完了</span>
 
 <span class="pr">$</span> git branch -vv                      <span class="cmt"># 各ブランチの upstream を確認</span>
 <span class="out">* feature/readme 209a548 [origin/feature/readme] README の見出しを修正</span>
-<span class="out">  main           f229e49 [origin/main] 最初のコミット</span></code></pre>
+<span class="out">  main           f229e49 [origin/main] 最初のコミット</span>
+
+<span class="pr">$</span> git push                              <span class="cmt"># 2回目以降は送り先を省略できる</span></code></pre>
       <div class="box tip">
         <div class="box-t"><svg class="ico" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2Z"/><path d="M9 21h6"/></svg>紐づけを確認する</div>
         <p>各ブランチの upstream 設定は <code>git branch -vv</code> で確認できます。<code>[origin/feature/readme]</code> のように、送り先のリモートブランチが表示されます。</p>
@@ -1357,12 +1361,13 @@
         <figcaption>fetch はリモートの状態を <code>origin/main</code> に取り込むだけ。手元の作業ファイルには手を付けない。</figcaption>
       </figure>
       <pre><button class="copy-btn">コピー</button><span class="term-head"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="label">fetch</span></span><code><span class="pr">$</span> git fetch                       <span class="cmt"># リモートの情報だけ取得(ワーキングツリーは無変更)</span>
-<span class="out">From github.com:watanabehideki/git-practice-repo</span>
+<span class="out">From github.com:you/git-practice-repo</span>
 <span class="out">   f229e49..c2bcc62  main       -&gt; origin/main</span>
 <span class="pr">$</span> git log --oneline origin/main   <span class="cmt"># 取得した origin/main の最新を確認</span>
-<span class="out">c2bcc62 Merge pull request #8 from watanabehideki/feature/readme</span>
+<span class="out">c2bcc62 Merge pull request #8 from you/feature/readme</span>
 <span class="out">209a548 README の見出しを修正</span>
-<span class="out">f229e49 最初のコミット</span></code></pre>
+<span class="out">f229e49 最初のコミット</span>
+<span class="pr">$</span> git diff origin/main            <span class="cmt"># 自分の手元とリモートの差分を確認</span></code></pre>
       <p>確認できたら、その変更を<strong>いまのブランチ(ワーキングツリー)に取り込む</strong>には、<code>git merge origin/main</code> を実行します。<code>fetch</code> は <code>origin/main</code> を更新するだけなので、この <code>merge</code> ではじめて、手元のブランチと作業ファイルに反映されます。</p>
       <pre><button class="copy-btn">コピー</button><span class="term-head"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="label">取り込む(merge)</span></span><code><span class="pr">$</span> git switch main            <span class="cmt"># 取り込みたいブランチにいることを確認</span>
 <span class="out">Switched to branch 'main'</span>
@@ -1379,7 +1384,7 @@
       <pre><button class="copy-btn">コピー</button><span class="term-head"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="label">ブランチ削除</span></span><code><span class="pr">$</span> git branch -d feature/readme               <span class="cmt"># ローカルの枝を削除</span>
 <span class="out">Deleted branch feature/readme (was 209a548).</span>
 <span class="pr">$</span> git push origin --delete feature/readme    <span class="cmt"># リモートの枝も削除</span>
-<span class="out">To github.com:watanabehideki/git-practice-repo.git</span>
+<span class="out">To github.com:you/git-practice-repo.git</span>
 <span class="out"> - [deleted]         feature/readme</span>
 <span class="pr">$</span> git branch -a                              <span class="cmt"># main だけが残った</span>
 <span class="out">* main</span>

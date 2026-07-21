@@ -1,0 +1,19 @@
+<!-- git-handbook.html の旧「PR作成 — 変更の取り込みを提案する」節(旧構成での id="p3-13"、現構成では p3-3-pr)にあった概念図。
+     PR は feature ブランチから base ブランチ(main)への「取り込み提案」であることを示す図。
+     3章を「サイクル1」構成へ書き直す際、この節をスクリーンショット3枚に差し替えたため本文からは削除したが、資産として保管する。
+     コミット c2585dc 時点の git-handbook.html から抽出(削除前のコミットは c36e31c)。 -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 165" role="img" aria-label="feature ブランチから main へ PR を出す図">
+  <line x1="60" y1="120" x2="560" y2="120" stroke="#0E7C86" stroke-width="2.5"/>
+  <text x="566" y="124" class="svg-ms" fill="#0E7C86" font-weight="600" font-size="11">main</text>
+  <text x="60" y="140" class="svg-s" fill="#0E7C86" font-size="9">base ブランチ</text>
+  <circle cx="100" cy="120" r="9" fill="#0E7C86"/>
+  <path d="M100 120 Q160 120 160 66 L360 66" fill="none" stroke="#7C5CBF" stroke-width="2"/>
+  <circle cx="230" cy="66" r="9" fill="#7C5CBF"/>
+  <circle cx="330" cy="66" r="9" fill="#7C5CBF"/>
+  <text x="230" y="50" class="svg-ms" fill="#7C5CBF" font-size="11">feature/greeting</text>
+  <rect x="380" y="52" width="150" height="30" rx="15" fill="#FBEFD6" stroke="#C9820A"/>
+  <text x="455" y="72" text-anchor="middle" class="svg-ms" fill="#8A5A06" font-size="10">PR（取り込み提案）</text>
+  <path d="M360 66 Q440 66 440 82 L440 90 Q440 100 460 108 L468 112" fill="none" stroke="#C9820A" stroke-width="1.7" stroke-dasharray="4 3" marker-end="url(#ppr)"/>
+  <text x="300" y="152" text-anchor="middle" class="svg-s">「feature の変更を main に入れて」とレビューを依頼する</text>
+  <defs><marker id="ppr" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0 0 L6 3 L0 6" fill="none" stroke="#C9820A" stroke-width="1.5"/></marker></defs>
+</svg>
