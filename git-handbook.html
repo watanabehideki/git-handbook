@@ -1256,7 +1256,7 @@
       <p>PR が承認されたら、ホスティングサービスの画面で<strong>マージ</strong>し、feature の変更を main に取り込みます。画面には選択肢が3つ並びます。どれを選ぶかを判断するには、Git のマージそのものを先に知っておく必要があります。ここでは<strong>マージコミットとは何か</strong>と、<strong>Git の合流のしかたは何種類あるか</strong>を確認してから、画面の3つの選択肢に戻ります。</p>
 
       <h5>マージコミットとは</h5>
-      <p>通常のコミットは、直前のコミット1つを<strong>親</strong>として持ちます。<code>git commit</code> を実行するたびに、親が1つのコミットが1個ずつ増えます。</p>
+      <p>通常のコミットは、直前のコミット1つを<strong>親</strong>として持ちます(最初のコミットだけは親を持ちません)。<code>git commit</code> を実行するたびに、親が1つのコミットが1個ずつ増えます。</p>
       <p>これに対して<strong>マージコミット</strong>は、<strong>2つのブランチの合流点として作られる、親を2つ持つコミット</strong>です。片方の親が取り込み先(main)の先端で、もう片方が取り込み元(feature)の先端です。マージコミットが1つあれば、どのブランチとどのブランチがどの時点で合流したかを追えます。</p>
       <div class="tbl-wrap"><table>
         <thead><tr><th>コミットの種類</th><th>親の数</th><th>作られるとき</th></tr></thead>
@@ -1267,7 +1267,7 @@
       </table></div>
 
       <h5>Git の2つの合流のしかた</h5>
-      <p>手元で <code>git merge</code> を実行すると、Git は <strong>Fast-forward</strong> か <strong>3-way</strong> のどちらかで合流します。どちらにするかは指定できません。<strong>分岐したあとに取り込み先のブランチが進んだかどうか</strong>を見て、Git が自動的に決めます。</p>
+      <p>手元で <code>git merge</code> を実行すると、Git は <strong>Fast-forward</strong> か <strong>3-way</strong> のどちらかで合流します。<strong>何も指定しなければ</strong>、<strong>分岐したあとに取り込み先のブランチが進んだかどうか</strong>を見て、Git が自動的に決めます。オプションで指定できますが、本書では扱いません。</p>
       <div class="tbl-wrap"><table>
         <thead><tr><th>分岐後の取り込み先(main)</th><th>合流のしかた</th><th>マージコミット</th></tr></thead>
         <tbody>
@@ -1307,7 +1307,7 @@
       <p>ここで押さえておくのは、<strong>feature の個々のコミットが main の履歴にそのまま残る</strong>ことです。マージコミットは合流点として増えるだけで、feature 側のコミットを置き換えるわけではありません。マージ後に main で <code>git log</code> を実行すると、feature で作ったコミットが1つずつ表示されます。</p>
       <figure>
         <svg viewBox="0 0 620 244" role="img" aria-label="3-way マージで feature の3コミットが main の履歴に残り、マージコミットが2つの親を持つ図">
-          <rect x="60" y="44" width="460" height="152" rx="12" fill="#F6F4FB" stroke="#C9BEE6" stroke-dasharray="5 4"/>
+          <rect x="60" y="44" width="460" height="161" rx="12" fill="#F6F4FB" stroke="#C9BEE6" stroke-dasharray="5 4"/>
           <text x="74" y="62" class="svg-ms" fill="#5b3fa0" font-weight="600">マージ後の main の履歴</text>
           <line x1="78" y1="164" x2="190" y2="164" stroke="#C3CDD5" stroke-width="2"/>
           <path d="M197 164 H446" fill="none" stroke="#0E7C86" stroke-width="2" marker-end="url(#mg3a)"/>
@@ -1342,7 +1342,7 @@
       </figure>
       <p>画面の3つと、いま見た Fast-forward / 3-way は1対1では対応しません。<code>Create a merge commit</code> は、Fast-forward で済む状況でも<strong>必ずマージコミットを作ります</strong>。そのため、リモートの main は常にマージコミットで進みます。</p>
       <div class="tbl-wrap"><table>
-        <thead><tr><th>画面の選択肢</th><th>リモートの main で起きること</th><th>手元で <code>git pull</code> したときの表示</th></tr></thead>
+        <thead><tr><th>画面の選択肢</th><th>リモートの main で起きること</th><th>手元で取り込んだときの表示</th></tr></thead>
         <tbody>
           <tr><td>Create a merge commit</td><td>親を2つ持つ<strong>マージコミット</strong>が1つ増える</td><td><code>Fast-forward</code>(手元の main は分岐後に進んでいないため)</td></tr>
           <tr><td>Squash and merge</td><td>まとめられた通常のコミットが1つ増える</td><td><code>Fast-forward</code></td></tr>
@@ -1373,7 +1373,7 @@
         </svg>
         <figcaption>feature の3コミットを<strong>1つのコミットにまとめて</strong> main に載せる。マージコミットは作られず、個々の3コミットは main には残らない。</figcaption>
       </figure>
-      <p>細かい試行錯誤のコミットを main 側では1つに集約でき、履歴を簡潔に保てます。「1機能＝1コミット」で main をそろえたいチームで使われます。ただし、main に載るのは中身が同じ<strong>別のコミット</strong>です。Git からは feature が未マージのままに見えるので、<code>git branch -d</code> での削除が失敗します。</p>
+      <p>細かい試行錯誤のコミットを main 側では1つに集約でき、履歴を簡潔に保てます。「1機能＝1コミット」で main をそろえたいチームで使われます。ただし、main に載るのは中身が同じ<strong>別のコミット</strong>です。</p>
       <div class="box stumble">
         <div class="box-t"><svg class="ico" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 9v4M12 17h.01"/><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg>ボタンの表示は前回選んだ方式で変わる</div>
         <p>マージボタンには、そのリポジトリで<strong>最後に選んだ方式</strong>が表示されます。<code>Squash and merge</code> と出ていても、右の <code>▼</code> から <code>Create a merge commit</code> を選び直せます。押す前に、いま何が選ばれているかを確かめてください。</p>
