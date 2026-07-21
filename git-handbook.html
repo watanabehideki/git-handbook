@@ -1583,17 +1583,17 @@
 
       <h4 id="p3-5-ignore">ignore — Git に含めないファイルを決める</h4>
       <p>無視したいファイルは <code>.gitignore</code> というファイルに書きます。ここに書いたパターンと一致するファイルは <code>untracked</code> として扱われず、<code>git status</code> にも現れなくなります。秘密情報のつもりのファイルを1つ作って、実際に消えるところを見てみましょう。</p>
-      <pre><button class="copy-btn">コピー</button><span class="term-head"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="label">ignore</span></span><code><span class="pr">$</span> echo "secret" &gt; secret.txt      <span class="cmt"># 秘密情報のつもりのファイルを作る</span>
+      <pre><button class="copy-btn">コピー</button><span class="term-head"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="label">ignore</span></span><code><span class="pr">$</span> echo <span class="st">"secret"</span> &gt; secret.txt      <span class="cmt"># 秘密情報のつもりのファイルを作る</span>
 <span class="pr">$</span> git status -s
-<span class="out"><span class="hl">??</span> secret.txt</span>                     <span class="cmt"># untracked として現れる</span>
+<span class="hl">??</span> secret.txt                     <span class="cmt"># untracked として現れる</span>
 
-<span class="pr">$</span> printf 'secret.txt\n*.log\n' &gt; .gitignore   <span class="cmt"># 無視したいパターンを書く</span>
+<span class="pr">$</span> printf <span class="st">'secret.txt\n*.log\n'</span> &gt; .gitignore   <span class="cmt"># 無視したいパターンを書く</span>
 <span class="pr">$</span> cat .gitignore
 <span class="out">secret.txt</span>
 <span class="out">*.log</span>
 
 <span class="pr">$</span> git status -s
-<span class="out"><span class="hl">??</span> .gitignore</span>                     <span class="cmt"># secret.txt が消えた</span></code></pre>
+<span class="hl">??</span> .gitignore                     <span class="cmt"># secret.txt が消えた</span></code></pre>
       <p><code>*.log</code> のように <code>*</code> を使うと、その形に当てはまるファイルをまとめて指定できます。<code>secret.txt</code> の行が <code>git status -s</code> から消え、代わりに <code>.gitignore</code> 自体が新しいファイルとして現れています。<code>.gitignore</code> はチームで共有するものなので、これは追跡してコミットします。</p>
       <figure>
         <svg viewBox="0 0 620 175" role="img" aria-label=".gitignore がファイルをフィルターする図">
@@ -1647,7 +1647,7 @@
 <span class="hl">D</span>  .env                           <span class="cmt"># 左列 D＝削除がステージされた</span>
 <span class="hl">??</span> .gitignore</code></pre>
       <p><code>git rm --cached</code> を実行すると、<code>git status -s</code> に <code>D  .env</code> が現れます。<strong>これは「削除がステージされた」状態</strong>です。ファイルそのものは手元に残っていますが、Git の記録から外す準備ができた、という意味です。<strong>この削除もコミットして、はじめて追跡解除が確定します</strong>。</p>
-      <pre><button class="copy-btn">コピー</button><span class="term-head"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="label">削除もコミットする</span></span><code><span class="pr">$</span> git add .                        <span class="cmt"># .gitignore もステージングへ追加</span>
+      <pre><button class="copy-btn">コピー</button><span class="term-head"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="label">削除もコミットする</span></span><code><span class="pr">$</span> git add .                        <span class="cmt"># .env は無視されるので再追跡されない</span>
 <span class="pr">$</span> git status -s
 <span class="hl">D</span>  .env                           <span class="cmt"># 削除はステージされたまま</span>
 <span class="hl">A</span>  .gitignore                     <span class="cmt"># 左列 A＝追加(staged)</span>
