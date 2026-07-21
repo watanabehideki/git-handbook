@@ -911,7 +911,7 @@
     <section class="section" id="p3">
       <span class="eyebrow branch"><span class="num">3</span>実践しながら学ぶ</span>
       <h2>実践しながら学ぶ</h2>
-      <p>ここからは、実際に手を動かしながら仕組みを掘り下げます。既存のリポジトリを clone し、ブランチを切って変更を加え、PR を出して main に反映するまでを、コマンドを1つずつ打って体験します。読むだけにせず、必ず自分のターミナルで打ちながら進めてください。</p>
+      <p>ここからは、実際に手を動かしながら仕組みを掘り下げます。練習用のリポジトリを用意し、ブランチを切って変更を加え、PR を出して main に反映するまでを、コマンドを1つずつ打って体験します。読むだけにせず、必ず自分のターミナルで打ちながら進めてください。</p>
       <div class="box tip">
         <div class="box-t"><svg class="ico" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2Z"/><path d="M9 21h6"/></svg>GUI ではなく CLI(コマンドライン)を使う理由</div>
         <p>Git には GUI ツール(SourceTree や VS Code の Git 機能など)もありますが、ここではあえて<strong>コマンドライン</strong>で操作します。理由は次のとおりです。</p>
@@ -927,7 +927,7 @@
       </div>
 
       <p>この節では、次のようなファイル構成の練習用リポジトリを想定して進めます。最初から全部を作る必要はありません。コマンドを進めるなかで、少しずつ追加・編集していきます。<code>README.md</code> や <code>memo.txt</code> といった名前は説明のための例です。中身は何でも構いません。</p>
-      <pre><span class="term-head"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="label">ディレクトリ構造</span></span><code><span class="hl">git-practice-repo/</span>             <span class="cmt"># clone した練習用リポジトリ</span>
+      <pre><span class="term-head"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="label">ディレクトリ構造</span></span><code><span class="hl">git-practice-repo/</span>             <span class="cmt"># 練習用リポジトリ</span>
 ├── README.md                <span class="cmt"># 最初からある説明ファイル。編集して変更を体験する</span>
 ├── memo.txt                 <span class="cmt"># 新しく作る追跡対象のファイル(add / commit で使う)</span>
 ├── secret.txt               <span class="cmt"># 秘密情報のつもりのファイル。.gitignore で無視する</span>
