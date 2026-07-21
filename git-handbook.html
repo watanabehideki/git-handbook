@@ -936,11 +936,11 @@
       <h3 id="p3-1">config — 名前とメールを設定する</h3>
       <p>Git はコミットに「誰が変更したか」を記録します。そのため、最初の一度だけ、コミットに使う<strong>名前とメールアドレス</strong>を登録しておきます。未設定だと、コミットのときに警告やエラーが出ます。</p>
       <pre><button class="copy-btn">コピー</button><span class="term-head"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="label">最初の1回だけ</span></span><code><span class="pr">$</span> git config --global user.name <span class="st">"Taro Yamada"</span>
-<span class="pr">$</span> git config --global user.email <span class="st">"taro@example.jp"</span>
+<span class="pr">$</span> git config --global user.email <span class="st">"taro@example.com"</span>
 
 <span class="pr">$</span> git config --global --list        <span class="cmt"># 設定できたか確認</span>
 <span class="out">user.name=Taro Yamada</span>
-<span class="out">user.email=taro@example.jp</span></code></pre>
+<span class="out">user.email=taro@example.com</span></code></pre>
       <div class="box tip">
         <div class="box-t"><svg class="ico" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2Z"/><path d="M9 21h6"/></svg><code>--global</code> の意味</div>
         <p><code>--global</code> は「このパソコン全体の共通設定」という意味です。名前はチームで誰か分かるものに、メールは GitHub などホスティングサービスのアカウントに登録しているメールアドレスと同じものに合わせると混乱がありません。特定のリポジトリだけ別の設定にしたいときは、そのリポジトリの中で <code>--global</code> を外して実行します。</p>
