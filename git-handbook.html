@@ -299,7 +299,7 @@
     <div class="brand-sub">基本概念から実践まで</div>
     <nav class="nav" id="nav">
       <a href="#top" class="lead">はじめに</a>
-      <a href="#p1" class="lead">基礎</a>
+      <a href="#p1" class="lead">基礎編</a>
       <a href="#p1">1 · Git とは</a>
       <a href="#p1-1" class="sub">バージョン管理システム</a>
       <a href="#p1-2" class="sub">Git の成り立ち</a>
@@ -311,7 +311,7 @@
       <a href="#p2-4" class="sub">コミット</a>
       <a href="#p2-5" class="sub">ブランチ</a>
       <a href="#p2-6" class="sub">開発サイクル</a>
-      <a href="#p3" class="lead">実践</a>
+      <a href="#p3" class="lead">実践編</a>
       <a href="#p3">3 · 実践しながら学ぶ</a>
       <a href="#p3-1" class="sub">config</a>
       <a href="#p3-2" class="sub">リポジトリを用意する</a>
@@ -319,7 +319,7 @@
       <a href="#p3-4" class="sub">サイクル2 確認と取り消し</a>
       <a href="#p3-5" class="sub">サイクル3 管理から外す</a>
       <a href="#p3-6" class="sub">サイクル4 コンフリクト</a>
-      <a href="#p4" class="lead">発展</a>
+      <a href="#p4" class="lead">発展編</a>
       <a href="#p4">4 · 発展</a>
       <a href="#p4-1" class="sub">HEAD</a>
       <a href="#p4-2" class="sub">commit --amend</a>
@@ -344,7 +344,7 @@
     <header class="hero" id="top">
       <div class="kicker">はじめての人のための入門資料</div>
       <h1>Git ハンドブック</h1>
-      <p class="lead-p">Git の基本概念とよく使う操作を、はじめての人でも順を追って理解できるようにまとめました。各章は「概念 → なぜ必要か → 使い方」の流れで構成しています。図で仕組みをつかみ、コマンド例で手を動かして身につけましょう。</p>
+      <p class="lead-p">Git の基本概念とよく使う操作を、はじめての人でも順を追って理解できるようにまとめました。各章は「概念 → なぜ必要か → 使い方」の流れで構成しています。図で仕組みをつかみ、コマンド例で手を動かして身につける構成です。</p>
 
       <div class="legend">
         <div class="lg-h">
@@ -373,17 +373,17 @@
     <nav class="toc" id="toc" aria-label="目次">
       <h2>目次</h2>
       <ol>
-        <li class="toc-item"><span class="toc-badge">1</span><div><div class="toc-title"><a href="#p1">Git とは</a><span class="toc-kind">基礎</span></div><div class="toc-children"><a href="#p1-1">バージョン管理システム</a> <span class="sep">·</span> <a href="#p1-2">Git の成り立ち</a> <span class="sep">·</span> <a href="#p1-3">ホスティングサービス</a></div></div></li>
-        <li class="toc-item"><span class="toc-badge">2</span><div><div class="toc-title"><a href="#p2">基本概念</a><span class="toc-kind">基礎</span></div><div class="toc-children"><a href="#p2-1">リポジトリ</a> <span class="sep">·</span> <a href="#p2-2">ワーキングツリー</a> <span class="sep">·</span> <a href="#p2-3">ステージング</a> <span class="sep">·</span> <a href="#p2-4">コミット</a> <span class="sep">·</span> <a href="#p2-5">ブランチ</a> <span class="sep">·</span> <a href="#p2-6">開発の大まかな流れ</a></div></div></li>
-        <li class="toc-item"><span class="toc-badge violet">3</span><div><div class="toc-title"><a href="#p3">実践しながら学ぶ</a><span class="toc-kind">実践</span></div><div class="toc-children"><a href="#p3-1">config</a> <span class="sep">·</span> <a href="#p3-2">リポジトリを用意する</a> <span class="sep">·</span> <a href="#p3-3">サイクル1 基本の一周</a> <span class="sep">·</span> <a href="#p3-4">サイクル2 確認と取り消し</a> <span class="sep">·</span> <a href="#p3-5">サイクル3 管理から外す</a> <span class="sep">·</span> <a href="#p3-6">サイクル4 コンフリクト</a></div></div></li>
-        <li class="toc-item"><span class="toc-badge violet">4</span><div><div class="toc-title"><a href="#p4">発展</a><span class="toc-kind">発展</span></div><div class="toc-children"><a href="#p4-1">HEAD</a> <span class="sep">·</span> <a href="#p4-2">commit --amend</a> <span class="sep">·</span> <a href="#p4-3">revert</a> <span class="sep">·</span> <a href="#p4-4">reset</a> <span class="sep">·</span> <a href="#p4-5">stash</a> <span class="sep">·</span> <a href="#p4-6">タグ</a> <span class="sep">·</span> <a href="#p4-7">clone --shared</a> <span class="sep">·</span> <a href="#p4-8">worktree</a> <span class="sep">·</span> <a href="#p4-9">エイリアス</a></div></div></li>
+        <li class="toc-item"><span class="toc-badge">1</span><div><div class="toc-title"><a href="#p1">Git とは</a><span class="toc-kind">基礎編</span></div><div class="toc-children"><a href="#p1-1">バージョン管理システム</a> <span class="sep">·</span> <a href="#p1-2">Git の成り立ち</a> <span class="sep">·</span> <a href="#p1-3">ホスティングサービス</a></div></div></li>
+        <li class="toc-item"><span class="toc-badge">2</span><div><div class="toc-title"><a href="#p2">基本概念</a><span class="toc-kind">基礎編</span></div><div class="toc-children"><a href="#p2-1">リポジトリ</a> <span class="sep">·</span> <a href="#p2-2">ワーキングツリー</a> <span class="sep">·</span> <a href="#p2-3">ステージング</a> <span class="sep">·</span> <a href="#p2-4">コミット</a> <span class="sep">·</span> <a href="#p2-5">ブランチ</a> <span class="sep">·</span> <a href="#p2-6">開発の大まかな流れ</a></div></div></li>
+        <li class="toc-item"><span class="toc-badge violet">3</span><div><div class="toc-title"><a href="#p3">実践しながら学ぶ</a><span class="toc-kind">実践編</span></div><div class="toc-children"><a href="#p3-1">config</a> <span class="sep">·</span> <a href="#p3-2">リポジトリを用意する</a> <span class="sep">·</span> <a href="#p3-3">サイクル1 基本の一周</a> <span class="sep">·</span> <a href="#p3-4">サイクル2 確認と取り消し</a> <span class="sep">·</span> <a href="#p3-5">サイクル3 管理から外す</a> <span class="sep">·</span> <a href="#p3-6">サイクル4 コンフリクト</a></div></div></li>
+        <li class="toc-item"><span class="toc-badge violet">4</span><div><div class="toc-title"><a href="#p4">発展</a><span class="toc-kind">発展編</span></div><div class="toc-children"><a href="#p4-1">HEAD</a> <span class="sep">·</span> <a href="#p4-2">commit --amend</a> <span class="sep">·</span> <a href="#p4-3">revert</a> <span class="sep">·</span> <a href="#p4-4">reset</a> <span class="sep">·</span> <a href="#p4-5">stash</a> <span class="sep">·</span> <a href="#p4-6">タグ</a> <span class="sep">·</span> <a href="#p4-7">clone --shared</a> <span class="sep">·</span> <a href="#p4-8">worktree</a> <span class="sep">·</span> <a href="#p4-9">エイリアス</a></div></div></li>
         <li class="toc-item"><span class="toc-badge muted">A</span><div><div class="toc-title"><a href="#appendix">付録</a><span class="toc-kind">付録</span></div><div class="toc-children"><a href="#cheatsheet">コマンド早見表</a> <span class="sep">·</span> <a href="#glossary">用語集</a></div></div></li>
       </ol>
     </nav>
 
     <!-- ============ PART 1 ============ -->
     <section class="section" id="p1">
-      <span class="eyebrow"><span class="num">1</span>基礎</span>
+      <span class="eyebrow"><span class="num">1</span>基礎編</span>
       <h2>Git とは</h2>
       <p id="p1-1">Git は<strong>バージョン管理システム</strong>(Version Control System、略して VCS)の1つで、ソースコードの変更履歴を追跡・管理するツールです。「いつ・誰が・何を変えたか」をすべて記録します。Git の特徴の1つは、変更履歴の持ち方にあります。単なる前後の差分ではなく、変更時点のすべてのソースコードを「コミット」と呼ぶスナップショットとして記録し、それを積み重ねて時系列で保持します。</p>
 
@@ -400,7 +400,7 @@
 
     <!-- ============ PART 2 ============ -->
     <section class="section" id="p2">
-      <span class="eyebrow"><span class="num">2</span>基礎</span>
+      <span class="eyebrow"><span class="num">2</span>基礎編</span>
       <h2>基本概念</h2>
       <p>ここでは、Git を理解するうえで欠かせない基本概念と用語を説明します。</p>
 
@@ -431,7 +431,7 @@
             <marker id="a2p" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0 0 L6 3 L0 6" fill="none" stroke="#7C5CBF" stroke-width="1.4"/></marker>
           </defs>
         </svg>
-        <figcaption>ローカルで編集・コミットした変更をリモートへ送り(push)、リモートの変更をローカルへ取り込む(pull / fetch)。</figcaption>
+        <figcaption>ローカルで編集・コミットした変更をリモートへプッシュ(push)し、リモートの変更をローカルへ取り込む(pull / fetch)。</figcaption>
       </figure>
 
       <h4>通常のフォルダとリポジトリの違い</h4>
@@ -866,7 +866,7 @@
 
           <!-- ⑥ リモートに送る（ローカル→リモート） -->
           <path d="M483 180 V220" stroke="#5B6B78" stroke-width="1.7" marker-end="url(#cyf)"/>
-          <text x="493" y="199" class="svg-s" fill="#33454F" font-weight="600">⑥ リモートに送る</text>
+          <text x="493" y="199" class="svg-s" fill="#33454F" font-weight="600">⑥ リモートにプッシュ</text>
 
           <!-- リモート: main と合流ノード -->
           <line x1="70" y1="284" x2="560" y2="284" stroke="#0E7C86" stroke-width="2.5"/>
@@ -894,7 +894,7 @@
         <li><span class="no">③</span><span class="desc">ブランチの中でファイルを編集する</span><span class="loc l">ローカル</span></li>
         <li><span class="no">④</span><span class="desc">変更をステージングに追加する</span><span class="loc l">ローカル</span></li>
         <li><span class="no">⑤</span><span class="desc">コミットする</span><span class="loc l">ローカル</span></li>
-        <li><span class="no">⑥</span><span class="desc">ブランチをリモートに送る</span><span class="loc x">ローカル→リモート</span></li>
+        <li><span class="no">⑥</span><span class="desc">ブランチをリモートにプッシュする</span><span class="loc x">ローカル→リモート</span></li>
         <li><span class="no">⑦</span><span class="desc">ブランチから PR(プルリクエスト)を作成する</span><span class="loc r">リモート</span></li>
         <li><span class="no">⑧</span><span class="desc">レビューを受ける</span><span class="loc r">リモート</span></li>
         <li><span class="no">⑨</span><span class="desc">main にマージする</span><span class="loc r">リモート</span></li>
@@ -909,9 +909,9 @@
 
     <!-- ============ PART 3 ============ -->
     <section class="section" id="p3">
-      <span class="eyebrow branch"><span class="num">3</span>実践しながら学ぶ</span>
+      <span class="eyebrow branch"><span class="num">3</span>実践編</span>
       <h2>実践しながら学ぶ</h2>
-      <p>ここからは、実際に手を動かしながら仕組みを掘り下げます。練習用のリポジトリを用意し、ブランチを切って変更を加え、PR を出して main に反映するまでを、コマンドを1つずつ打って体験します。読むだけにせず、必ず自分のターミナルで打ちながら進めてください。</p>
+      <p>ここからは、実際に手を動かしながら仕組みを掘り下げます。練習用のリポジトリを用意し、ブランチを切って変更を加え、PR を出して main に反映するまでを、コマンドを1つずつ打って体験します。読むだけでなく、自分のターミナルで実際に打ちながら進めます。</p>
       <div class="box tip">
         <div class="box-t"><svg class="ico" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2Z"/><path d="M9 21h6"/></svg>GUI ではなく CLI(コマンドライン)を使う理由</div>
         <p>Git には GUI ツール(SourceTree や VS Code の Git 機能など)もありますが、ここではあえて<strong>コマンドライン</strong>で操作します。理由は次のとおりです。</p>
@@ -922,7 +922,7 @@
         </ul>
       </div>
       <div class="box tip">
-        <div class="box-t"><svg class="ico" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2Z"/><path d="M9 21h6"/></svg>練習用リポジトリを用意しよう</div>
+        <div class="box-t"><svg class="ico" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2Z"/><path d="M9 21h6"/></svg>練習用リポジトリを用意する</div>
         <p><strong>練習用のリポジトリ</strong>を用意して進めるのがおすすめです。ミスしても影響がなく、思い切って試せます。以降の実践では、この <code>git-practice-repo</code> を使って進めます。用意の仕方は次の節で、新規作成・既存リポジトリの利用の両方を説明します。</p>
       </div>
 
@@ -950,7 +950,7 @@
       <p>Git を使い始める出発点は2通りあります。<strong>自分でゼロから新しく作る</strong>場合と、<strong>既存のリポジトリを使用する</strong>場合です。自分の状況に合うほうを選んでください。以降の実践では、どちらの方法でも用意できる <code>git-practice-repo</code> を使って進めます。</p>
 
       <h4>新規リポジトリを作成する</h4>
-      <p>自分でプロジェクトをゼロから始める場合です。<code>git init</code> で今のフォルダをリポジトリにし、<code>README.md</code> を作って最初のコミットをします。その後、ホスティングサービスで作った空のリモートへ push します。</p>
+      <p>自分でプロジェクトをゼロから始める場合です。<code>git init</code> で今のフォルダをリポジトリにし、<code>README.md</code> を作って最初のコミットをします。その後、ホスティングサービスで作った空のリモートへプッシュします。</p>
       <p>ここで使っている <code>git add</code> や <code>git commit</code> などのコマンドは、このあとの各節でくわしく説明します。</p>
       <pre><button class="copy-btn">コピー</button><span class="term-head"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="label">新規作成</span></span><code><span class="pr">$</span> mkdir git-practice-repo <span class="hl">&amp;&amp;</span> cd git-practice-repo   <span class="cmt"># フォルダを作って移動</span>
 <span class="pr">$</span> git init                        <span class="cmt"># このフォルダを Git リポジトリにする</span>
@@ -958,14 +958,14 @@
 <span class="pr">$</span> echo <span class="st">"# git-practice-repo"</span> &gt; README.md   <span class="cmt"># README.md を作成</span>
 <span class="pr">$</span> git add README.md               <span class="cmt"># ステージングに追加</span>
 <span class="pr">$</span> git commit -m <span class="st">"最初のコミット"</span>       <span class="cmt"># 最初のコミット</span></code></pre>
-      <p>次に、GitHub などのホスティングサービスで<strong>空のリモートリポジトリ</strong>を作成し、そこにプッシュ します。リモートリポジトリの作成手順はサービスごとに異なるため、各サービスの公式ドキュメントを参照してください(本書では省略します)。</p>
+      <p>次に、GitHub などのホスティングサービスで<strong>空のリモートリポジトリ</strong>を作成し、そこにプッシュします。リモートリポジトリの作成手順はサービスごとに異なるため、各サービスの公式ドキュメントを参照してください(本書では省略します)。</p>
       <pre><button class="copy-btn">コピー</button><span class="term-head"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="label">リモートに接続</span></span><code><span class="cmt"># ホスティングサービスの画面で空のリモートリポジトリを作り、その URL を控えておく</span>
 <span class="pr">$</span> git remote add origin <span class="st">&lt;リモートのURL&gt;</span>   <span class="cmt"># origin として登録</span>
 <span class="pr">$</span> git branch -M main              <span class="cmt"># 既定ブランチ名を main にそろえる</span>
 <span class="pr">$</span> git push -u origin main         <span class="cmt"># 初回 push(-u でひも付け)</span></code></pre>
 
       <h4>既存リポジトリを使用する</h4>
-      <p><strong>クローン</strong>は、リモートリポジトリを<strong>履歴ごとまるごとローカル(手元の PC)に複製する</strong>操作です。すでにあるリポジトリに参加するときは、そのリモートを clone して自分の PC に持ってきます。</p>
+      <p><strong>クローン</strong>は、リモートリポジトリを<strong>履歴ごとまるごとローカル(手元の PC)に複製する</strong>操作です。すでにあるリポジトリに参加するときは、そのリモートをクローンして自分の PC に持ってきます。</p>
       <figure>
         <svg viewBox="0 0 620 96" role="img" aria-label="git clone でリモートを手元に複製する図">
           <rect x="45" y="20" width="180" height="54" rx="10" fill="#EDE7F8" stroke="#7C5CBF"/>
@@ -999,7 +999,7 @@
       <p>ここからは、開発の1サイクルを最後まで通します。<strong>ブランチを切る → 変更する → 記録する → 共有する → main に取り込む → 片付ける</strong>。この一周を4回くり返しながら、使うコマンドを1つずつ増やしていきます。1周目の題材は <code>README.md</code> の見出しを書き換えるだけの、ごく小さな変更です。</p>
 
       <h4 id="p3-3-branch">branch — 今あるブランチを確認する</h4>
-      <p>準備が整ったので、まずブランチを見ていきましょう。<code>git branch</code> で、今どこにいて、どんなブランチがあるかを確認しましょう。<code>*</code> が付いているのが現在のブランチです。</p>
+      <p>準備が整ったので、まずブランチを確認します。<code>git branch</code> で、今どこにいて、どんなブランチがあるかがわかります。<code>*</code> が付いているのが現在のブランチです。</p>
       <pre><button class="copy-btn">コピー</button><span class="term-head"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="label">branch</span></span><code><span class="pr">$</span> git branch                     <span class="cmt"># ローカルの一覧(* が今いるブランチ)</span>
 <span class="out">* main</span></code></pre>
 
@@ -1037,7 +1037,7 @@
       </figure>
 
       <h4 id="p3-3-switch">switch — 作業ブランチに切り替える</h4>
-      <p><code>main</code> で直接作業せず、作業用のブランチを作って切り替えます。<code>git switch -c &lt;名前&gt;</code> で、ブランチの作成と切り替えを同時にできます。ここでは <code>feature/readme</code> を作って移動してみましょう。</p>
+      <p><code>main</code> で直接作業せず、作業用のブランチを作って切り替えます。<code>git switch -c &lt;名前&gt;</code> で、ブランチの作成と切り替えを同時にできます。ここでは <code>feature/readme</code> を作って移動します。</p>
       <pre><button class="copy-btn">コピー</button><span class="term-head"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="label">switch</span></span><code><span class="pr">$</span> git switch -c feature/readme   <span class="cmt"># 新しいブランチを作って切り替え(-c)</span>
 <span class="out">Switched to a new branch 'feature/readme'</span>
 <span class="pr">$</span> git branch                     <span class="cmt"># * が feature/readme に移った</span>
@@ -1085,7 +1085,7 @@
       </figure>
 
       <h4 id="p3-3-status">status — 変更の状態を確認する</h4>
-      <p>作業ブランチで、実際にファイルを変えてみましょう。<code>git status</code> は「今どのファイルがどの状態か」「次に何をすればいいか」を教えてくれる、<strong>頻繁に打つコマンド</strong>です。<code>README.md</code> の見出しを書き換えてから実行してみます。</p>
+      <p>作業ブランチで、実際にファイルを変更します。<code>git status</code> は「今どのファイルがどの状態か」「次に何をすればいいか」を教えてくれる、<strong>頻繁に打つコマンド</strong>です。<code>README.md</code> の見出しを書き換えてから実行してみます。</p>
       <pre><button class="copy-btn">コピー</button><span class="term-head"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="label">status</span></span><code><span class="pr">$</span> echo <span class="st">"# Git 練習リポジトリ"</span> &gt; README.md   <span class="cmt"># 見出しを書き換える</span>
 <span class="pr">$</span> git status
 <span class="out">On branch feature/readme</span>                <span class="cmt"># 今いるブランチ</span>
@@ -1135,7 +1135,7 @@
 <span class="cmt"># 例) ??=untracked(Git が未追跡の新規ファイル) / A=追加(staged) / D=削除 / MM=一部ステージング済みでさらに変更</span></code></pre>
       <div class="box tip">
         <div class="box-t"><svg class="ico" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2Z"/><path d="M9 21h6"/></svg>出力はヒント</div>
-        <p><code>git status</code> の <code>(use "git add ..." ...)</code> のような行は、<strong>次に打つべきコマンドの案内</strong>です。迷ったら、まず status を打って、書いてあるヒントに従えばたいてい先に進めます。</p>
+        <p><code>git status</code> の <code>(use "git add ..." ...)</code> のような行は、<strong>次に打つべきコマンドの案内</strong>です。迷ったら、まず <code>git status</code> を打って、書いてあるヒントに従えばたいてい先に進めます。</p>
       </div>
 
       <h4 id="p3-3-add">add — 変更をステージングに追加する</h4>
@@ -1166,8 +1166,8 @@
         <figcaption>件名は簡潔に、必要なら空行のあとに本文で理由を書く。チームによっては <code>feat:</code> / <code>fix:</code> / <code>docs:</code> のような接頭辞を付ける Conventional Commits の書き方も使われる。</figcaption>
       </figure>
 
-      <h4 id="p3-3-push">push — リモートへ送る</h4>
-      <p>ここまではローカルでの作業でした。コミットをチームと共有するには、<code>git push</code> でリモートに反映します。その作業ブランチを初めて送るときはupstreamを示す<code>-u</code> を付けます。</p>
+      <h4 id="p3-3-push">push — 変更をリモートに反映する</h4>
+      <p>ここまではローカルでの作業でした。コミットをチームと共有するには、<code>git push</code> でリモートに反映します。その作業ブランチを初めてプッシュするときは upstream を示す<code>-u</code> を付けます。</p>
       <p><strong>upstream(上流ブランチ)</strong>とは、<strong>ローカルのブランチに対して、既定の送り先・取得元として設定されたリモート追跡ブランチ(例: <code>origin/feature/readme</code>)</strong>のことです。<code>-u</code> で一度この送り先を設定しておくと、次回からは送り先を省略して <code>git push</code> / <code>git pull</code> だけで通じるようになります。</p>
       <pre><button class="copy-btn">コピー</button><span class="term-head"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="label">push</span></span><code><span class="pr">$</span> git push -u origin feature/readme   <span class="cmt"># 初回。-u で紐づけ(upstream)も設定</span>
 <span class="out">remote:</span>
@@ -1227,18 +1227,18 @@
             <marker id="pp2" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0 0 L6 3 L0 6" fill="none" stroke="#8A9AA6" stroke-width="1.4"/></marker>
           </defs>
         </svg>
-        <figcaption>作業ブランチ <code>feature/readme</code> を初めて push すると、リモートに同名のブランチが<strong>新しく作成される</strong>。同時に、送り先の目印となる<strong>リモート追跡ブランチ <code>origin/feature/readme</code></strong> も作られ、<code>-u</code> によって <code>feature/readme</code> の <strong>upstream(既定の送り先)</strong>として設定される。</figcaption>
+        <figcaption>作業ブランチ <code>feature/readme</code> を初めてプッシュすると、リモートに同名のブランチが<strong>新しく作成される</strong>。同時に、送り先の目印となる<strong>リモート追跡ブランチ <code>origin/feature/readme</code></strong> も作られ、<code>-u</code> によって <code>feature/readme</code> の <strong>upstream(既定の送り先)</strong>として設定される。</figcaption>
       </figure>
 
       <h4 id="p3-3-pr">PR作成 — 変更の取り込みを提案する</h4>
       <p><strong>プルリクエスト(PR)</strong>は、「自分の feature ブランチの変更を、<strong>base ブランチ(ふつう main)に取り込んでよいか</strong>」という提案・依頼です。ここからはホスティングサービスの画面での操作になります。以下は GitHub の画面ですが、考え方はどのサービスでも同じです。</p>
       <figure>
         <img src="pr-banner.png" alt="push した直後のリポジトリ画面。feature/readme had recent pushes と表示され、右に Compare &amp; pull request ボタンがある">
-        <figcaption>push すると、リポジトリの画面に <code>Compare &amp; pull request</code> ボタンが出る。ここが PR 作成の入口。</figcaption>
+        <figcaption>プッシュすると、リポジトリの画面に <code>Compare &amp; pull request</code> ボタンが出る。ここが PR 作成の入口。</figcaption>
       </figure>
       <figure>
         <img src="pr-compare.png" alt="Comparing changes の画面。base: main と compare: feature/readme が並び、Able to merge と表示されている">
-        <figcaption><strong>base</strong> が取り込み先(<code>main</code>)、<strong>compare</strong> が取り込み元(<code>feature/readme</code>)。<code>Able to merge.</code> は競合なく取り込めるという意味。</figcaption>
+        <figcaption><strong>base</strong> が取り込み先(<code>main</code>)、<strong>compare</strong> が取り込み元(<code>feature/readme</code>)。<code>Able to merge.</code> はコンフリクトなく取り込めるという意味。</figcaption>
       </figure>
       <figure>
         <img src="pr-form.png" alt="PR作成フォーム。タイトル欄にコミットメッセージが入り、説明欄と Create pull request ボタンがある">
@@ -1380,11 +1380,11 @@
       </div>
       <div class="box stumble">
         <div class="box-t"><svg class="ico" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 9v4M12 17h.01"/><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg>マージしても、ローカルには古いブランチが残る</div>
-        <p>リモート(画面)でマージが完了しても、<strong>手元のローカルには、まだ古い状態の main と feature ブランチが残っています</strong>。ローカルの main を最新にするには、このあと <code>git switch main</code> → <code>git merge origin/main</code> が必要です(次の fetch と merge で扱います)。</p>
+        <p>リモート(画面)でマージが完了しても、<strong>手元のローカルには、まだ古い状態の main と feature ブランチが残っています</strong>。ローカルの main を最新にするには、このあと <code>git switch main</code> → <code>git merge origin/main</code> が必要です(次の「fetch と merge」で扱います)。</p>
       </div>
 
       <h4 id="p3-3-fetch">fetch と merge — 手元を最新にする</h4>
-      <p>PR がマージされると、リモートの main が進みます。まず <code>git fetch</code> で<strong>リモートの最新情報だけ</strong>を取得しましょう。<code>fetch</code> は作業ファイルには触れず、<code>origin/main</code>(リモート追跡ブランチ)だけを更新するので、安全に「リモートは今こうなっている」と確認できます。</p>
+      <p>PR がマージされると、リモートの main が進みます。まず <code>git fetch</code> で<strong>リモートの最新情報だけ</strong>を取得します。<code>fetch</code> は作業ファイルには触れず、<code>origin/main</code>(リモート追跡ブランチ)だけを更新するので、安全に「リモートは今こうなっている」と確認できます。</p>
       <figure>
         <svg viewBox="0 0 620 185" role="img" aria-label="git fetch は origin/main だけ更新し作業ファイルは変えない図">
           <rect x="45" y="46" width="165" height="60" rx="10" fill="#FBEFD6" stroke="#C9820A"/>
@@ -1404,7 +1404,7 @@
           <text x="127" y="166" text-anchor="middle" class="svg-s">作業ファイルは変わらない。</text>
           <defs><marker id="pfe1" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0 0 L6 3 L0 6" fill="none" stroke="#0E7C86" stroke-width="1.5"/></marker></defs>
         </svg>
-        <figcaption>fetch はリモートの状態を <code>origin/main</code> に取り込むだけ。手元の作業ファイルには手を付けない。</figcaption>
+        <figcaption><code>fetch</code> はリモートの状態を <code>origin/main</code> に取り込むだけ。手元の作業ファイルには手を付けない。</figcaption>
       </figure>
       <pre><button class="copy-btn">コピー</button><span class="term-head"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="label">fetch</span></span><code><span class="pr">$</span> git fetch                       <span class="cmt"># リモートの情報だけ取得(ワーキングツリーは無変更)</span>
 <span class="out">From github.com:you/git-practice-repo</span>
@@ -1425,7 +1425,7 @@
 <span class="out"> README.md | 2 +-</span>
 <span class="out"> 1 file changed, 1 insertion(+), 1 deletion(-)</span></code></pre>
 
-      <h4 id="p3-3-delete">ブランチ削除 — 役目を終えた枝を片付ける</h4>
+      <h4 id="p3-3-delete">ブランチ削除 — 役目を終えたブランチを片付ける</h4>
       <p>PR がマージされ、main を最新化したら、<strong>役目を終えた feature ブランチを削除</strong>して整理します。ローカルとリモートの両方を消します。マージ済みのブランチは <code>-d</code> で安全に削除できます(未マージのものを強制削除するときだけ <code>-D</code>)。</p>
       <pre><button class="copy-btn">コピー</button><span class="term-head"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="label">ブランチ削除</span></span><code><span class="pr">$</span> git branch -d feature/readme               <span class="cmt"># ローカルの枝を削除</span>
 <span class="out">Deleted branch feature/readme (was 209a548).</span>
@@ -1437,7 +1437,7 @@
 <span class="out">  remotes/origin/main</span></code></pre>
       <div class="box tip">
         <div class="box-t"><svg class="ico" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2Z"/><path d="M9 21h6"/></svg>これで1周</div>
-        <p>お疲れさまでした。<strong>ブランチを切る → 変更する → 記録する → 共有する → main に取り込む → 片付ける</strong>で、開発の1サイクルが完了です。ローカルとリモートのどちらも <code>main</code> だけになり、始めたときと同じ形に戻りました。</p>
+        <p><strong>ブランチを切る → 変更する → 記録する → 共有する → main に取り込む → 片付ける</strong>で、開発の1サイクルが完了です。ローカルとリモートのどちらも <code>main</code> だけになり、始めたときと同じ形に戻りました。</p>
         <p>次のサイクル2では、同じ一周をもう一度たどります。今度は<strong>記録する前に変更の中身を確かめる方法</strong>と、<strong>いらなくなった変更を捨てる方法</strong>を加えます。迷ったら、まず <code>git status</code> で現状を確認するのが基本です。</p>
       </div>
 
@@ -1462,19 +1462,19 @@
 <span class="out"> # Git 練習リポジトリ</span>
 <span class="hl">+使い方はここに書きます。</span></code></pre>
       <p>出力の読み方は次のとおりです。<code>---</code> の行が変更前、<code>+++</code> の行が変更後のファイルを表します。<code>@@ -1 +1,2 @@</code> は「変更前は1行目から1行、変更後は1行目から2行」という位置の目印です。行頭が <code>+</code> なら追加された行、<code>-</code> なら削除された行、空白なら変わっていない行です。</p>
-      <p>ここで <code>memo.txt</code> が出てこない点に注意してください。<code>git diff</code> が比べるのは<strong>Git が追跡しているファイル</strong>だけです。<code>memo.txt</code> はまだ一度も add していない <code>untracked</code> なので、差分の対象になりません。</p>
+      <p>ここで <code>memo.txt</code> が出てこない点に注意してください。<code>git diff</code> が比べるのは<strong>Git が追跡しているファイル</strong>だけです。<code>memo.txt</code> はまだ一度もステージングに追加していない <code>untracked</code> なので、差分の対象になりません。</p>
 
       <h5>どこと どこを比べるか</h5>
       <p><code>git diff</code> は、引数によって比べる対象が変わります。よく使う3つを挙げます。</p>
       <div class="tbl-wrap"><table>
         <thead><tr><th>書き方</th><th>比べる対象</th></tr></thead>
         <tbody>
-          <tr><td><code>git diff</code></td><td>ワーキングツリー ↔ ステージング。<strong>まだ add していない変更</strong>が見える</td></tr>
-          <tr><td><code>git diff --staged</code></td><td>ステージング ↔ 直前のコミット。<strong>これから commit される中身</strong>が見える</td></tr>
-          <tr><td><code>git diff &lt;A&gt;..&lt;B&gt;</code></td><td>ブランチ ↔ ブランチ。<strong>2つの枝の違い</strong>が見える</td></tr>
+          <tr><td><code>git diff</code></td><td>ワーキングツリー ↔ ステージング。<strong>まだステージングに追加していない変更</strong>が見える</td></tr>
+          <tr><td><code>git diff --staged</code></td><td>ステージング ↔ 直前のコミット。<strong>これからコミットされる中身</strong>が見える</td></tr>
+          <tr><td><code>git diff &lt;A&gt;..&lt;B&gt;</code></td><td>ブランチ ↔ ブランチ。<strong>2つのブランチの違い</strong>が見える</td></tr>
         </tbody>
       </table></div>
-      <p><code>--staged</code> は add のあと、<code>main..feature/memo</code> は commit のあとに実行したものです。参考として出力を載せておきます。</p>
+      <p><code>--staged</code> は <code>git add</code> のあと、<code>main..feature/memo</code> は <code>git commit</code> のあとに実行したものです。参考として出力を載せておきます。</p>
       <pre><button class="copy-btn">コピー</button><span class="term-head"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="label">diff --staged / diff A..B</span></span><code><span class="pr">$</span> git diff --staged              <span class="cmt"># add 済みの中身と直前のコミットを比べる</span>
 <span class="out">diff --git a/memo.txt b/memo.txt</span>
 <span class="out">new file mode 100644</span>
@@ -1523,7 +1523,7 @@
       </figure>
       <div class="box stumble">
         <div class="box-t"><svg class="ico" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 9v4M12 17h.01"/><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg>捨てた変更は戻せない</div>
-        <p><code>git restore &lt;file&gt;</code> で破棄したワーキングツリーの変更は、<strong>元に戻せません</strong>。本当に捨ててよいか、先に <code>git diff</code> などで中身を確かめてから実行しましょう。</p>
+        <p><code>git restore &lt;file&gt;</code> で破棄したワーキングツリーの変更は、<strong>元に戻せません</strong>。実行する前に、本当に捨ててよいかを <code>git diff</code> などで確かめます。</p>
       </div>
 
       <h4 id="p3-4-log">log — 履歴を確認する</h4>
@@ -1535,7 +1535,7 @@
 <span class="out">[feature/memo ac52c03] memo.txt を追加</span>
 <span class="out"> 1 file changed, 0 insertions(+), 0 deletions(-)</span>
 <span class="out"> create mode 100644 memo.txt</span></code></pre>
-      <p>記録できたら、<code>git log</code> で履歴を見てみましょう。新しいコミットから順に、上から並びます。</p>
+      <p>記録できたら、<code>git log</code> で履歴を確認します。新しいコミットから順に、上から並びます。</p>
       <pre><button class="copy-btn">コピー</button><span class="term-head"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="label">log</span></span><code><span class="pr">$</span> git log                        <span class="cmt"># 新しいコミットから順に表示</span>
 <span class="out">commit ac52c03592e5c37cefa8e505be6c9e3c9546b00e</span>
 <span class="out">Author: Taro Yamada &lt;taro@example.com&gt;</span>
@@ -1576,7 +1576,7 @@
       </div>
 
       <h4 id="p3-4-pull">pull — 取得して取り込む</h4>
-      <p>取り込みの前に、push と PR を済ませます。ここはサイクル1と同じ手順です。</p>
+      <p>取り込みの前に、プッシュと PR 作成を済ませます。ここはサイクル1と同じ手順です。</p>
       <pre><button class="copy-btn">コピー</button><span class="term-head"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="label">push</span></span><code><span class="pr">$</span> git push -u origin feature/memo   <span class="cmt"># 初回なので -u 付き</span>
 <span class="out">remote:</span>
 <span class="out">remote: Create a pull request for 'feature/memo' on GitHub by visiting:</span>
@@ -1585,7 +1585,7 @@
 <span class="out">To github.com:you/git-practice-repo.git</span>
 <span class="out"> * [new branch]      feature/memo -&gt; feature/memo</span>
 <span class="out">branch 'feature/memo' set up to track 'origin/feature/memo'.</span></code></pre>
-      <p>push したら、ホスティングサービスの画面で PR を作り、<code>Create a merge commit</code> でマージします。画面の操作はサイクル1の「PR作成」「マージ」と同じです。</p>
+      <p>プッシュしたら、ホスティングサービスの画面で PR を作り、<code>Create a merge commit</code> でマージします。画面の操作はサイクル1の「PR作成」「マージ」と同じです。</p>
       <p>マージが済んだら、手元の <code>main</code> を最新にします。サイクル1では <code>git fetch</code> と <code>git merge origin/main</code> の2手に分けました。ここでは <code>git pull</code> の1手で済ませます。</p>
       <pre><button class="copy-btn">コピー</button><span class="term-head"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="label">pull</span></span><code><span class="pr">$</span> git switch main                <span class="cmt"># 取り込みたいブランチへ移動</span>
 <span class="out">Switched to branch 'main'</span>
@@ -1605,7 +1605,7 @@
         <p>なお本書の練習は1人で進めるため、ブランチを切る前の <code>main</code> はいつも最新です。しかし<strong>チームで開発するときは、他の開発メンバーが <code>main</code> を進めています</strong>。作業ブランチを切る前に <code>git switch main</code> → <code>git pull</code> で最新化する習慣をつけてください。</p>
       </div>
 
-      <h5>役目を終えた枝を片付ける</h5>
+      <h5>役目を終えたブランチを片付ける</h5>
       <p>最後に、サイクル1と同じくブランチを削除します。ローカルとリモートの両方を消します。</p>
       <pre><button class="copy-btn">コピー</button><span class="term-head"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="label">ブランチ削除</span></span><code><span class="pr">$</span> git branch -d feature/memo               <span class="cmt"># ローカルの枝を削除</span>
 <span class="out">Deleted branch feature/memo (was ac52c03).</span>
@@ -1621,12 +1621,12 @@
       </div>
 
       <h3 id="p3-5">サイクル3 — 管理から外す</h3>
-      <p>3周目の題材は <code>.gitignore</code> です。プロジェクトには、Git で管理したくないファイルがあります。パスワードや API キーを書いた秘密の設定ファイル、自動で作られるログやビルド結果などです。これらを Git の目から外す方法と、<strong>うっかりコミットしてしまったあとの外し方</strong>を扱います。</p>
+      <p>3周目の題材は <code>.gitignore</code> です。プロジェクトには、Git で管理したくないファイルがあります。パスワードや API キーを書いた秘密の設定ファイル、自動で作られるログやビルド結果などです。これらを Git の管理対象から外す方法と、<strong>うっかりコミットしてしまったあとの外し方</strong>を扱います。</p>
       <pre><button class="copy-btn">コピー</button><span class="term-head"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="label">3周目をはじめる</span></span><code><span class="pr">$</span> git switch -c feature/ignore   <span class="cmt"># 最新の main から新しい枝を切る</span>
 <span class="out">Switched to a new branch 'feature/ignore'</span></code></pre>
 
       <h4 id="p3-5-ignore">ignore — Git に含めないファイルを決める</h4>
-      <p>無視したいファイルは <code>.gitignore</code> というファイルに書きます。ここに書いたパターンと一致するファイルは <code>untracked</code> として扱われず、<code>git status</code> にも現れなくなります。秘密情報のつもりのファイルを1つ作って、実際に消えるところを見てみましょう。</p>
+      <p>無視したいファイルは <code>.gitignore</code> というファイルに書きます。ここに書いたパターンと一致するファイルは <code>untracked</code> として扱われず、<code>git status</code> にも現れなくなります。秘密情報のつもりのファイルを1つ作って、実際に消えるところを確認します。</p>
       <pre><button class="copy-btn">コピー</button><span class="term-head"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="label">ignore</span></span><code><span class="pr">$</span> echo <span class="st">"secret"</span> &gt; secret.txt      <span class="cmt"># 秘密情報のつもりのファイルを作る</span>
 <span class="pr">$</span> git status -s
 <span class="hl">??</span> secret.txt                     <span class="cmt"># untracked として現れる</span>
@@ -1672,7 +1672,7 @@
         <div class="box-t"><svg class="ico" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 9v4M12 17h.01"/><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg>すでに追跡中のファイルは無視されない</div>
         <p><code>.gitignore</code> に追記しても、<strong>すでに追跡済み</strong>のファイルは追跡対象のままです。あとから管理を外すには <code>git rm --cached &lt;file&gt;</code> で追跡だけを解除します(ファイル自体は手元に残ります)。</p>
       </div>
-      <p>この落とし穴を、手を動かして確かめます。秘密情報を含む <code>.env</code> を、うっかり add してコミットしてしまった、という筋で進めます。</p>
+      <p>この落とし穴を、手を動かして確かめます。秘密情報を含む <code>.env</code> を、うっかりステージングに追加してコミットしてしまった、という筋で進めます。</p>
       <pre><button class="copy-btn">コピー</button><span class="term-head"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="label">追跡を解除する</span></span><code><span class="pr">$</span> echo <span class="st">"SECRET_KEY=12345"</span> &gt; .env       <span class="cmt"># 秘密情報を含む .env を作る</span>
 <span class="pr">$</span> git add .env <span class="hl">&amp;&amp;</span> git commit -m <span class="st">"設定を追加"</span>   <span class="cmt"># うっかり追跡・コミットしてしまったとする</span>
 <span class="out">[feature/ignore a587493] 設定を追加</span>
@@ -1705,11 +1705,11 @@
       <p>コミットのあと、<code>git status -s</code> は何も表示しなくなりました。<code>.env</code> は追跡から外れ、<code>.gitignore</code> の指定によって以後は変更しても現れません。ファイル自体は手元に残っているので、動作には支障がありません。</p>
       <div class="box stumble">
         <div class="box-t"><svg class="ico" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 9v4M12 17h.01"/><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg>過去のコミットには残る</div>
-        <p><code>git rm --cached</code> で外せるのは、これ以降の追跡だけです。<strong>すでに push したコミットの中身は履歴に残ります</strong>。秘密情報を誤って公開してしまった場合は、追跡を外すだけでなく、その鍵やパスワードを作り直してください。</p>
+        <p><code>git rm --cached</code> で外せるのは、これ以降の追跡だけです。<strong>すでにプッシュしたコミットの中身は履歴に残ります</strong>。秘密情報を誤って公開してしまった場合は、追跡を外すだけでなく、その鍵やパスワードを作り直してください。</p>
       </div>
 
-      <h5>push して PR を出す</h5>
-      <p>ここからはサイクル1・2と同じ手順です。push して PR を作り、<code>Create a merge commit</code> でマージします。</p>
+      <h5>プッシュして PR を出す</h5>
+      <p>ここからはサイクル1・2と同じ手順です。プッシュして PR を作り、<code>Create a merge commit</code> でマージします。</p>
       <pre><button class="copy-btn">コピー</button><span class="term-head"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="label">push</span></span><code><span class="pr">$</span> git push -u origin feature/ignore   <span class="cmt"># 初回なので -u 付き</span>
 <span class="out">remote:</span>
 <span class="out">remote: Create a pull request for 'feature/ignore' on GitHub by visiting:</span>
@@ -1732,7 +1732,7 @@
 <span class="out"> create mode 100644 .gitignore</span></code></pre>
       <p>取り込まれた変更は <code>.gitignore</code> の追加だけです。<code>.env</code> は同じブランチの中で追加してから削除したため、<code>main</code> から見た差分には残りません。</p>
 
-      <h5>役目を終えた枝を片付ける</h5>
+      <h5>役目を終えたブランチを片付ける</h5>
       <p>最後に、ローカルとリモートの両方でブランチを削除します。</p>
       <pre><button class="copy-btn">コピー</button><span class="term-head"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="label">ブランチ削除</span></span><code><span class="pr">$</span> git branch -d feature/ignore               <span class="cmt"># ローカルの枝を削除</span>
 <span class="out">Deleted branch feature/ignore (was 6b72e1f).</span>
@@ -1758,10 +1758,10 @@
       </div>
 
       <h3 id="p3-6">サイクル4 — コンフリクト</h3>
-      <p>最後は、チーム開発で必ず出会う<strong>コンフリクト(競合)</strong>です。2人が同じファイルの同じ行を別々に書き換えると、Git はどちらが正しいか判断できず、手で決めてほしいと言って止まります。ここでは、わざと競合を起こして、自分の手で解消するところまでやります。</p>
+      <p>最後は、チーム開発で必ず出会う<strong>コンフリクト(競合)</strong>です。2人が同じファイルの同じ行を別々に書き換えると、Git はどちらが正しいか判断できず、手で決めてほしいと言って止まります。ここでは、わざとコンフリクトを起こして、自分の手で解消するところまでやります。</p>
 
       <h4 id="p3-6-branches">2本のブランチで同じ行を変える</h4>
-      <p>競合を起こすには、枝が2本必要です。1本目の <code>feature/greeting-ja</code> では <code>README.md</code> に「こんにちは」と書きます。2本目の <code>feature/greeting-en</code> は<strong>同じ <code>main</code> から切って</strong>、同じ場所に「Hello」と書きます。2人が別々に作業した状況を、1人で再現するわけです。</p>
+      <p>コンフリクトを起こすには、ブランチが2本必要です。1本目の <code>feature/greeting-ja</code> では <code>README.md</code> に「こんにちは」と書きます。2本目の <code>feature/greeting-en</code> は<strong>同じ <code>main</code> から切って</strong>、同じ場所に「Hello」と書きます。2人が別々に作業した状況を、1人で再現するわけです。</p>
       <p>ここで大事なのは、<strong>両方のブランチでコミットまで済ませておく</strong>ことです。変更をコミットしていないまま <code>git merge</code> を実行すると、Git は作業中の変更が失われるのを避けるため、マージそのものを拒否します。</p>
       <pre><button class="copy-btn">コピー</button><span class="term-head"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="label">2本の枝を作る</span></span><code><span class="pr">$</span> git switch -c feature/greeting-ja   <span class="cmt"># 1本目の枝を切る</span>
 <span class="out">Switched to a new branch 'feature/greeting-ja'</span>
@@ -1795,7 +1795,7 @@
 <span class="out">To github.com:you/git-practice-repo.git</span>
 <span class="out"> * [new branch]      feature/greeting-en -&gt; feature/greeting-en</span>
 <span class="out">branch 'feature/greeting-en' set up to track 'origin/feature/greeting-en'.</span></code></pre>
-      <p>2本とも push できました。ここまでは、いつもどおりです。</p>
+      <p>2本ともプッシュできました。ここまでは、いつもどおりです。</p>
 
       <h4 id="p3-6-conflict">コンフリクトを起こす</h4>
       <p>同じファイルの同じ箇所を、main と feature で別々に変更していると、Git はどちらを残すか決められず<strong>コンフリクト</strong>を報告します。これはエラーではなく、<strong>人に選んでもらうための一時停止</strong>です。</p>
@@ -1815,10 +1815,10 @@
         </svg>
         <figcaption>同じ行を両側で変えると、Git はどちらが正しいか判断できず、手で解決してもらうために停止する。</figcaption>
       </figure>
-      <p>実際に起こしてみます。2本の PR を作り、<strong><code>feature/greeting-ja</code> の PR だけ</strong>をマージします。すると <code>main</code> の3行目は「こんにちは」になります。この時点で、もう片方の PR の画面は競合の表示に変わります。反映まで十数秒かかることがあります。</p>
+      <p>実際に起こしてみます。2本の PR を作り、<strong><code>feature/greeting-ja</code> の PR だけ</strong>をマージします。すると <code>main</code> の3行目は「こんにちは」になります。この時点で、もう片方の PR の画面はコンフリクトの表示に変わります。反映まで十数秒かかることがあります。</p>
       <figure>
-        <img src="pr-conflict.png" alt="PR画面のコンフリクト表示。This branch has conflicts that must be resolved と競合ファイル README.md が示され、Merge pull request ボタンが押せなくなっている">
-        <figcaption>先に片方がマージされると、もう片方の PR は競合状態になる。<code>Merge pull request</code> ボタンは<strong>押せなくなる</strong>。競合ファイル名(<code>README.md</code>)もここに出る。</figcaption>
+        <img src="pr-conflict.png" alt="PR画面のコンフリクト表示。This branch has conflicts that must be resolved とコンフリクトしたファイル README.md が示され、Merge pull request ボタンが押せなくなっている">
+        <figcaption>先に片方がマージされると、もう片方の PR はコンフリクトの状態になる。<code>Merge pull request</code> ボタンは<strong>押せなくなる</strong>。コンフリクトしたファイル名(<code>README.md</code>)もここに出る。</figcaption>
       </figure>
       <p>画面上の <code>Resolve conflicts</code> からも解消できますが、ここでは仕組みを理解するために手元で解消します。まず <code>main</code> を最新にして、それを <code>feature/greeting-en</code> に取り込みます。</p>
       <pre><button class="copy-btn">コピー</button><span class="term-head"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="label">merge</span></span><code><span class="pr">$</span> git switch main
@@ -1856,8 +1856,8 @@
 <span class="hl">UU</span> README.md                     <span class="cmt"># UU＝両側で変更され、未解決(unmerged)</span></code></pre>
       <p>ヒントには <code>fix conflicts and run "git commit"</code> と出ています。ファイルを直してからコミットしろ、という意味です。取りやめたくなったら <code>git merge --abort</code> でマージ前の状態に戻せます。</p>
 
-      <h4 id="p3-6-resolve">競合マーカーを解消する</h4>
-      <p>競合したファイルを開くと、次の3行の<strong>競合マーカー</strong>が入っています。<code>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</code> から <code>=======</code> までが<strong>今いる自分のブランチ</strong>の内容、<code>=======</code> から <code>&gt;&gt;&gt;&gt;&gt;&gt;&gt; main</code> までが<strong>取り込もうとしている相手</strong>の内容です。</p>
+      <h4 id="p3-6-resolve">コンフリクトマーカーを解消する</h4>
+      <p>コンフリクトしたファイルを開くと、次の3行の<strong>コンフリクトマーカー</strong>が入っています。<code>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</code> から <code>=======</code> までが<strong>今いる自分のブランチ</strong>の内容、<code>=======</code> から <code>&gt;&gt;&gt;&gt;&gt;&gt;&gt; main</code> までが<strong>取り込もうとしている相手</strong>の内容です。</p>
       <pre><button class="copy-btn">コピー</button><span class="term-head"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="label">README.md の中身</span></span><code><span class="pr">$</span> cat README.md
 <span class="out"># Git 練習リポジトリ</span>
 <span class="out"></span>
@@ -1878,7 +1878,7 @@
 <span class="out">To github.com:you/git-practice-repo.git</span>
 <span class="out">   ac92a8c..01d99d2  feature/greeting-en -&gt; feature/greeting-en</span></code></pre>
       <p>コミットの出力に <code>1 file changed</code> のような行が出ていません。これはマージコミットだからです。ふつうのコミットと違い、2つの親を持つ合流点として記録されます。</p>
-      <p>push すると、PR 画面の競合表示は消え、<code>Merge pull request</code> ボタンが押せる状態に戻ります。ここからはサイクル1〜3と同じ手順です。<code>Merge pull request</code> ボタンを押してマージし、<code>git pull</code> で手元の <code>main</code> を最新にします。</p>
+      <p>プッシュすると、PR 画面のコンフリクト表示は消え、<code>Merge pull request</code> ボタンが押せる状態に戻ります。ここからはサイクル1〜3と同じ手順です。<code>Merge pull request</code> ボタンを押してマージし、<code>git pull</code> で手元の <code>main</code> を最新にします。</p>
       <pre><button class="copy-btn">コピー</button><span class="term-head"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="label">pull</span></span><code><span class="pr">$</span> git switch main
 <span class="out">Switched to branch 'main'</span>
 <span class="out">Your branch is up to date with 'origin/main'.</span>
@@ -1890,7 +1890,7 @@
 <span class="out"> README.md | 1 +</span>
 <span class="out"> 1 file changed, 1 insertion(+)</span></code></pre>
 
-      <h5>役目を終えた枝を片付ける</h5>
+      <h5>役目を終えたブランチを片付ける</h5>
       <p>最後に、今回使った2本のブランチを、ローカルとリモートの両方で削除します。</p>
       <pre><button class="copy-btn">コピー</button><span class="term-head"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="label">ブランチ削除</span></span><code><span class="pr">$</span> git branch -d feature/greeting-en          <span class="cmt"># ローカルの枝を削除</span>
 <span class="out">Deleted branch feature/greeting-en (was 01d99d2).</span>
@@ -1906,14 +1906,14 @@
 <span class="out">* main</span>
 <span class="out">  remotes/origin/main</span></code></pre>
       <div class="box tip">
-        <div class="box-t"><svg class="ico" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2Z"/><path d="M9 21h6"/></svg>4周おつかれさまでした</div>
+        <div class="box-t"><svg class="ico" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2Z"/><path d="M9 21h6"/></svg>これで4周</div>
         <p>ここまでで、<strong>ブランチを切る → 変更する → 確認する → 記録する → 共有する → PR を出す → マージする → 手元を最新にする → 片付ける</strong>という開発の一周を、4回くり返しました。日々の開発は、このくり返しです。迷ったら、まず <code>git status</code> で今の状態を確かめてください。</p>
       </div>
     </section>
 
     <!-- ============ PART 4 ============ -->
     <section class="section" id="p4">
-      <span class="eyebrow branch"><span class="num">4</span>発展</span>
+      <span class="eyebrow branch"><span class="num">4</span>発展編</span>
       <h2>発展</h2>
       <p>ここからは一歩進んだ内容です。<strong>HEAD</strong> の仕組み、<strong>やり直しと取り消し(amend / revert / reset)</strong>、作業の<strong>一時退避(stash)</strong>を扱います。さらにリリースの<strong>タグ</strong>や <strong>worktree</strong> なども取り上げます。これらは実務でいずれ必要になる操作です。実践章の内容に慣れてから読むのがおすすめです。</p>
 
@@ -1944,20 +1944,20 @@
 <span class="out">c3d4e5f (origin/main, main) 最初のコミット</span></code></pre>
 
       <h3 id="p4-2">直前のコミットをやり直す <code>git commit --amend</code></h3>
-      <p>メッセージの打ち間違いや、add し忘れたファイルに気づいたときは <code>git commit --amend</code> で直前のコミットをやり直せます。実行するとエディタ(多くは vi)が開き、メッセージを編集できます。</p>
+      <p>メッセージの打ち間違いや、ステージングへの追加を忘れたファイルに気づいたときは <code>git commit --amend</code> で直前のコミットをやり直せます。実行するとエディタ(多くは vi)が開き、メッセージを編集できます。</p>
       <pre><button class="copy-btn">コピー</button><span class="term-head"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="label">amend / -v</span></span><code><span class="pr">$</span> git commit --amend           <span class="cmt"># エディタが開き、メッセージを直せる</span>
 <span class="pr">$</span> git commit -v                <span class="cmt"># 差分を見ながらメッセージを書く</span></code></pre>
       <div class="box tip">
         <div class="box-t"><svg class="ico" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2Z"/><path d="M9 21h6"/></svg>vi が開いて戸惑ったら</div>
-        <p>エディタが vi の場合、最初は文字を打てません。次の操作だけ覚えておけば大丈夫です。<kbd>i</kbd> で入力モードに入り、編集したら <kbd>Esc</kbd> で抜け、<code>:wq</code> と打って <kbd>Enter</kbd> で<strong>保存して終了</strong>。変更を捨てて終了したいときは <code>:q!</code> です。</p>
+        <p>エディタが vi の場合、最初は文字を打てません。次の操作だけ覚えておけば足ります。<kbd>i</kbd> で入力モードに入り、編集したら <kbd>Esc</kbd> で抜け、<code>:wq</code> と打って <kbd>Enter</kbd> で<strong>保存して終了</strong>。変更を捨てて終了したいときは <code>:q!</code> です。</p>
       </div>
       <div class="box stumble">
-        <div class="box-t"><svg class="ico" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 9v4M12 17h.01"/><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg>push 済みには amend しない</div>
-        <p><code>--amend</code> はコミットを作り直すため、<strong>すでに push 済み</strong>のコミットに使うとリモートと履歴が食い違います。まだ push していない直前のコミットにだけ使いましょう。</p>
+        <div class="box-t"><svg class="ico" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 9v4M12 17h.01"/><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg>プッシュ済みのコミットには <code>--amend</code> を使わない</div>
+        <p><code>--amend</code> はコミットを作り直すため、<strong>すでにプッシュ済み</strong>のコミットに使うとリモートと履歴が食い違います。まだプッシュしていない直前のコミットにだけ使います。</p>
       </div>
 
       <h3 id="p4-3">revert — 履歴を残して打ち消す</h3>
-      <p><code>git revert &lt;commit&gt;</code> は、指定したコミットの変更を打ち消す<strong>新しいコミットを作成</strong>します。元のコミットは履歴に残したまま「取り消し」を1つ足すので、<strong>すでに push 済みのコミットでも安全に取り消せます</strong>。実行にはワーキングツリーをクリーンにしておく必要があります。</p>
+      <p><code>git revert &lt;commit&gt;</code> は、指定したコミットの変更を打ち消す<strong>新しいコミットを作成</strong>します。元のコミットは履歴に残したまま「取り消し」を1つ足すので、<strong>すでにプッシュ済みのコミットでも安全に取り消せます</strong>。実行にはワーキングツリーをクリーンにしておく必要があります。</p>
       <pre><button class="copy-btn">コピー</button><span class="term-head"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="label">revert</span></span><code><span class="pr">$</span> git revert a1b2c3d           <span class="cmt"># 指定コミットの変更を打ち消すコミットを作る</span>
 <span class="out">[main 5a6b7c8] Revert "README の見出しを修正"</span></code></pre>
 
@@ -1992,7 +1992,7 @@
       </div>
 
       <h4>revert を revert する(取り消しの取り消し)</h4>
-      <p><code>revert</code> しすぎたときは、その<strong>revert コミット自体をさらに revert</strong> すれば、打ち消しを打ち消して元に戻せます。revert は普通のコミットなので、同じ操作でやり直せます。</p>
+      <p><code>revert</code> しすぎたときは、その<strong>revert コミット自体をさらに <code>revert</code></strong> すれば、打ち消しを打ち消して元に戻せます。revert コミットは普通のコミットなので、同じ操作でやり直せます。</p>
       <pre><button class="copy-btn">コピー</button><span class="term-head"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="label">revert の revert</span></span><code><span class="pr">$</span> git revert 5a6b7c8           <span class="cmt"># さっきの取消コミットを、さらに打ち消す</span>
 <span class="out">[main 9f8e7d6] Revert "Revert \"README の見出しを修正\""</span></code></pre>
 
@@ -2024,7 +2024,7 @@
       </div>
 
       <h4>reflog で「消えたコミット」を復元する</h4>
-      <p>もし誤って <code>--hard</code> でコミットを消してしまっても、あきらめる前に <code>git reflog</code> を見ましょう。reflog には <strong>HEAD が移動した履歴</strong>が残っているので、消える前の位置を見つけて戻せることが多いです。</p>
+      <p>もし誤って <code>--hard</code> でコミットを消してしまっても、あきらめる前に <code>git reflog</code> を確認します。reflog には <strong>HEAD が移動した履歴</strong>が残っているので、消える前の位置を見つけて戻せることが多いです。</p>
       <pre><button class="copy-btn">コピー</button><span class="term-head"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="label">reflog で復元</span></span><code><span class="pr">$</span> git reflog
 <span class="out">a1b2c3d HEAD@{0}: reset: moving to HEAD~1</span>
 <span class="out">e5f6a7b HEAD@{1}: commit: 消えたはずのコミット</span>   <span class="cmt"># ← これを探す</span>
@@ -2092,7 +2092,7 @@
 <span class="pr">$</span> git push origin v1.0.0              <span class="cmt"># タグをリモートへ反映</span></code></pre>
 
       <h3 id="p4-7">git clone --shared</h3>
-      <p><code>--shared</code> は、<strong>同じマシン上の既存ローカルリポジトリ</strong>から、オブジェクト(履歴データ)を<strong>共有する形で</strong>複製します。通常の clone がデータを丸ごとコピーするのに対し、<code>--shared</code> は元リポジトリの <code>.git/objects</code> を参照するので、コピーが速くディスク消費も少なくて済みます。</p>
+      <p><code>--shared</code> は、<strong>同じマシン上の既存ローカルリポジトリ</strong>から、オブジェクト(履歴データ)を<strong>共有する形で</strong>複製します。通常のクローンがデータを丸ごとコピーするのに対し、<code>--shared</code> は元リポジトリの <code>.git/objects</code> を参照するので、コピーが速くディスク消費も少なくて済みます。</p>
       <figure>
         <svg viewBox="0 0 620 185" role="img" aria-label="通常のcloneとclone --sharedの違いの図">
           <text x="310" y="20" text-anchor="middle" class="svg-s" fill="#5b3fa0" font-weight="600">通常の clone（独立）</text>
@@ -2119,16 +2119,16 @@
             <marker id="pcs2" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0 0 L6 3 L0 6" fill="none" stroke="#C9820A" stroke-width="1.5"/></marker>
           </defs>
         </svg>
-        <figcaption>通常の clone は履歴データを丸ごと複製して独立する。<code>--shared</code> は元の <code>objects</code> を参照するため軽量だが、元リポジトリに依存する。</figcaption>
+        <figcaption>通常のクローンは履歴データを丸ごと複製して独立する。<code>--shared</code> は元の <code>objects</code> を参照するため軽量だが、元リポジトリに依存する。</figcaption>
       </figure>
       <pre><button class="copy-btn">コピー</button><span class="term-head"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="label">clone --shared</span></span><code><span class="pr">$</span> git clone --shared ~/dev/practice practice-copy   <span class="cmt"># 同じマシンの既存リポジトリから軽量複製</span></code></pre>
       <div class="box stumble">
         <div class="box-t"><svg class="ico" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 9v4M12 17h.01"/><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg>元リポジトリを消すと壊れる</div>
-        <p><code>--shared</code> は元リポジトリの <code>objects</code> に依存します。元を削除したり <code>git gc</code> で整理すると、複製側が壊れてしまいます。<strong>同じマシン上の一時的な用途</strong>(検証・並行作業)向けで、恒久利用や配布には通常の clone を使いましょう。</p>
+        <p><code>--shared</code> は元リポジトリの <code>objects</code> に依存します。元を削除したり <code>git gc</code> で整理すると、複製側が壊れてしまいます。<strong>同じマシン上の一時的な用途</strong>(検証・並行作業)向けで、恒久利用や配布には通常の <code>git clone</code> を使います。</p>
       </div>
 
       <h3 id="p4-8">git worktree — 複数ブランチを同時に開く</h3>
-      <p><strong>worktree</strong> は、1つのリポジトリから<strong>複数の作業フォルダを同時に</strong>持つ仕組みです。履歴(<code>.git</code>)や設定は共有したまま、作業する場所だけを分けられます。clone を増やすのとは、まったく別のやり方です。</p>
+      <p><strong>worktree</strong> は、1つのリポジトリから<strong>複数の作業フォルダを同時に</strong>持つ仕組みです。履歴(<code>.git</code>)や設定は共有したまま、作業する場所だけを分けられます。クローンを増やすのとは、まったく別のやり方です。</p>
       <figure>
         <svg viewBox="0 0 620 210" role="img" aria-label="1つの.gitから複数の作業フォルダが枝分かれするworktreeの図">
           <rect x="235" y="18" width="150" height="52" rx="10" fill="#EDE7F8" stroke="#7C5CBF"/>
@@ -2151,8 +2151,8 @@
         </svg>
         <figcaption>1つの <code>.git</code> を共有しつつ、複数のフォルダで別々のブランチを同時に展開できる。</figcaption>
       </figure>
-      <h4>通常の clone との違い</h4>
-      <p>「もう1つ clone すればいい」とも思えます。ただ、clone を増やすと履歴やファイルが重複し、設定もばらつき、同じブランチを二重に操作してしまう危険があります。worktree は <code>.git</code> を共有するので軽く、同じリポジトリとして一貫します。</p>
+      <h4>通常のクローンとの違い</h4>
+      <p>「もう1つクローンすればいい」とも思えます。ただ、クローンを増やすと履歴やファイルが重複し、設定もばらつき、同じブランチを二重に操作してしまう危険があります。worktree は <code>.git</code> を共有するので軽く、同じリポジトリとして一貫します。</p>
       <h4>なぜ使うのか(AI エージェントとの相性)</h4>
       <p>ワーキングツリーが1つだと、ブランチを切り替えるたびに <code>commit</code> か <code>stash</code> を迫られます。worktree なら、その手間なく複数の作業を同時に進められます。</p>
       <ul>
@@ -2203,19 +2203,19 @@
           <tr><td><code>git add &lt;file&gt;</code> / <code>.</code></td><td>変更をステージングに追加(・まとめて)</td><td>記録したい変更を選ぶとき</td></tr>
           <tr><td><code>git add -p</code></td><td>ハンク単位で選んでステージングへ追加</td><td>一部分だけ追加したいとき</td></tr>
           <tr><td><code>git restore &lt;file&gt;</code></td><td>ワーキングツリーの変更を破棄</td><td>編集を取り消して元に戻すとき</td></tr>
-          <tr><td><code>git restore --staged &lt;file&gt;</code></td><td>ステージングから外す(アンステージ)</td><td>add を取り消すとき</td></tr>
+          <tr><td><code>git restore --staged &lt;file&gt;</code></td><td>ステージングから外す(アンステージ)</td><td><code>git add</code> を取り消すとき</td></tr>
           <tr><td><code>.gitignore</code> / <code>git rm --cached</code></td><td>無視設定 / 追跡だけ解除</td><td>管理したくないファイルがあるとき</td></tr>
           <tr><td><code>git commit -m "..."</code></td><td>変更を履歴に確定</td><td>キリの良いところで記録するとき</td></tr>
           <tr><td><code>git commit --amend</code></td><td>直前のコミットをやり直す</td><td>push 前のコミットを直したいとき</td></tr>
           <tr><td><code>git log --oneline --graph</code></td><td>履歴を簡潔に・分岐も表示</td><td>これまでの流れを確認したいとき</td></tr>
           <tr><td><code>git stash</code> / <code>pop</code></td><td>一時退避 / 取り出し</td><td>作業を中断して切り替えるとき</td></tr>
-          <tr><td><code>git push -u origin &lt;name&gt;</code></td><td>ひも付けて送る(初回)</td><td>そのブランチの初回 push</td></tr>
-          <tr><td><code>git push</code></td><td>リモートへ送る</td><td>コミットを共有するとき</td></tr>
+          <tr><td><code>git push -u origin &lt;name&gt;</code></td><td>ひも付けてプッシュする(初回)</td><td>そのブランチで最初にプッシュするとき</td></tr>
+          <tr><td><code>git push</code></td><td>リモートへプッシュする</td><td>コミットを共有するとき</td></tr>
           <tr><td><code>git fetch</code></td><td>リモート情報を取得のみ</td><td>まず状況だけ確認したいとき</td></tr>
           <tr><td><code>git pull</code></td><td>取得して取り込む</td><td>作業開始前に最新化するとき</td></tr>
           <tr><td><code>git merge &lt;name&gt;</code></td><td>変更を合流させる</td><td>ブランチを本流へ取り込むとき</td></tr>
           <tr><td><code>git branch -d &lt;name&gt;</code></td><td>ローカルのブランチを削除</td><td>マージ後の片付け(未マージは <code>-D</code>)</td></tr>
-          <tr><td><code>git push origin --delete &lt;name&gt;</code></td><td>リモートのブランチを削除</td><td>役目を終えた枝を消すとき</td></tr>
+          <tr><td><code>git push origin --delete &lt;name&gt;</code></td><td>リモートのブランチを削除</td><td>役目を終えたブランチを消すとき</td></tr>
           <tr><td><code>git tag -a &lt;name&gt;</code></td><td>コミットに名前を付ける</td><td>リリースの節目を記録するとき</td></tr>
           <tr><td><code>git revert</code> / <code>reset --hard</code></td><td>取り消し(安全 / 巻き戻し)</td><td>共有済みは revert・未共有は reset</td></tr>
         </tbody>
@@ -2240,7 +2240,7 @@
         <dt>init(初期化)</dt><dd>今のフォルダを新しいリポジトリにする操作。中に <code>.git</code> が作られる。ゼロから始めるとき。</dd>
         <dt>clone(クローン)</dt><dd>リモートリポジトリを、履歴ごとまるごと手元に複製すること。参加時の出発点。</dd>
         <dt>base / feature ブランチ</dt><dd>PR での役割。取り込み先が base(通常 <code>main</code>)、変更を載せる作業用が feature。</dd>
-        <dt>push / fetch / pull</dt><dd>ローカルとリモートで変更をやり取りする操作。push=送る、fetch=取得だけ、pull=取得して取り込む(fetch + merge)。</dd>
+        <dt>push / fetch / pull</dt><dd>ローカルとリモートで変更をやり取りする操作。push=リモートへ反映、fetch=取得だけ、pull=取得して取り込む(fetch + merge)。</dd>
         <dt>タグ(tag)</dt><dd>特定のコミットに付ける名前。リリース(例: <code>v1.0.0</code>)などの節目に使う。</dd>
         <dt>stash(スタッシュ)</dt><dd>未コミットの変更を一時退避しておく棚。<code>pop</code> で戻す。</dd>
         <dt>.gitignore</dt><dd>Git に追跡させないファイルのパターンを書くファイル。ここに書いたものは untracked にならない。</dd>
