@@ -1,0 +1,21 @@
+{
+  "plugins": {
+    "html": true
+  },
+  "filters": {
+    "allowlist": {
+      "allow": [
+        "/─{2,}/g",
+        "/…+/g",
+        "?",
+        ":q!"
+      ]
+    }
+  },
+  "rules": {
+    "preset-ja-technical-writing": {
+      "no-mix-dearu-desumasu": false
+    },
+    "@textlint-ja/preset-ai-writing": true
+  }
+}

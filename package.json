@@ -1,0 +1,17 @@
+{
+  "name": "git-handbook",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Git ハンドブック",
+  "scripts": {
+    "lint": "textlint git-handbook.html",
+    "lint:fix": "textlint --fix git-handbook.html"
+  },
+  "devDependencies": {
+    "@textlint-ja/textlint-rule-preset-ai-writing": "^1.7.0",
+    "textlint": "^15.7.1",
+    "textlint-filter-rule-allowlist": "^4.0.0",
+    "textlint-plugin-html": "^1.0.1",
+    "textlint-rule-preset-ja-technical-writing": "^12.0.2"
+  }
+}
