@@ -1715,7 +1715,7 @@
       </div>
 
       <h3 id="p3-6">サイクル4 — コンフリクト</h3>
-      <p>最後は、チーム開発で必ず出会う<strong>コンフリクト（競合）</strong>です。2人が同じファイルの同じ行を別々に書き換えると、Git はどちらが正しいか判断できず、手で決めてほしいと言って止まります。ここでは、わざと競合を起こして、自分の手で解消するところまでやります。</p>
+      <p>最後は、チーム開発で必ず出会う<strong>コンフリクト(競合)</strong>です。2人が同じファイルの同じ行を別々に書き換えると、Git はどちらが正しいか判断できず、手で決めてほしいと言って止まります。ここでは、わざと競合を起こして、自分の手で解消するところまでやります。</p>
 
       <h4 id="p3-6-branches">2本のブランチで同じ行を変える</h4>
       <p>競合を起こすには、枝が2本必要です。1本目の <code>feature/greeting-ja</code> では <code>README.md</code> に「こんにちは」と書きます。2本目の <code>feature/greeting-en</code> は<strong>同じ <code>main</code> から切って</strong>、同じ場所に「Hello」と書きます。2人が別々に作業した状況を、1人で再現するわけです。</p>
@@ -1775,9 +1775,9 @@
       <p>実際に起こしてみます。2本の PR を作り、<strong><code>feature/greeting-ja</code> の PR だけ</strong>をマージします。すると <code>main</code> の3行目は「こんにちは」になります。この時点で、もう片方の PR の画面は競合の表示に変わります。反映まで十数秒かかることがあります。</p>
       <figure>
         <img src="pr-conflict.png" alt="PR画面のコンフリクト表示。This branch has conflicts that must be resolved と競合ファイル README.md が示され、Merge pull request ボタンが押せなくなっている">
-        <figcaption>先に片方がマージされると、もう片方の PR は競合状態になる。<code>Merge pull request</code> ボタンは<strong>押せなくなる</strong>。競合ファイル名（<code>README.md</code>）もここに出る。</figcaption>
+        <figcaption>先に片方がマージされると、もう片方の PR は競合状態になる。<code>Merge pull request</code> ボタンは<strong>押せなくなる</strong>。競合ファイル名(<code>README.md</code>)もここに出る。</figcaption>
       </figure>
-      <p>この競合は、画面では解消できません。手元で <code>main</code> を最新にして、それを <code>feature/greeting-en</code> に取り込みます。</p>
+      <p>画面上の <code>Resolve conflicts</code> からも解消できますが、ここでは仕組みを理解するために手元で解消します。まず <code>main</code> を最新にして、それを <code>feature/greeting-en</code> に取り込みます。</p>
       <pre><button class="copy-btn">コピー</button><span class="term-head"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="label">merge</span></span><code><span class="pr">$</span> git switch main
 <span class="out">Switched to branch 'main'</span>
 <span class="out">Your branch is up to date with 'origin/main'.</span>
@@ -1835,7 +1835,33 @@
 <span class="out">To github.com:you/git-practice-repo.git</span>
 <span class="out">   ac92a8c..01d99d2  feature/greeting-en -&gt; feature/greeting-en</span></code></pre>
       <p>コミットの出力に <code>1 file changed</code> のような行が出ていません。これはマージコミットだからです。ふつうのコミットと違い、2つの親を持つ合流点として記録されます。</p>
-      <p>push すると、PR 画面の競合表示は消え、<code>Merge pull request</code> ボタンが押せる状態に戻ります。あとはサイクル1〜3と同じで、マージして <code>git pull</code> で手元を最新にし、役目を終えた枝を削除します。</p>
+      <p>push すると、PR 画面の競合表示は消え、<code>Merge pull request</code> ボタンが押せる状態に戻ります。ここからはサイクル1〜3と同じ手順です。<code>Merge pull request</code> ボタンを押してマージし、<code>git pull</code> で手元の <code>main</code> を最新にします。</p>
+      <pre><button class="copy-btn">コピー</button><span class="term-head"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="label">pull</span></span><code><span class="pr">$</span> git switch main
+<span class="out">Switched to branch 'main'</span>
+<span class="out">Your branch is up to date with 'origin/main'.</span>
+<span class="pr">$</span> git pull
+<span class="out">From github.com:you/git-practice-repo</span>
+<span class="out">   cba953b..59dd7e5  main       -&gt; origin/main</span>
+<span class="out">Updating cba953b..59dd7e5</span>
+<span class="out">Fast-forward</span>
+<span class="out"> README.md | 1 +</span>
+<span class="out"> 1 file changed, 1 insertion(+)</span></code></pre>
+
+      <h5>役目を終えた枝を片付ける</h5>
+      <p>最後に、今回使った2本のブランチを、ローカルとリモートの両方で削除します。</p>
+      <pre><button class="copy-btn">コピー</button><span class="term-head"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="label">ブランチ削除</span></span><code><span class="pr">$</span> git branch -d feature/greeting-en          <span class="cmt"># ローカルの枝を削除</span>
+<span class="out">Deleted branch feature/greeting-en (was 01d99d2).</span>
+<span class="pr">$</span> git branch -d feature/greeting-ja          <span class="cmt"># もう一方も削除</span>
+<span class="out">Deleted branch feature/greeting-ja (was 9afe800).</span>
+<span class="pr">$</span> git push origin --delete feature/greeting-en   <span class="cmt"># リモートの枝も削除</span>
+<span class="out">To github.com:you/git-practice-repo.git</span>
+<span class="out"> - [deleted]         feature/greeting-en</span>
+<span class="pr">$</span> git push origin --delete feature/greeting-ja   <span class="cmt"># もう一方も削除</span>
+<span class="out">To github.com:you/git-practice-repo.git</span>
+<span class="out"> - [deleted]         feature/greeting-ja</span>
+<span class="pr">$</span> git branch -a                              <span class="cmt"># main だけが残った</span>
+<span class="out">* main</span>
+<span class="out">  remotes/origin/main</span></code></pre>
       <div class="box tip">
         <div class="box-t"><svg class="ico" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2Z"/><path d="M9 21h6"/></svg>4周おつかれさまでした</div>
         <p>ここまでで、<strong>ブランチを切る → 変更する → 確認する → 記録する → 共有する → PR を出す → マージする → 手元を最新にする → 片付ける</strong>という開発の一周を、4回くり返しました。日々の開発は、このくり返しです。迷ったら、まず <code>git status</code> で今の状態を確かめてください。</p>
