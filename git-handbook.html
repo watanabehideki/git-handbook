@@ -315,7 +315,7 @@
       <a href="#p3">3 · 実践しながら学ぶ</a>
       <a href="#p3-1" class="sub">config</a>
       <a href="#p3-2" class="sub">リポジトリを用意する</a>
-      <a href="#p3-3" class="sub">サイクル1 基本の一周</a>
+      <a href="#p3-3" class="sub">サイクル1 1コミットを最後まで通す</a>
       <a href="#p3-4" class="sub">サイクル2 確認と取り消し</a>
       <a href="#p3-5" class="sub">サイクル3 管理から外す</a>
       <a href="#p3-6" class="sub">サイクル4 コンフリクト</a>
@@ -375,7 +375,7 @@
       <ol>
         <li class="toc-item"><span class="toc-badge">1</span><div><div class="toc-title"><a href="#p1">Git とは</a><span class="toc-kind">基礎編</span></div><div class="toc-children"><a href="#p1-1">バージョン管理システム</a> <span class="sep">·</span> <a href="#p1-2">Git の成り立ち</a> <span class="sep">·</span> <a href="#p1-3">ホスティングサービス</a></div></div></li>
         <li class="toc-item"><span class="toc-badge">2</span><div><div class="toc-title"><a href="#p2">基本概念</a><span class="toc-kind">基礎編</span></div><div class="toc-children"><a href="#p2-1">リポジトリ</a> <span class="sep">·</span> <a href="#p2-2">ワーキングツリー</a> <span class="sep">·</span> <a href="#p2-3">ステージング</a> <span class="sep">·</span> <a href="#p2-4">コミット</a> <span class="sep">·</span> <a href="#p2-5">ブランチ</a> <span class="sep">·</span> <a href="#p2-6">開発の大まかな流れ</a></div></div></li>
-        <li class="toc-item"><span class="toc-badge violet">3</span><div><div class="toc-title"><a href="#p3">実践しながら学ぶ</a><span class="toc-kind">実践編</span></div><div class="toc-children"><a href="#p3-1">config</a> <span class="sep">·</span> <a href="#p3-2">リポジトリを用意する</a> <span class="sep">·</span> <a href="#p3-3">サイクル1 基本の一周</a> <span class="sep">·</span> <a href="#p3-4">サイクル2 確認と取り消し</a> <span class="sep">·</span> <a href="#p3-5">サイクル3 管理から外す</a> <span class="sep">·</span> <a href="#p3-6">サイクル4 コンフリクト</a></div></div></li>
+        <li class="toc-item"><span class="toc-badge violet">3</span><div><div class="toc-title"><a href="#p3">実践しながら学ぶ</a><span class="toc-kind">実践編</span></div><div class="toc-children"><a href="#p3-1">config</a> <span class="sep">·</span> <a href="#p3-2">リポジトリを用意する</a> <span class="sep">·</span> <a href="#p3-3">サイクル1 1コミットを最後まで通す</a> <span class="sep">·</span> <a href="#p3-4">サイクル2 確認と取り消し</a> <span class="sep">·</span> <a href="#p3-5">サイクル3 管理から外す</a> <span class="sep">·</span> <a href="#p3-6">サイクル4 コンフリクト</a></div></div></li>
         <li class="toc-item"><span class="toc-badge violet">4</span><div><div class="toc-title"><a href="#p4">発展</a><span class="toc-kind">発展編</span></div><div class="toc-children"><a href="#p4-1">HEAD</a> <span class="sep">·</span> <a href="#p4-2">commit --amend</a> <span class="sep">·</span> <a href="#p4-3">revert</a> <span class="sep">·</span> <a href="#p4-4">reset</a> <span class="sep">·</span> <a href="#p4-5">stash</a> <span class="sep">·</span> <a href="#p4-6">タグ</a> <span class="sep">·</span> <a href="#p4-7">clone --shared</a> <span class="sep">·</span> <a href="#p4-8">worktree</a> <span class="sep">·</span> <a href="#p4-9">エイリアス</a></div></div></li>
         <li class="toc-item"><span class="toc-badge muted">A</span><div><div class="toc-title"><a href="#appendix">付録</a><span class="toc-kind">付録</span></div><div class="toc-children"><a href="#cheatsheet">コマンド早見表</a> <span class="sep">·</span> <a href="#glossary">用語集</a></div></div></li>
       </ol>
@@ -931,6 +931,7 @@
 ├── README.md                <span class="cmt"># 最初からある説明ファイル。編集して変更を体験する</span>
 ├── memo.txt                 <span class="cmt"># 新しく作る追跡対象のファイル(add / commit で使う)</span>
 ├── secret.txt               <span class="cmt"># 秘密情報のつもりのファイル。.gitignore で無視する</span>
+├── .env                     <span class="cmt"># 誤って追跡してしまう想定のファイル。git rm --cached で外す</span>
 └── .gitignore               <span class="cmt"># 無視したいパターンを書くファイル</span></code></pre>
 
       <h3 id="p3-1">config — 名前とメールを設定する</h3>
@@ -1595,6 +1596,7 @@
         <div class="box-t"><svg class="ico" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2Z"/><path d="M9 21h6"/></svg>短いハッシュでも指定できる</div>
         <p>コミットを指定するとき、40桁すべてを打つ必要はありません。<code>--oneline</code> に出る先頭7桁のように、<strong>ほかと区別できる長さ</strong>があれば足ります。<code>git log ac52c03</code> のように使えます。</p>
       </div>
+      <p><code>--oneline</code> に <code>--graph</code> を加えると、ブランチの分岐と合流を線で表示できます。今の時点では分岐がなく、線を引いても1本のままで効果が分かりません。実際の表示は、分岐と合流の両方がそろうサイクル4で確認します。</p>
 
       <h4 id="p3-4-pull">pull — 取得して取り込む</h4>
       <p>取り込みの前に、プッシュと PR 作成を済ませます。ここはサイクル1と同じ手順です。</p>
@@ -1787,7 +1789,7 @@
         </svg>
         <figcaption>同じ行を両側で変えると、Git はどちらが正しいか判断できず、手で解決してもらうために停止する。</figcaption>
       </figure>
-      <p>実際に起こしてみます。2本の PR を作り、<strong><code>feature/greeting-ja</code> の PR だけ</strong>をマージします。すると <code>main</code> の3行目は「こんにちは」になります。この時点で、もう片方の PR の画面はコンフリクトの表示に変わります。反映まで十数秒かかることがあります。</p>
+      <p>実際に起こしてみます。2本の PR を作り、<strong><code>feature/greeting-ja</code> の PR だけ</strong>を <code>Create a merge commit</code> でマージします。すると <code>main</code> の3行目は「こんにちは」になります。この時点で、もう片方の PR の画面はコンフリクトの表示に変わります。反映まで十数秒かかることがあります。</p>
       <figure>
         <img src="pr-conflict.png" alt="PR画面のコンフリクト表示。This branch has conflicts that must be resolved とコンフリクトしたファイル README.md が示され、Merge pull request ボタンが押せなくなっている">
         <figcaption>先に片方がマージされると、もう片方の PR はコンフリクトの状態になる。<code>Merge pull request</code> ボタンは<strong>押せなくなる</strong>。コンフリクトしたファイル名(<code>README.md</code>)もここに出る。</figcaption>
@@ -1838,9 +1840,40 @@
 <span class="out">[feature/greeting-en 01d99d2] コンフリクトを解消</span>
 <span class="pr">$</span> git push</code></pre>
       <p>コミットの出力に <code>1 file changed</code> のような行が出ていません。これはマージコミットだからです。ふつうのコミットと違い、2つの親を持つ合流点として記録されます。</p>
-      <p>プッシュすると、PR 画面のコンフリクト表示は消え、<code>Merge pull request</code> ボタンが押せる状態に戻ります。ここからはサイクル1〜3と同じ手順です。<code>Merge pull request</code> ボタンを押してマージし、<code>git pull</code> で手元の <code>main</code> を最新にします。</p>
+      <p>プッシュすると、PR 画面のコンフリクト表示は消え、<code>Merge pull request</code> ボタンが押せる状態に戻ります。ここからはサイクル1〜3と同じ手順です。<code>Create a merge commit</code> でマージし、<code>git pull</code> で手元の <code>main</code> を最新にします。</p>
       <pre><button class="copy-btn">コピー</button><span class="term-head"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="label">pull</span></span><code><span class="pr">$</span> git switch main
 <span class="pr">$</span> git pull</code></pre>
+
+      <h4 id="p3-6-graph">log --graph — 分岐と合流を線で見る</h4>
+      <p>2本のブランチのマージが終わったため、サイクル2で触れた <code>--graph</code> を実際に使います。<code>--oneline</code> と組み合わせると、コミットを線でつなぎ、分岐と合流の場所が分かる表示になります。</p>
+      <pre><button class="copy-btn">コピー</button><span class="term-head"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="label">log --graph</span></span><code><span class="pr">$</span> git log --oneline --graph      <span class="cmt"># 分岐と合流を線で表示</span>
+<span class="out">*   75037e4 Merge pull request #17 from you/feature/greeting-en</span>
+<span class="out">|\</span>
+<span class="out">| *   53122bb コンフリクトを解消</span>
+<span class="out">| |\</span>
+<span class="out">| |/</span>
+<span class="out">|/|</span>
+<span class="out">* |   5e32744 Merge pull request #16 from you/feature/greeting-ja</span>
+<span class="out">|\ \</span>
+<span class="out">| * | 514de68 日本語のあいさつを追加</span>
+<span class="out">|/ /</span>
+<span class="out">| * 539990a 英語のあいさつを追加</span>
+<span class="out">|/</span>
+<span class="out">*   aff4a1e Merge pull request #15 from you/feature/ignore</span>
+<span class="out">|\</span>
+<span class="out">| * c4380cd .gitignore を追加して .env の追跡を外す</span>
+<span class="out">| * 2c14790 設定を追加</span>
+<span class="out">|/</span>
+<span class="out">*   60c99d3 Merge pull request #14 from you/feature/memo</span>
+<span class="out">|\</span>
+<span class="out">| * 7fe5bd0 memo.txt を追加</span>
+<span class="out">|/</span>
+<span class="out">*   164a6fa Merge pull request #13 from you/feature/readme</span>
+<span class="out">|\</span>
+<span class="out">| * c4c0d77 README の見出しを修正</span>
+<span class="out">|/</span>
+<span class="out">* c01ae1e 最初のコミット</span></code></pre>
+      <p><code>*</code> が1つのコミットです。<code>5e32744</code> と <code>75037e4</code> は今回の2本のマージコミットで、それぞれ左右2本の線を受けています。これが、親を2つ持つマージコミットの見た目です。<code>--graph</code> を付けないと <code>--oneline</code> の一覧は単なる縦のリストになり、この分岐と合流の形は分かりません。</p>
 
       <h5>役目を終えたブランチを片付ける</h5>
       <p>最後に、今回使った2本のブランチを、ローカルとリモートの両方で削除します。</p>
