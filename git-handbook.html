@@ -952,7 +952,8 @@
       <h4>新規リポジトリを作成する</h4>
       <p>自分でプロジェクトをゼロから始める場合です。<code>git init</code> で今のフォルダをリポジトリにし、<code>README.md</code> を作って最初のコミットをします。その後、ホスティングサービスで作った空のリモートへプッシュします。</p>
       <p>ここで使っている <code>git add</code> や <code>git commit</code> などのコマンドは、このあとの各節でくわしく説明します。</p>
-      <pre><button class="copy-btn">コピー</button><span class="term-head"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="label">新規作成</span></span><code><span class="pr">$</span> mkdir git-practice-repo <span class="hl">&amp;&amp;</span> cd git-practice-repo   <span class="cmt"># フォルダを作って移動</span>
+      <pre><button class="copy-btn">コピー</button><span class="term-head"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="label">新規作成</span></span><code><span class="pr">$</span> cd ~/dev                        <span class="cmt"># 作業を置きたいフォルダへ移動</span>
+<span class="pr">$</span> mkdir git-practice-repo <span class="hl">&amp;&amp;</span> cd git-practice-repo   <span class="cmt"># フォルダを作って移動</span>
 <span class="pr">$</span> git init                        <span class="cmt"># このフォルダを Git リポジトリにする</span>
 <span class="pr">$</span> echo <span class="st">"# git-practice-repo"</span> &gt; README.md   <span class="cmt"># README.md を作成</span>
 <span class="pr">$</span> git add README.md               <span class="cmt"># ステージングに追加</span>
@@ -982,10 +983,10 @@
 <span class="pr">$</span> git clone <span class="st">&lt;練習用リポジトリのURL&gt;</span>
 <span class="out">Cloning into 'git-practice-repo'...</span>
 <span class="out">remote: Enumerating objects: 29, done.</span>
-<span class="out">remote: Counting objects: 100% (29/29), done.</span>
-<span class="out">remote: Compressing objects: 100% (20/20), done.</span>
-<span class="out">remote: Total 29 (delta 2), reused 22 (delta 0), pack-reused 0 (from 0)</span>
-<span class="out">Receiving objects: 100% (29/29), 6.95 KiB | 2.32 MiB/s, done.</span>
+<span class="out">remote: Counting objects: 100% (8/8), done.</span>
+<span class="out">remote: Compressing objects: 100% (8/8), done.</span>
+<span class="out">remote: Total 29 (delta 1), reused 1 (delta 0), pack-reused 21 (from 1)</span>
+<span class="out">Receiving objects: 100% (29/29), 6.96 KiB | 1.74 MiB/s, done.</span>
 <span class="out">Resolving deltas: 100% (2/2), done.</span>
 <span class="pr">$</span> cd git-practice-repo           <span class="cmt"># できたフォルダに入る</span></code></pre>
       <h4>origin(オリジン)とは</h4>
