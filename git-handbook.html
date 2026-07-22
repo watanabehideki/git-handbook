@@ -992,7 +992,7 @@
 <span class="out">origin  git@github.com:you/git-practice-repo.git (push)</span></code></pre>
       <div class="box tip">
         <div class="box-t"><svg class="ico" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2Z"/><path d="M9 21h6"/></svg><code>origin</code> は既定の名前で、変更できる</div>
-        <p><code>origin</code> は clone 時に<strong>自動で付けられる既定のエイリアス名</strong>で、予約語ではありません。好きな名前に変えられます。clone 時に <code>git clone -o &lt;名前&gt; &lt;URL&gt;</code> で別名を指定したり、あとから <code>git remote rename origin &lt;名前&gt;</code> で改名したりできます。また、リモートは複数登録できます。</p>
+        <p><code>origin</code> はクローン時に<strong>自動で付けられる既定のエイリアス名</strong>で、予約語ではありません。好きな名前に変えられます。クローン時に <code>git clone -o &lt;名前&gt; &lt;URL&gt;</code> で別名を指定したり、あとから <code>git remote rename origin &lt;名前&gt;</code> で改名したりできます。また、リモートは複数登録できます。</p>
       </div>
 
       <h3 id="p3-3">サイクル1 — 1コミットを最後まで通す</h3>
@@ -1233,12 +1233,12 @@
       <h4 id="p3-3-pr">PR作成 — 変更の取り込みを提案する</h4>
       <p><strong>プルリクエスト(PR)</strong>は、「自分の feature ブランチの変更を、<strong>base ブランチ(ふつう main)に取り込んでよいか</strong>」という提案・依頼です。ここからはホスティングサービスの画面での操作になります。以下は GitHub の画面ですが、考え方はどのサービスでも同じです。</p>
       <figure>
-        <img src="pr-banner.png" alt="push した直後のリポジトリ画面。feature/readme had recent pushes と表示され、右に Compare &amp; pull request ボタンがある">
+        <img src="pr-banner.png" alt="プッシュした直後のリポジトリ画面。feature/readme had recent pushes と表示され、右に Compare &amp; pull request ボタンがある">
         <figcaption>プッシュすると、リポジトリの画面に <code>Compare &amp; pull request</code> ボタンが出る。ここが PR 作成の入口。</figcaption>
       </figure>
       <figure>
         <img src="pr-compare.png" alt="Comparing changes の画面。base: main と compare: feature/readme が並び、Able to merge と表示されている">
-        <figcaption><strong>base</strong> が取り込み先(<code>main</code>)、<strong>compare</strong> が取り込み元(<code>feature/readme</code>)。<code>Able to merge.</code> はコンフリクトなく取り込めるという意味。</figcaption>
+        <figcaption><strong>base</strong> が取り込み先(<code>main</code>)、<strong>compare</strong> が取り込み元(<code>feature/readme</code>)。<code>Able to merge.</code> はコンフリクト(競合)なく取り込めるという意味。</figcaption>
       </figure>
       <figure>
         <img src="pr-form.png" alt="PR作成フォーム。タイトル欄にコミットメッセージが入り、説明欄と Create pull request ボタンがある">
@@ -1523,7 +1523,7 @@
       </figure>
       <div class="box stumble">
         <div class="box-t"><svg class="ico" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 9v4M12 17h.01"/><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg>捨てた変更は戻せない</div>
-        <p><code>git restore &lt;file&gt;</code> で破棄したワーキングツリーの変更は、<strong>元に戻せません</strong>。実行する前に、本当に捨ててよいかを <code>git diff</code> などで確かめます。</p>
+        <p><code>git restore &lt;file&gt;</code> で破棄したワーキングツリーの変更は、<strong>元に戻せません</strong>。実行する前に、本当に捨ててよいかを <code>git diff</code> などで確かめてください。</p>
       </div>
 
       <h4 id="p3-4-log">log — 履歴を確認する</h4>
@@ -1831,7 +1831,7 @@
 <span class="out">Fast-forward</span>
 <span class="out"> README.md | 2 ++</span>
 <span class="out"> 1 file changed, 2 insertions(+)</span>
-<span class="pr">$</span> git switch feature/greeting-en    <span class="cmt"># 競合しているブランチへ移動</span>
+<span class="pr">$</span> git switch feature/greeting-en    <span class="cmt"># コンフリクトが起きているブランチへ移動</span>
 <span class="out">Switched to branch 'feature/greeting-en'</span>
 <span class="out">Your branch is up to date with 'origin/feature/greeting-en'.</span>
 <span class="pr">$</span> git merge main                    <span class="cmt"># main の変更を今のブランチに取り込む</span>
@@ -1953,7 +1953,7 @@
       </div>
       <div class="box stumble">
         <div class="box-t"><svg class="ico" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 9v4M12 17h.01"/><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg>プッシュ済みのコミットには <code>--amend</code> を使わない</div>
-        <p><code>--amend</code> はコミットを作り直すため、<strong>すでにプッシュ済み</strong>のコミットに使うとリモートと履歴が食い違います。まだプッシュしていない直前のコミットにだけ使います。</p>
+        <p><code>--amend</code> はコミットを作り直すため、<strong>すでにプッシュ済み</strong>のコミットに使うとリモートと履歴が食い違います。まだプッシュしていない直前のコミットにだけ使ってください。</p>
       </div>
 
       <h3 id="p4-3">revert — 履歴を残して打ち消す</h3>
@@ -2197,16 +2197,16 @@
           <tr><td><code>git branch</code> / <code>-a</code></td><td>ブランチ一覧(・追跡ブランチも)</td><td>今どこにいるか見るとき</td></tr>
           <tr><td><code>git switch &lt;name&gt;</code></td><td>ブランチを移動</td><td>別のブランチで作業するとき</td></tr>
           <tr><td><code>git switch -c &lt;name&gt;</code></td><td>ブランチを作って移動</td><td>新しい作業を始めるとき</td></tr>
-          <tr><td><code>git status</code> / <code>-s</code></td><td>今の状態を表示(・短縮)</td><td>迷ったらいつでも(呼吸するように)</td></tr>
+          <tr><td><code>git status</code> / <code>-s</code></td><td>今の状態を表示(・短縮)</td><td>迷ったらいつでも</td></tr>
           <tr><td><code>git diff</code></td><td>ワーキングツリー vs ステージングの差分</td><td>何を変えたか確認したいとき</td></tr>
-          <tr><td><code>git diff --staged</code></td><td>ステージング vs 直前コミットの差分</td><td><code>add</code> した内容を確認するとき</td></tr>
+          <tr><td><code>git diff --staged</code></td><td>ステージング vs 直前コミットの差分</td><td>ステージングに追加した内容を確認するとき</td></tr>
           <tr><td><code>git add &lt;file&gt;</code> / <code>.</code></td><td>変更をステージングに追加(・まとめて)</td><td>記録したい変更を選ぶとき</td></tr>
           <tr><td><code>git add -p</code></td><td>ハンク単位で選んでステージングへ追加</td><td>一部分だけ追加したいとき</td></tr>
           <tr><td><code>git restore &lt;file&gt;</code></td><td>ワーキングツリーの変更を破棄</td><td>編集を取り消して元に戻すとき</td></tr>
           <tr><td><code>git restore --staged &lt;file&gt;</code></td><td>ステージングから外す(アンステージ)</td><td><code>git add</code> を取り消すとき</td></tr>
           <tr><td><code>.gitignore</code> / <code>git rm --cached</code></td><td>無視設定 / 追跡だけ解除</td><td>管理したくないファイルがあるとき</td></tr>
           <tr><td><code>git commit -m "..."</code></td><td>変更を履歴に確定</td><td>キリの良いところで記録するとき</td></tr>
-          <tr><td><code>git commit --amend</code></td><td>直前のコミットをやり直す</td><td>push 前のコミットを直したいとき</td></tr>
+          <tr><td><code>git commit --amend</code></td><td>直前のコミットをやり直す</td><td>プッシュ前のコミットを直したいとき</td></tr>
           <tr><td><code>git log --oneline --graph</code></td><td>履歴を簡潔に・分岐も表示</td><td>これまでの流れを確認したいとき</td></tr>
           <tr><td><code>git stash</code> / <code>pop</code></td><td>一時退避 / 取り出し</td><td>作業を中断して切り替えるとき</td></tr>
           <tr><td><code>git push -u origin &lt;name&gt;</code></td><td>ひも付けてプッシュする(初回)</td><td>そのブランチで最初にプッシュするとき</td></tr>
