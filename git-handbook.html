@@ -980,6 +980,13 @@
       </figure>
       <pre><button class="copy-btn">コピー</button><span class="term-head"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="label">clone</span></span><code><span class="pr">$</span> cd ~/dev                       <span class="cmt"># 作業を置きたいフォルダへ移動</span>
 <span class="pr">$</span> git clone <span class="st">&lt;練習用リポジトリのURL&gt;</span>
+<span class="out">Cloning into 'git-practice-repo'...</span>
+<span class="out">remote: Enumerating objects: 29, done.</span>
+<span class="out">remote: Counting objects: 100% (29/29), done.</span>
+<span class="out">remote: Compressing objects: 100% (20/20), done.</span>
+<span class="out">remote: Total 29 (delta 2), reused 22 (delta 0), pack-reused 0 (from 0)</span>
+<span class="out">Receiving objects: 100% (29/29), 6.95 KiB | 2.32 MiB/s, done.</span>
+<span class="out">Resolving deltas: 100% (2/2), done.</span>
 <span class="pr">$</span> cd git-practice-repo           <span class="cmt"># できたフォルダに入る</span></code></pre>
       <h4>origin(オリジン)とは</h4>
       <p><strong>origin(オリジン)</strong>とは、クローン元のリモートリポジトリの <strong>URL に対して自動で付けられるエイリアス(別名)</strong>です。毎回長い URL を打つ代わりに、<code>origin</code> と短く書けます。このあとの <code>push</code> / <code>fetch</code> / <code>pull</code> でも、送り先・取得元としてこの <code>origin</code> を使います。<code>origin</code> がどの URL を指しているかは <code>git remote -v</code> で確認できます。なお、このように<strong>リモートリポジトリの URL に名前を付けた参照</strong>のことを、Git では<strong>リモート</strong>と呼びます。<code>origin</code> は、その既定のリモート名です。</p>
@@ -1127,8 +1134,8 @@
       <h5>短縮表示 <code>git status -s</code></h5>
       <p>毎回の長い出力が煩わしいときは、<code>-s</code>(short)で1行ずつ簡潔に表示できます。左の2文字が状態を表し、左列がステージング、右列がワーキングツリーの状態です。</p>
       <pre><button class="copy-btn">コピー</button><span class="term-head"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="label">status -s</span></span><code><span class="pr">$</span> git status -s
-<span class="hl"> M</span> README.md      <span class="cmt"># M=modified(変更)。右列Mなので未ステージング</span></code></pre>
-      <p>2文字に使われる主な記号は次のとおりです。</p>
+<span class="hl"> M</span> README.md      <span class="cmt"># 右列Mなので未ステージング</span></code></pre>
+      <p>短縮表示に使われる主な記号は次のとおりです。</p>
       <div class="tbl-wrap"><table>
         <thead><tr><th>記号</th><th>意味</th></tr></thead>
         <tbody>
