@@ -1427,9 +1427,9 @@
 
       <h4 id="p3-3-delete">ブランチ削除 — 役目を終えたブランチを片付ける</h4>
       <p>PR がマージされ、main を最新化したら、<strong>役目を終えた feature ブランチを削除</strong>して整理します。ローカルとリモートの両方を消します。マージ済みのブランチは <code>-d</code> で安全に削除できます(未マージのものを強制削除するときだけ <code>-D</code>)。</p>
-      <pre><button class="copy-btn">コピー</button><span class="term-head"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="label">ブランチ削除</span></span><code><span class="pr">$</span> git branch -d feature/readme               <span class="cmt"># ローカルの枝を削除</span>
+      <pre><button class="copy-btn">コピー</button><span class="term-head"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="label">ブランチ削除</span></span><code><span class="pr">$</span> git branch -d feature/readme               <span class="cmt"># ローカルのブランチを削除</span>
 <span class="out">Deleted branch feature/readme (was 209a548).</span>
-<span class="pr">$</span> git push origin --delete feature/readme    <span class="cmt"># リモートの枝も削除</span>
+<span class="pr">$</span> git push origin --delete feature/readme    <span class="cmt"># リモートのブランチも削除</span>
 <span class="out">To github.com:you/git-practice-repo.git</span>
 <span class="out"> - [deleted]         feature/readme</span>
 <span class="pr">$</span> git branch -a                              <span class="cmt"># main だけが残った</span>
@@ -1443,7 +1443,7 @@
 
       <h3 id="p3-4">サイクル2 — 確認と取り消し</h3>
       <p>2周目です。今度は <code>memo.txt</code> を新しく作り、あわせて <code>README.md</code> にも1行足してみます。ところが README への追記は<strong>やめることにした</strong>、という筋で進めます。記録する前に中身を確かめる方法と、いらなくなった変更を捨てる方法をここで覚えます。</p>
-      <pre><button class="copy-btn">コピー</button><span class="term-head"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="label">2周目をはじめる</span></span><code><span class="pr">$</span> git switch -c feature/memo   <span class="cmt"># 最新の main から新しい枝を切る</span>
+      <pre><button class="copy-btn">コピー</button><span class="term-head"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="label">2周目をはじめる</span></span><code><span class="pr">$</span> git switch -c feature/memo   <span class="cmt"># 最新の main から新しいブランチを切る</span>
 <span class="out">Switched to a new branch 'feature/memo'</span>
 <span class="pr">$</span> touch memo.txt                <span class="cmt"># 新しいファイルを作る</span>
 <span class="pr">$</span> echo <span class="st">"使い方はここに書きます。"</span> &gt;&gt; README.md   <span class="cmt"># README にも1行足してみる</span></code></pre>
@@ -1607,9 +1607,9 @@
 
       <h5>役目を終えたブランチを片付ける</h5>
       <p>最後に、サイクル1と同じくブランチを削除します。ローカルとリモートの両方を消します。</p>
-      <pre><button class="copy-btn">コピー</button><span class="term-head"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="label">ブランチ削除</span></span><code><span class="pr">$</span> git branch -d feature/memo               <span class="cmt"># ローカルの枝を削除</span>
+      <pre><button class="copy-btn">コピー</button><span class="term-head"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="label">ブランチ削除</span></span><code><span class="pr">$</span> git branch -d feature/memo               <span class="cmt"># ローカルのブランチを削除</span>
 <span class="out">Deleted branch feature/memo (was ac52c03).</span>
-<span class="pr">$</span> git push origin --delete feature/memo    <span class="cmt"># リモートの枝も削除</span>
+<span class="pr">$</span> git push origin --delete feature/memo    <span class="cmt"># リモートのブランチも削除</span>
 <span class="out">To github.com:you/git-practice-repo.git</span>
 <span class="out"> - [deleted]         feature/memo</span>
 <span class="pr">$</span> git branch -a                            <span class="cmt"># main だけが残った</span>
@@ -1622,7 +1622,7 @@
 
       <h3 id="p3-5">サイクル3 — 管理から外す</h3>
       <p>3周目の題材は <code>.gitignore</code> です。プロジェクトには、Git で管理したくないファイルがあります。パスワードや API キーを書いた秘密の設定ファイル、自動で作られるログやビルド結果などです。これらを Git の管理対象から外す方法と、<strong>うっかりコミットしてしまったあとの外し方</strong>を扱います。</p>
-      <pre><button class="copy-btn">コピー</button><span class="term-head"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="label">3周目をはじめる</span></span><code><span class="pr">$</span> git switch -c feature/ignore   <span class="cmt"># 最新の main から新しい枝を切る</span>
+      <pre><button class="copy-btn">コピー</button><span class="term-head"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="label">3周目をはじめる</span></span><code><span class="pr">$</span> git switch -c feature/ignore   <span class="cmt"># 最新の main から新しいブランチを切る</span>
 <span class="out">Switched to a new branch 'feature/ignore'</span></code></pre>
 
       <h4 id="p3-5-ignore">ignore — Git に含めないファイルを決める</h4>
@@ -1734,9 +1734,9 @@
 
       <h5>役目を終えたブランチを片付ける</h5>
       <p>最後に、ローカルとリモートの両方でブランチを削除します。</p>
-      <pre><button class="copy-btn">コピー</button><span class="term-head"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="label">ブランチ削除</span></span><code><span class="pr">$</span> git branch -d feature/ignore               <span class="cmt"># ローカルの枝を削除</span>
+      <pre><button class="copy-btn">コピー</button><span class="term-head"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="label">ブランチ削除</span></span><code><span class="pr">$</span> git branch -d feature/ignore               <span class="cmt"># ローカルのブランチを削除</span>
 <span class="out">Deleted branch feature/ignore (was 6b72e1f).</span>
-<span class="pr">$</span> git push origin --delete feature/ignore    <span class="cmt"># リモートの枝も削除</span>
+<span class="pr">$</span> git push origin --delete feature/ignore    <span class="cmt"># リモートのブランチも削除</span>
 <span class="out">To github.com:you/git-practice-repo.git</span>
 <span class="out"> - [deleted]         feature/ignore</span>
 <span class="pr">$</span> git branch -a                              <span class="cmt"># main だけが残った</span>
@@ -1763,7 +1763,7 @@
       <h4 id="p3-6-branches">2本のブランチで同じ行を変える</h4>
       <p>コンフリクトを起こすには、ブランチが2本必要です。1本目の <code>feature/greeting-ja</code> では <code>README.md</code> に「こんにちは」と書きます。2本目の <code>feature/greeting-en</code> は<strong>同じ <code>main</code> から切って</strong>、同じ場所に「Hello」と書きます。2人が別々に作業した状況を、1人で再現するわけです。</p>
       <p>ここで大事なのは、<strong>両方のブランチでコミットまで済ませておく</strong>ことです。変更をコミットしていないまま <code>git merge</code> を実行すると、Git は作業中の変更が失われるのを避けるため、マージそのものを拒否します。</p>
-      <pre><button class="copy-btn">コピー</button><span class="term-head"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="label">2本の枝を作る</span></span><code><span class="pr">$</span> git switch -c feature/greeting-ja   <span class="cmt"># 1本目の枝を切る</span>
+      <pre><button class="copy-btn">コピー</button><span class="term-head"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="label">2本のブランチを作る</span></span><code><span class="pr">$</span> git switch -c feature/greeting-ja   <span class="cmt"># 1本目のブランチを切る</span>
 <span class="out">Switched to a new branch 'feature/greeting-ja'</span>
 <span class="pr">$</span> printf <span class="st">'# Git 練習リポジトリ\n\nこんにちは\n'</span> &gt; README.md
 <span class="pr">$</span> git add README.md <span class="hl">&amp;&amp;</span> git commit -m <span class="st">"日本語のあいさつを追加"</span>
@@ -1781,7 +1781,7 @@
 <span class="pr">$</span> git switch main                     <span class="cmt"># 2本目は main から切りたいので戻る</span>
 <span class="out">Switched to branch 'main'</span>
 <span class="out">Your branch is up to date with 'origin/main'.</span>
-<span class="pr">$</span> git switch -c feature/greeting-en   <span class="cmt"># 2本目の枝を切る</span>
+<span class="pr">$</span> git switch -c feature/greeting-en   <span class="cmt"># 2本目のブランチを切る</span>
 <span class="out">Switched to a new branch 'feature/greeting-en'</span>
 <span class="pr">$</span> printf <span class="st">'# Git 練習リポジトリ\n\nHello\n'</span> &gt; README.md   <span class="cmt"># 同じ3行目を別の内容にする</span>
 <span class="pr">$</span> git add README.md <span class="hl">&amp;&amp;</span> git commit -m <span class="st">"英語のあいさつを追加"</span>
@@ -1892,11 +1892,11 @@
 
       <h5>役目を終えたブランチを片付ける</h5>
       <p>最後に、今回使った2本のブランチを、ローカルとリモートの両方で削除します。</p>
-      <pre><button class="copy-btn">コピー</button><span class="term-head"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="label">ブランチ削除</span></span><code><span class="pr">$</span> git branch -d feature/greeting-en          <span class="cmt"># ローカルの枝を削除</span>
+      <pre><button class="copy-btn">コピー</button><span class="term-head"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="label">ブランチ削除</span></span><code><span class="pr">$</span> git branch -d feature/greeting-en          <span class="cmt"># ローカルのブランチを削除</span>
 <span class="out">Deleted branch feature/greeting-en (was 01d99d2).</span>
 <span class="pr">$</span> git branch -d feature/greeting-ja          <span class="cmt"># もう一方も削除</span>
 <span class="out">Deleted branch feature/greeting-ja (was 9afe800).</span>
-<span class="pr">$</span> git push origin --delete feature/greeting-en   <span class="cmt"># リモートの枝も削除</span>
+<span class="pr">$</span> git push origin --delete feature/greeting-en   <span class="cmt"># リモートのブランチも削除</span>
 <span class="out">To github.com:you/git-practice-repo.git</span>
 <span class="out"> - [deleted]         feature/greeting-en</span>
 <span class="pr">$</span> git push origin --delete feature/greeting-ja   <span class="cmt"># もう一方も削除</span>
