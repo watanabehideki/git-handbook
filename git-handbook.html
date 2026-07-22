@@ -89,6 +89,8 @@
   /* h4: 小見出し。h3 と同じ左バー語彙を、細く・小さく使って一段下と分かる */
   h4{font-size:15.5px; font-weight:700; margin:26px 0 6px; padding-left:10px; border-left:2px solid var(--accent); color:var(--accent-ink);}
   h5{font-size:14px; font-weight:600; margin:22px 0 8px; color:var(--ink); letter-spacing:.01em;}
+  /* h5: h3/h4 の縦罫線と競合しないよう、短い横棒を先頭に置いて一段下の見出しと示す */
+  h5::before{content:""; display:inline-block; width:12px; height:2px; border-radius:1px; background:var(--accent); opacity:.5; vertical-align:middle; margin-right:8px; position:relative; top:-1px;}
   /* 発展章（violet）の見出しはアクセントをブランチ色にそろえる */
   #p9 h2::before{background:var(--branch);} #p9 h2{border-bottom-color:var(--branch-soft);}
   #p9 h3{border-left-color:var(--branch);}
@@ -205,8 +207,6 @@
   .branch-strategy .clamp2{display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; line-height:1.55;}
   td:first-child{white-space:nowrap}
 
-  .glossary dt{font-weight:600; margin-top:14px; color:var(--accent-ink)}
-  .glossary dd{margin:2px 0 0; color:#33454F}
 
   .footer{margin-top:60px; padding-top:26px; border-top:1px solid var(--line); font-size:13px; color:var(--muted);}
 
@@ -321,18 +321,9 @@
       <a href="#p3-6" class="sub">サイクル4 コンフリクト</a>
       <a href="#p4" class="lead">発展編</a>
       <a href="#p4">4 · 発展</a>
-      <a href="#p4-1" class="sub">HEAD</a>
-      <a href="#p4-2" class="sub">commit --amend</a>
-      <a href="#p4-3" class="sub">revert</a>
-      <a href="#p4-4" class="sub">reset</a>
-      <a href="#p4-5" class="sub">stash</a>
-      <a href="#p4-6" class="sub">タグ</a>
-      <a href="#p4-7" class="sub">clone --shared</a>
-      <a href="#p4-8" class="sub">worktree</a>
-      <a href="#p4-9" class="sub">エイリアス</a>
-      <a href="#appendix" class="lead">付録</a>
-      <a href="#cheatsheet">コマンド早見表</a>
-      <a href="#glossary">用語集</a>
+      <a href="#p4-1" class="sub">タグ</a>
+      <a href="#p4-2" class="sub">worktree</a>
+      <a href="#p4-3" class="sub">エイリアス</a>
     </nav>
   </aside>
 
@@ -342,9 +333,9 @@
 
     <!-- HERO -->
     <header class="hero" id="top">
-      <div class="kicker">はじめての人のための入門資料</div>
+      <div class="kicker">Gitの入門資料</div>
       <h1>Git ハンドブック</h1>
-      <p class="lead-p">Git の基本概念とよく使う操作を、はじめての人でも順を追って理解できるようにまとめました。各章は「概念 → なぜ必要か → 使い方」の流れで構成しています。図で仕組みをつかみ、コマンド例で手を動かして身につける構成です。</p>
+      <p class="lead-p">Git の基本概念とよく使う操作を、はじめての人でも順を追って理解できるようにまとめました。前半は用語と仕組みの理解に重点を置き、後半は実際にターミナルでコマンドを打ちながら一連の流れを体験します。図で仕組みをつかみ、コマンド例で手を動かして身につける構成です。</p>
 
       <div class="legend">
         <div class="lg-h">
@@ -376,8 +367,7 @@
         <li class="toc-item"><span class="toc-badge">1</span><div><div class="toc-title"><a href="#p1">Git とは</a><span class="toc-kind">基礎編</span></div><div class="toc-children"><a href="#p1-1">バージョン管理システム</a> <span class="sep">·</span> <a href="#p1-2">Git の成り立ち</a> <span class="sep">·</span> <a href="#p1-3">ホスティングサービス</a></div></div></li>
         <li class="toc-item"><span class="toc-badge">2</span><div><div class="toc-title"><a href="#p2">基本概念</a><span class="toc-kind">基礎編</span></div><div class="toc-children"><a href="#p2-1">リポジトリ</a> <span class="sep">·</span> <a href="#p2-2">ワーキングツリー</a> <span class="sep">·</span> <a href="#p2-3">ステージング</a> <span class="sep">·</span> <a href="#p2-4">コミット</a> <span class="sep">·</span> <a href="#p2-5">ブランチ</a> <span class="sep">·</span> <a href="#p2-6">開発の大まかな流れ</a></div></div></li>
         <li class="toc-item"><span class="toc-badge violet">3</span><div><div class="toc-title"><a href="#p3">実践しながら学ぶ</a><span class="toc-kind">実践編</span></div><div class="toc-children"><a href="#p3-1">config</a> <span class="sep">·</span> <a href="#p3-2">リポジトリを用意する</a> <span class="sep">·</span> <a href="#p3-3">サイクル1 1コミットを最後まで通す</a> <span class="sep">·</span> <a href="#p3-4">サイクル2 確認と取り消し</a> <span class="sep">·</span> <a href="#p3-5">サイクル3 管理から外す</a> <span class="sep">·</span> <a href="#p3-6">サイクル4 コンフリクト</a></div></div></li>
-        <li class="toc-item"><span class="toc-badge violet">4</span><div><div class="toc-title"><a href="#p4">発展</a><span class="toc-kind">発展編</span></div><div class="toc-children"><a href="#p4-1">HEAD</a> <span class="sep">·</span> <a href="#p4-2">commit --amend</a> <span class="sep">·</span> <a href="#p4-3">revert</a> <span class="sep">·</span> <a href="#p4-4">reset</a> <span class="sep">·</span> <a href="#p4-5">stash</a> <span class="sep">·</span> <a href="#p4-6">タグ</a> <span class="sep">·</span> <a href="#p4-7">clone --shared</a> <span class="sep">·</span> <a href="#p4-8">worktree</a> <span class="sep">·</span> <a href="#p4-9">エイリアス</a></div></div></li>
-        <li class="toc-item"><span class="toc-badge muted">A</span><div><div class="toc-title"><a href="#appendix">付録</a><span class="toc-kind">付録</span></div><div class="toc-children"><a href="#cheatsheet">コマンド早見表</a> <span class="sep">·</span> <a href="#glossary">用語集</a></div></div></li>
+        <li class="toc-item"><span class="toc-badge violet">4</span><div><div class="toc-title"><a href="#p4">発展</a><span class="toc-kind">発展編</span></div><div class="toc-children"><a href="#p4-1">タグ</a> <span class="sep">·</span> <a href="#p4-2">worktree</a> <span class="sep">·</span> <a href="#p4-3">エイリアス</a></div></div></li>
       </ol>
     </nav>
 
@@ -506,7 +496,7 @@
       </figure>
 
       <h3 id="p2-4">コミット</h3>
-      <p><strong>コミット</strong>とは、ステージングに追加した変更を、履歴として1つの区切りで記録する操作、またその記録単位のことです。変更したファイルだけでなく、変更していないファイルも含めた、その瞬間の<strong>ソースコード全体が、スナップショットとして丸ごと保存</strong>されます。コミットには自動で ID(ハッシュ値)が付き、時系列につながって<strong>履歴</strong>になります。コミットには、コミットした人の名前・メールアドレス・コミット日時・<strong>コミットメッセージ</strong>も記録されます。「何のためにこの変更を加えたか」を後から読んでも分かるように、簡潔な説明をコミットメッセージとして付けます。</p>
+      <p><strong>コミット</strong>とは、ステージングに追加した変更を、履歴として1つの区切りで記録する操作、またその記録単位のことです。変更したファイルだけでなく、変更していないファイルも含めた、その瞬間の<strong>ソースコード全体が、スナップショットとして丸ごと保存</strong>されます。<br>コミットには自動で ID(ハッシュ値)が付き、時系列につながって<strong>履歴</strong>になります。コミットには、コミットした人の名前・メールアドレス・コミット日時・<strong>コミットメッセージ</strong>も記録されます。「何のためにこの変更を加えたか」を後から読んでも分かるように、簡潔な説明をコミットメッセージとして付けます。</p>
       <figure>
         <svg viewBox="0 0 620 130" role="img" aria-label="コミットが連なって履歴になる図">
           <line x1="60" y1="65" x2="560" y2="65" stroke="#C3CDD5" stroke-width="2"/>
@@ -536,7 +526,7 @@
       </div>
 
       <h4>なぜステージングを使うのか</h4>
-      <p>ワーキングツリーで変更したファイルの中から「コミットに含めるもの」だけを選んで記録できるからです。5ファイルのうち2つだけを先にコミットする、といったことも可能で、<strong>変更ごとの関連する複数ファイルを意味のある単位でコミットを分けられます</strong>。例えば、機能追加と不具合修正の変更が混ざっているとします。このとき、機能追加のファイルだけを先にステージングして1つ目のコミットにし、不具合修正のファイルは別にステージングして2つ目のコミットに分けられます。</p>
+      <p>ワーキングツリーで変更したファイルの中から「コミットに含めるもの」だけを選んで記録できるからです。<br>5ファイルのうち2つだけを先にコミットする、といったことも可能で、<strong>変更ごとの関連する複数ファイルを意味のある単位でコミットを分けられます</strong>。<br>例えば、機能追加と不具合修正の変更が混ざっているとします。このとき、機能追加のファイルだけを先にステージングして1つ目のコミットにし、不具合修正のファイルは別にステージングして2つ目のコミットに分けられます。<br>ステージングは、コミットで確定する前に記録する内容を組み立てておく「控え室」のような場所です。</p>
       <figure>
         <svg viewBox="0 0 620 300" role="img" aria-label="5ファイルの変更のうち2つだけを先にステージングしてコミットし、残り3つを別のコミットに分ける図">
           <!-- ワーキングツリー -->
@@ -586,10 +576,8 @@
         </svg>
         <figcaption>5ファイルを変更していても、機能追加に関わる2ファイルだけをステージングに追加してコミットし、残りの3ファイルは次のコミットに回せる。</figcaption>
       </figure>
-      <p>ステージングは、コミットで確定する前に記録する内容を組み立てておく「控え室」のような場所です。</p>
-
       <h3 id="p2-5">ブランチ</h3>
-      <p><strong>ブランチ</strong>とは、履歴を枝分かれさせて、他に影響を与えずに独立して作業するための仕組みです。リポジトリは、通常 <code>main</code> という履歴の本流となるメインブランチが最初に作成されます。枝分かれさせると、元のブランチの履歴に影響を与えずに独立した作業空間が生まれます。また、枝分かれさせることを「ブランチを切る」「ブランチを生やす」と言うことが多いです。</p>
+      <p><strong>ブランチ</strong>とは、履歴を枝分かれさせて、他に影響を与えずに独立して作業するための仕組みです。<br>リポジトリは、通常 <code>main</code> という履歴の本流となるメインブランチが最初に作成されます。枝分かれさせると、元のブランチの履歴に影響を与えずに独立した作業空間が生まれます。また、枝分かれさせることを「ブランチを切る」「ブランチを生やす」と言うことが多いです。</p>
       <p>ブランチはいくつでも作成可能で、いくつ作成しても元のブランチには影響しません。作成したブランチからさらにブランチを生やすことも可能です。チーム内で各自が別々のブランチを持つことで、並行して複数の作業を進められます。別々のブランチで行った変更を1つに統合する操作を<strong>マージ</strong>と呼びます。</p>
       <figure>
         <svg viewBox="0 0 620 180" role="img" aria-label="mainから枝分かれし、mainへ合流するブランチの図">
@@ -636,7 +624,7 @@
         <figcaption><code>git switch</code> でブランチを切り替えると、ワーキングツリー(手元のファイル)もそのブランチの状態に切り替わる。<br><code>feature/greeting</code> に切り替えると <code>greeting.js</code> が現れ、<code>main</code> に戻すと消える。</figcaption>
       </figure>
       <h4>ブランチの命名規則</h4>
-      <p>ブランチ名は、役割が一目で分かるよう、用途を表す<strong>プレフィックス</strong>を付けるのが一般的です。単語はハイフン区切りのケバブケースにし、チケット番号を含める運用も多いです(例: <code>feature/123-login-form</code>)。</p>
+      <p>ブランチ名は、役割が一目で分かるよう、用途を表す<strong>プレフィックス</strong>を付けるのが一般的です。単語はハイフン区切りのケバブケースにし、チケット番号を含める運用も多いです。<br>(例: <code>feature/123-login-form</code>)</p>
       <div class="tbl-wrap"><table>
         <thead><tr><th>プレフィックス</th><th>用途</th><th>例</th></tr></thead>
         <tbody>
@@ -647,7 +635,7 @@
         </tbody>
       </table></div>
       <h4>なぜブランチを使うのか</h4>
-      <p>メインの履歴を安定させたまま、機能追加やバグ修正を分離して進めるためです。もしメインブランチだけでチーム開発すると、<strong>未完成のコードがメインに混ざる・複数人の変更が作業の途中で予期せず衝突する・不具合の切り分けが難しくなる</strong>といった問題が起こり得ます。</p>
+      <p>メインの履歴を安定させたまま、機能追加やバグ修正を分離して進めるためです。<br>もしメインブランチだけでチーム開発すると、<strong>未完成のコードがメインに混ざる・複数人の変更が作業の途中で予期せず衝突する・不具合の切り分けが難しくなる</strong>といった問題が起こり得ます。</p>
       <figure>
         <svg viewBox="0 0 620 195" role="img" aria-label="mainだけで作業した場合に起きる問題の図">
           <!-- ① レビューを挟めない -->
@@ -921,18 +909,15 @@
           <li><strong>身につけた知識がどこでもそのまま通用する</strong> — GUI はツールごとにボタンの位置や名前がバラバラですが、コマンドはどこでも共通です。一度覚えれば、どのチーム・プロジェクトでも応用が効きます。</li>
         </ul>
       </div>
-      <div class="box tip">
-        <div class="box-t"><svg class="ico" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2Z"/><path d="M9 21h6"/></svg>練習用リポジトリを用意する</div>
-        <p><strong>練習用のリポジトリ</strong>を用意して進めるのがおすすめです。ミスしても影響がなく、思い切って試せます。以降の実践では、この <code>git-practice-repo</code> を使って進めます。用意の仕方は次の節で、新規作成・既存リポジトリの利用の両方を説明します。</p>
-      </div>
 
-      <p>この節では、次のようなファイル構成の練習用リポジトリを想定して進めます。最初から全部を作る必要はありません。コマンドを進めるなかで、少しずつ追加・編集していきます。<code>README.md</code> や <code>memo.txt</code> といった名前は説明のための例です。中身は何でも構いません。</p>
-      <pre><span class="term-head"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="label">ディレクトリ構造</span></span><code><span class="hl">git-practice-repo/</span>             <span class="cmt"># 練習用リポジトリ</span>
-├── README.md                <span class="cmt"># 最初からある説明ファイル。編集して変更を体験する</span>
-├── memo.txt                 <span class="cmt"># 新しく作る追跡対象のファイル(add / commit で使う)</span>
-├── secret.txt               <span class="cmt"># 秘密情報のつもりのファイル。.gitignore で無視する</span>
-├── .env                     <span class="cmt"># 誤って追跡してしまう想定のファイル。git rm --cached で外す</span>
-└── .gitignore               <span class="cmt"># 無視したいパターンを書くファイル</span></code></pre>
+      <p>実践編では、最終的に次のようなファイル構成の練習用リポジトリが完成することを想定して進めます。コマンドを進めるなかで、少しずつ追加・編集していきます。</p>
+      <pre><span class="term-head"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="label">ディレクトリ構造</span></span><code><span class="hl">git-practice-repo/</span>             
+├── README.md                
+├── memo.txt                 
+├── secret.txt               
+├── .env                     
+└── .gitignore               
+</code></pre>
 
       <h3 id="p3-1">config — 名前とメールを設定する</h3>
       <p>Git はコミットに「誰が変更したか」を記録します。そのため、最初の一度だけ、コミットに使う<strong>名前とメールアドレス</strong>を登録しておきます。未設定だと、コミットのときに警告やエラーが出ます。</p>
@@ -948,11 +933,11 @@
       </div>
 
       <h3 id="p3-2">リポジトリを用意する</h3>
-      <p>Git を使い始める出発点は2通りあります。<strong>自分でゼロから新しく作る</strong>場合と、<strong>既存のリポジトリを使用する</strong>場合です。自分の状況に合うほうを選んでください。以降の実践では、どちらの方法でも用意できる <code>git-practice-repo</code> を使って進めます。</p>
+      <p>ここでは、練習用のリポジトリを自分でゼロから作ります。以降の実践は、このリポジトリで進めます。</p>
 
       <h4>新規リポジトリを作成する</h4>
-      <p>自分でプロジェクトをゼロから始める場合です。<code>git init</code> で今のフォルダをリポジトリにし、<code>README.md</code> を作って最初のコミットをします。その後、ホスティングサービスで作った空のリモートへプッシュします。</p>
-      <p>ここで使っている <code>git add</code> や <code>git commit</code> などのコマンドは、このあとの各節でくわしく説明します。</p>
+      <p>ここでは自分でプロジェクトをゼロから始める場合の手順を説明します。<code>git init</code> で今のフォルダをリポジトリにし、<code>README.md</code> を作って最初のコミットをします。その後、ホスティングサービスで作った空のリモートへプッシュします。</p>
+      <p>ここで使っている <code>git add</code> や <code>git commit</code> などのコマンドは、このあとの各節でくわしく説明しますので、いまは以下のコマンドを順次実行してください。</p>
       <pre><button class="copy-btn">コピー</button><span class="term-head"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="label">新規作成</span></span><code><span class="pr">$</span> cd ~/dev                        <span class="cmt"># 作業を置きたいフォルダへ移動</span>
 <span class="pr">$</span> mkdir git-practice-repo <span class="hl">&amp;&amp;</span> cd git-practice-repo   <span class="cmt"># フォルダを作って移動</span>
 <span class="pr">$</span> git init                        <span class="cmt"># このフォルダを Git リポジトリにする</span>
@@ -965,8 +950,8 @@
 <span class="pr">$</span> git branch -M main              <span class="cmt"># 既定ブランチ名を main にそろえる</span>
 <span class="pr">$</span> git push -u origin main         <span class="cmt"># 初回 push(-u でひも付け)</span></code></pre>
 
-      <h4>既存リポジトリを使用する</h4>
-      <p><strong>クローン</strong>は、リモートリポジトリを<strong>履歴ごとまるごとローカル(手元の PC)に複製する</strong>操作です。すでにあるリポジトリに参加するときは、そのリモートをクローンして自分の PC に持ってきます。</p>
+      <h4>クローン — 既存のリポジトリを複製する</h4>
+      <p>実務では、すでにあるリポジトリに途中から参加することのほうが多くなります。そのときに使うのが<strong>クローン</strong>です。クローンは、リモートリポジトリを<strong>履歴ごとまるごとローカルに複製する</strong>操作です。<code>git clone &lt;リモートのURL&gt;</code> を実行すると、リポジトリと同じ名前のフォルダができ、その中に履歴ごと複製されます。本書は新規作成したリポジトリで進めるので、ここでは実行しません。仕組みだけ押さえてください。</p>
       <figure>
         <svg viewBox="0 0 620 96" role="img" aria-label="git clone でリモートを手元に複製する図">
           <rect x="45" y="20" width="180" height="54" rx="10" fill="#EDE7F8" stroke="#7C5CBF"/>
@@ -980,31 +965,21 @@
         </svg>
         <figcaption>クローンすると、履歴ごとローカルリポジトリが複製される。</figcaption>
       </figure>
-      <pre><button class="copy-btn">コピー</button><span class="term-head"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="label">clone</span></span><code><span class="pr">$</span> cd ~/dev                       <span class="cmt"># 作業を置きたいフォルダへ移動</span>
-<span class="pr">$</span> git clone <span class="st">&lt;練習用リポジトリのURL&gt;</span>
-<span class="out">Cloning into 'git-practice-repo'...</span>
-<span class="out">remote: Enumerating objects: 29, done.</span>
-<span class="out">remote: Counting objects: 100% (8/8), done.</span>
-<span class="out">remote: Compressing objects: 100% (8/8), done.</span>
-<span class="out">remote: Total 29 (delta 1), reused 1 (delta 0), pack-reused 21 (from 1)</span>
-<span class="out">Receiving objects: 100% (29/29), 6.96 KiB | 1.74 MiB/s, done.</span>
-<span class="out">Resolving deltas: 100% (2/2), done.</span>
-<span class="pr">$</span> cd git-practice-repo           <span class="cmt"># できたフォルダに入る</span></code></pre>
       <h4>origin(オリジン)とは</h4>
-      <p><strong>origin(オリジン)</strong>とは、クローン元のリモートリポジトリの <strong>URL に対して自動で付けられるエイリアス(別名)</strong>です。毎回長い URL を打つ代わりに、<code>origin</code> と短く書けます。このあとの <code>push</code> / <code>fetch</code> / <code>pull</code> でも、送り先・取得元としてこの <code>origin</code> を使います。<code>origin</code> がどの URL を指しているかは <code>git remote -v</code> で確認できます。なお、このように<strong>リモートリポジトリの URL に名前を付けた参照</strong>のことを、Git では<strong>リモート</strong>と呼びます。<code>origin</code> は、その既定のリモート名です。</p>
+      <p>リモートリポジトリとローカルリポジトリでやり取りする中で、<strong>origin(オリジン)</strong>というワードが、何度も出てきます。これは、リモートリポジトリの <strong>URL に付けるエイリアス(別名)</strong>です。さきほど <code>git remote add origin</code> で登録した名前が、この <code>origin</code> です。クローンした場合は自動で付きます。毎回長い URL を打つ代わりに、<code>origin</code> と短く書けます。<br><br>このあとの <code>push</code> / <code>fetch</code> / <code>pull</code> でも、送り先・取得元としてこの <code>origin</code> を使います。<code>origin</code> がどの URL を指しているかは <code>git remote -v</code> で確認できます。<br>なお、このように<strong>リモートリポジトリの URL に名前を付けた参照</strong>のことを、Git では<strong>リモート</strong>と呼びます。<code>origin</code> は、その既定のリモート名です。</p>
       <pre><button class="copy-btn">コピー</button><span class="term-head"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="label">remote</span></span><code><span class="pr">$</span> git remote -v                  <span class="cmt"># 登録済みリモートのエイリアスとURLを確認</span>
 <span class="out">origin  git@github.com:you/git-practice-repo.git (fetch)</span>
 <span class="out">origin  git@github.com:you/git-practice-repo.git (push)</span></code></pre>
       <div class="box tip">
         <div class="box-t"><svg class="ico" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2Z"/><path d="M9 21h6"/></svg><code>origin</code> は既定の名前で、変更できる</div>
-        <p><code>origin</code> はクローン時に<strong>自動で付けられる既定のエイリアス名</strong>で、予約語ではありません。好きな名前に変えられます。クローン時に <code>git clone -o &lt;名前&gt; &lt;URL&gt;</code> で別名を指定したり、あとから <code>git remote rename origin &lt;名前&gt;</code> で改名したりできます。また、リモートは複数登録できます。</p>
+        <p><code>origin</code> は<strong>既定のエイリアス名</strong>で、予約語ではありません。好きな名前に変えられます。クローン時に <code>git clone -o &lt;名前&gt; &lt;URL&gt;</code> で別名を指定したり、あとから <code>git remote rename origin &lt;名前&gt;</code> で改名したりできます。また、リモートは複数登録できます。</p>
       </div>
 
       <h3 id="p3-3">サイクル1 — 1コミットを最後まで通す</h3>
-      <p>ここからは、開発の1サイクルを最後まで通します。<strong>ブランチを切る → 変更する → 記録する → 共有する → main に取り込む → 片付ける</strong>。この一周を4回くり返しながら、使うコマンドを1つずつ増やしていきます。1周目の題材は <code>README.md</code> の見出しを書き換えるだけの、ごく小さな変更です。</p>
+      <p>準備が整ったので、ここからは開発の1サイクルを最後まで通します。<strong>ブランチを切る → 変更する → 記録する → 共有する → main に取り込む → 片付ける</strong>。この一周を4回くり返しながら、使うコマンドを1つずつ増やしていきます。1周目の題材は <code>README.md</code> の見出しを書き換えるだけの、ごく小さな変更です。</p>
 
       <h4 id="p3-3-branch">branch — 今あるブランチを確認する</h4>
-      <p>準備が整ったので、まずブランチを確認します。<code>git branch</code> で、今どこにいて、どんなブランチがあるかがわかります。<code>*</code> が付いているのが現在のブランチです。</p>
+      <p>まずブランチを確認します。<code>git branch</code> で、今どこにいて、どんなブランチがあるかがわかります。<code>*</code> が付いているのが現在のブランチです。</p>
       <pre><button class="copy-btn">コピー</button><span class="term-head"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="label">branch</span></span><code><span class="pr">$</span> git branch                     <span class="cmt"># ローカルの一覧(* が今いるブランチ)</span>
 <span class="out">* main</span></code></pre>
 
@@ -1018,7 +993,7 @@
       <pre><button class="copy-btn">コピー</button><span class="term-head"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="label">branch -a</span></span><code><span class="pr">$</span> git branch -a                  <span class="cmt"># リモート追跡ブランチも含めて一覧</span>
 <span class="out">* main</span>
 <span class="out">  remotes/origin/main</span>
-<span class="cmt"># (clone で用意した場合は remotes/origin/HEAD -&gt; origin/main の行も加わる)</span></code></pre>
+</code></pre>
       <figure>
         <svg viewBox="0 0 620 228" role="img" aria-label="ローカルブランチ・リモート追跡ブランチ・リモートブランチの図">
           <rect x="15" y="38" width="300" height="150" rx="10" fill="#F4F7F9" stroke="#DAE1E7"/>
@@ -1055,9 +1030,9 @@
 <span class="pr">$</span> git switch feature/readme      <span class="cmt"># 作業ブランチに戻る</span>
 <span class="out">Switched to branch 'feature/readme'</span></code></pre>
 
-      <h5>HEAD — 今いるブランチを指す目印</h5>
-      <p>ところで、Git は「今どのブランチで作業しているか」を、どうやって知っているのでしょうか。その役割を担うのが <strong>HEAD(ヘッド)</strong> です。HEAD は<strong>「今いる場所(現在のブランチ)」を指す特別なポインタ</strong>で、Git は常にこの HEAD を見て、どのブランチで作業中かを判断します。</p>
-      <p><code>git branch</code> で <code>*</code> が付いているブランチが、いま HEAD の指す先です。<code>git status</code> の先頭に出る <code>On branch feature/readme</code> の表示も同じものを表します。<code>git switch</code> でブランチを切り替えるとは、この <strong>HEAD の指し先を別のブランチへ動かす</strong>ということです。HEAD が移ると、それに合わせてワーキングツリーの中身もそのブランチの状態に切り替わります。</p>
+      <h4>HEAD — 今いるブランチを指す目印</h5>
+      <p>ところで、Git は「今どのブランチで作業しているか」を、どうやって知っているのでしょうか。その役割を担うのが <strong>HEAD(ヘッド)</strong> です。<br>HEAD は<strong>「今いる場所(現在のブランチ)」を指す特別なポインタ</strong>で、Git は常にこの HEAD を見て、どのブランチで作業中かを判断します。</p>
+      <p><code>git branch</code> で <code>*</code> が付いているブランチが、いま HEAD の指す先です。<code>git switch</code> でブランチを切り替えるとは、この <strong>HEAD の指し先を別のブランチへ動かす</strong>ということです。<br>HEAD が移ると、それに合わせてワーキングツリーの中身もそのブランチの状態に切り替わります。</p>
       <figure>
         <svg viewBox="0 0 620 165" role="img" aria-label="git switch で HEAD が移動する図">
           <rect x="60" y="72" width="155" height="50" rx="10" fill="#EDE7F8" stroke="#7C5CBF"/>
@@ -1090,7 +1065,7 @@
       </figure>
 
       <h4 id="p3-3-status">status — 変更の状態を確認する</h4>
-      <p>作業ブランチで、実際にファイルを変更します。<code>git status</code> は「今どのファイルがどの状態か」「次に何をすればいいか」を教えてくれる、<strong>頻繁に打つコマンド</strong>です。<code>README.md</code> の見出しを書き換えてから実行してみます。</p>
+      <p>作業ブランチで、実際にファイルを変更します。<code>git status</code> は「今どのファイルがどの状態か」「次に何をすればいいか」を教えてくれる、コマンドです。<br><code>README.md</code> の見出しを書き換えてから実行してみます。</p>
       <pre><button class="copy-btn">コピー</button><span class="term-head"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="label">status</span></span><code><span class="pr">$</span> echo <span class="st">"# Git 練習リポジトリ"</span> &gt; README.md   <span class="cmt"># 見出しを書き換える</span>
 <span class="pr">$</span> git status
 <span class="out">On branch feature/readme</span>                <span class="cmt"># 今いるブランチ</span>
@@ -1100,6 +1075,8 @@
 <span class="out">        modified:   README.md</span>
 
 <span class="out">no changes added to commit (use "git add" and/or "git commit -a")</span></code></pre>
+
+      <p><code>modified</code>という表示が出ました。これはファイルの変更状態を示しており、<code>README.md</code> が追跡中のファイルで、前回のコミットから内容が変更されたものの、まだステージングに追加していない状態であることを意味しています。</p>
 
       <h5>ファイルの4つの状態</h5>
       <div class="tbl-wrap"><table>
@@ -1134,7 +1111,7 @@
       </figure>
 
       <h5>短縮表示 <code>git status -s</code></h5>
-      <p>毎回の長い出力が煩わしいときは、<code>-s</code>(short)で1行ずつ簡潔に表示できます。左の2文字が状態を表し、左列がステージング、右列がワーキングツリーの状態です。</p>
+      <p>毎回の長い出力が煩わしいときは、<code>-s</code>(short)で1行ずつ簡潔に表示できます。</p>
       <pre><button class="copy-btn">コピー</button><span class="term-head"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="label">status -s</span></span><code><span class="pr">$</span> git status -s
 <span class="hl"> M</span> README.md      <span class="cmt"># 右列Mなので未ステージング</span></code></pre>
       <p>短縮表示に使われる主な記号は次のとおりです。</p>
@@ -1148,15 +1125,9 @@
           <tr><td><code>MM</code></td><td>一部ステージング済みで、さらに変更</td></tr>
         </tbody>
       </table></div>
-      <div class="box tip">
-        <div class="box-t"><svg class="ico" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2Z"/><path d="M9 21h6"/></svg>出力はヒント</div>
-        <p><code>git status</code> の <code>(use "git add ..." ...)</code> のような行は、<strong>次に打つべきコマンドの案内</strong>です。迷ったら、まず <code>git status</code> を打って、書いてあるヒントに従えばたいてい先に進めます。</p>
-      </div>
-
       <h4 id="p3-3-add">add — 変更をステージングに追加する</h4>
       <p>変更を記録していきます。まずは <code>git add</code> で、記録したい変更を<strong>ステージング(インデックス)</strong>に追加します。ファイルを個別に指定するほか、ディレクトリ指定や、スペース区切りで複数をまとめて追加できます。</p>
       <pre><button class="copy-btn">コピー</button><span class="term-head"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="label">add</span></span><code><span class="pr">$</span> git add README.md           <span class="cmt"># このファイルの変更をステージングへ追加</span>
-<span class="pr">$</span> git add .                   <span class="cmt"># カレント以下の変更をまとめてステージングへ追加</span>
 <span class="pr">$</span> git status -s
 <span class="hl">M</span>  README.md                  <span class="cmt"># 左列 M＝staged(ステージング済み)</span></code></pre>
 
@@ -1178,12 +1149,18 @@
           <text x="80" y="94" class="svg-s" fill="#5B6B78">未入力のまま送信できてしまう不具合があったため。</text>
           <text x="80" y="112" class="svg-s" fill="#8A5A06" font-size="10">← 本文(なぜ変更したか・任意)</text>
         </svg>
-        <figcaption>件名は簡潔に、必要なら空行のあとに本文で理由を書く。チームによっては <code>feat:</code> / <code>fix:</code> / <code>docs:</code> のような接頭辞を付ける Conventional Commits の書き方も使われる。</figcaption>
+        <figcaption>件名は簡潔に、必要なら空行のあとに本文で理由を書く。チームによっては <code>feat:</code> / <code>fix:</code> / <code>docs:</code> のような接頭辞を付ける書き方も使われる。</figcaption>
       </figure>
 
       <h4 id="p3-3-push">push — 変更をリモートに反映する</h4>
-      <p>ここまではローカルでの作業でした。コミットをチームと共有するには、<code>git push</code> でリモートに反映します。その作業ブランチを初めてプッシュするときは upstream を示す<code>-u</code> を付けます。</p>
-      <p><strong>upstream(上流ブランチ)</strong>とは、<strong>ローカルのブランチに対して、既定の送り先・取得元として設定されたリモート追跡ブランチ(例: <code>origin/feature/readme</code>)</strong>のことです。<code>-u</code> で一度この送り先を設定しておくと、次回からは送り先を省略して <code>git push</code> / <code>git pull</code> だけで通じるようになります。</p>
+      <p>ここまではローカルでの作業でした。コミットをチームと共有するには、<code>git push</code> でリモートに反映します。<br>その作業ブランチを<strong>初めてプッシュするとき</strong>は upstream を示す<code>-u</code> を付けます。</p>
+      <p><strong>upstream(アップストリーム)</strong>とは、ローカルのブランチとリモートのブランチを<strong>リモート追跡ブランチ(例: <code>origin/feature/readme</code>)</strong>を介して紐付ける設定のことです。<br><code>-u</code> で一度この設定しておくと、次回からは送り先を省略して <code>git push</code> / <code>git pull</code> だけで通じるようになります。</p>
+      <p><code>git push -u origin feature/readme</code>では次のことを同時に行なってます。</p>
+      <ul>
+        <li>リモートリポジトリに <code>feature/readme</code> ブランチを新しく作成する</li>
+        <li>ローカルに <code>feature/readme</code> のリモート追跡ブランチ<code>origin/feature/readme</code>を新しく作成する</li>
+        <li>ローカルとリモートの <code>feature/readme</code> を、リモート追跡ブランチ <code>origin/feature/readme</code> を 介して紐づける</li>
+      </ul>
       <pre><button class="copy-btn">コピー</button><span class="term-head"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="label">push</span></span><code><span class="pr">$</span> git push -u origin feature/readme   <span class="cmt"># 初回。-u で紐づけ(upstream)も設定</span>
 <span class="out">remote:</span>
 <span class="out">remote: Create a pull request for 'feature/readme' on GitHub by visiting:</span>
@@ -1216,14 +1193,14 @@
           <text x="160" y="117" text-anchor="middle" class="svg-s" font-size="8.5" fill="#8A5A06">まだリモートに無い</text>
           <!-- push(-u) でリモート追跡が新規作成される -->
           <path d="M160 130 V162" stroke="#8A9AA6" stroke-width="1.4" stroke-dasharray="3 3" marker-end="url(#pp2)"/>
-          <text x="212" y="150" text-anchor="start" class="svg-s" font-size="8" fill="#5B6B78">-u で新しく作られる</text>
+          <text x="212" y="150" text-anchor="start" class="svg-s" font-size="8" fill="#5B6B78"></text>
           <!-- origin/feature/readme(リモート追跡ブランチ) -->
           <text x="151" y="180" text-anchor="middle" class="svg-s" font-size="9" fill="#5B6B78">origin/feature/readme(リモート追跡)</text>
           <line x1="48" y1="196" x2="214" y2="196" stroke="#D5DBE0" stroke-width="2" stroke-dasharray="4 3"/>
           <circle cx="70" cy="196" r="7" fill="#EEF2F5" stroke="#8A9AA6" stroke-width="1.6" stroke-dasharray="3 2"/>
           <circle cx="110" cy="196" r="7" fill="#EEF2F5" stroke="#8A9AA6" stroke-width="1.6" stroke-dasharray="3 2"/>
           <circle cx="160" cy="196" r="8" fill="#EEF2F5" stroke="#8A9AA6" stroke-width="1.6" stroke-dasharray="3 2"/>
-          <text x="151" y="216" text-anchor="middle" class="svg-s" font-size="8.5" fill="#5B6B78">= feature/readme の upstream(送り先)</text>
+          <text x="151" y="216" text-anchor="middle" class="svg-s" font-size="8.5" fill="#5B6B78"></text>
           <!-- リモート -->
           <rect x="336" y="36" width="266" height="192" rx="10" fill="#FDF6E7" stroke="#EFDCB8"/>
           <text x="469" y="56" text-anchor="middle" class="svg-ms" fill="#8A5A06" font-weight="600">リモートリポジトリ</text>
@@ -1233,7 +1210,7 @@
           <circle cx="432" cy="98" r="8" fill="#C9820A"/>
           <circle cx="500" cy="98" r="9" fill="#C9820A" stroke="#C9820A" stroke-width="2"/>
           <text x="469" y="117" text-anchor="middle" class="svg-s" font-size="8.5" fill="#8A5A06">push で同名ブランチが作られる</text>
-          <text x="469" y="150" text-anchor="middle" class="svg-s" font-size="8" fill="#B99A55">(push 前はこのブランチが無い)</text>
+          <text x="469" y="150" text-anchor="middle" class="svg-s" font-size="8" fill="#B99A55"></text>
           <!-- push 矢印 -->
           <path d="M290 96 H332" stroke="#7C5CBF" stroke-width="1.8" marker-end="url(#pp1)"/>
           <text x="311" y="86" text-anchor="middle" class="svg-ms" fill="#7C5CBF" font-size="10">git push -u</text>
@@ -1242,18 +1219,18 @@
             <marker id="pp2" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0 0 L6 3 L0 6" fill="none" stroke="#8A9AA6" stroke-width="1.4"/></marker>
           </defs>
         </svg>
-        <figcaption>作業ブランチ <code>feature/readme</code> を初めてプッシュすると、リモートに同名のブランチが<strong>新しく作成される</strong>。同時に、送り先の目印となる<strong>リモート追跡ブランチ <code>origin/feature/readme</code></strong> も作られ、<code>-u</code> によって <code>feature/readme</code> の <strong>upstream(既定の送り先)</strong>として設定される。</figcaption>
+        <figcaption>作業ブランチ <code>feature/readme</code> を初めてプッシュすると、リモートに同名のブランチが<strong>新しく作成される</strong>。同時に、プッシュ先の目印となる<strong>リモート追跡ブランチ <code>origin/feature/readme</code></strong> も作られ、<code>-u</code> によって <code>feature/readme</code> の ローカルとリモートの紐付けが設定される。</figcaption>
       </figure>
 
       <h4 id="p3-3-pr">PR作成 — 変更の取り込みを提案する</h4>
-      <p><strong>プルリクエスト(PR)</strong>は、「自分の feature ブランチの変更を、<strong>base ブランチ(ふつう main)に取り込んでよいか</strong>」という提案・依頼です。ここからはホスティングサービスの画面での操作になります。以下は GitHub の画面ですが、考え方はどのサービスでも同じです。</p>
+      <p><strong>プルリクエスト(PR)</strong>は、「自分の feature ブランチの変更を、<strong>base ブランチ(マージ先のブランチ)に取り込んでよいか</strong>」という提案・依頼です。ここからはホスティングサービスの画面での操作になります。以下は GitHub の画面ですが、考え方はどのサービスでも同じです。</p>
       <figure>
         <img src="pr-banner.png" alt="プッシュした直後のリポジトリ画面。feature/readme had recent pushes と表示され、右に Compare &amp; pull request ボタンがある">
         <figcaption>プッシュすると、リポジトリの画面に <code>Compare &amp; pull request</code> ボタンが出る。ここが PR 作成の入口。</figcaption>
       </figure>
       <figure>
         <img src="pr-compare.png" alt="Comparing changes の画面。base: main と compare: feature/readme が並び、Able to merge と表示されている">
-        <figcaption><strong>base</strong> が取り込み先(<code>main</code>)、<strong>compare</strong> が取り込み元(<code>feature/readme</code>)。<code>Able to merge.</code> はコンフリクト(競合)なく取り込めるという意味。</figcaption>
+        <figcaption><strong>base</strong> がマージ先(<code>main</code>)、<strong>compare</strong> が取り込み元(<code>feature/readme</code>)。<code>Able to merge.</code> はコンフリクト(競合)なく取り込めるという意味。</figcaption>
       </figure>
       <figure>
         <img src="pr-form.png" alt="PR作成フォーム。タイトル欄にコミットメッセージが入り、説明欄と Create pull request ボタンがある">
@@ -1267,141 +1244,20 @@
       </ul>
 
       <h4 id="p3-3-merge">マージ — main に取り込む</h4>
-      <p>PR が承認されたら、ホスティングサービスの画面で<strong>マージ</strong>し、feature の変更を main に取り込みます。画面には選択肢が3つ並びます。どれを選ぶかを判断するには、Git のマージそのものを先に知っておく必要があります。ここでは<strong>マージコミットとは何か</strong>と、<strong>Git の合流のしかたは何種類あるか</strong>を確認してから、画面の3つの選択肢に戻ります。</p>
-
-      <h5>マージコミットとは</h5>
-      <p>通常のコミットは、直前のコミット1つを<strong>親</strong>として持ちます(最初のコミットだけは親を持ちません)。<code>git commit</code> を実行するたびに、親が1つのコミットが1個ずつ増えます。</p>
-      <p>これに対して<strong>マージコミット</strong>は、<strong>2つのブランチの合流点として作られる、親を2つ持つコミット</strong>です。片方の親が取り込み先(main)の先端で、もう片方が取り込み元(feature)の先端です。マージコミットが1つあれば、どのブランチとどのブランチがどの時点で合流したかを追えます。</p>
-      <div class="tbl-wrap"><table>
-        <thead><tr><th>コミットの種類</th><th>親の数</th><th>作られるとき</th></tr></thead>
-        <tbody>
-          <tr><td>通常のコミット</td><td>1つ</td><td><code>git commit</code> を実行したとき</td></tr>
-          <tr><td>マージコミット</td><td>2つ</td><td>マージで2つのブランチが合流したとき</td></tr>
-        </tbody>
-      </table></div>
-
-      <h5>Git の2つの合流のしかた</h5>
-      <p>手元で <code>git merge</code> を実行すると、Git は <strong>Fast-forward</strong> か <strong>3-way</strong> のどちらかで合流します。<strong>何も指定しなければ</strong>、<strong>分岐したあとに取り込み先のブランチが進んだかどうか</strong>を見て、Git が自動的に決めます。オプションで指定できますが、本書では扱いません。</p>
-      <div class="tbl-wrap"><table>
-        <thead><tr><th>分岐後の取り込み先(main)</th><th>合流のしかた</th><th>マージコミット</th></tr></thead>
-        <tbody>
-          <tr><td>進んでいない</td><td>Fast-forward</td><td>作られない</td></tr>
-          <tr><td>進んでいる</td><td>3-way</td><td>1つ作られる</td></tr>
-        </tbody>
-      </table></div>
-
-      <h5>Fast-forward — ラベルを前へ動かすだけ</h5>
-      <p>分岐したあと、main 側にコミットが1つも追加されていない場合の合流です。feature の先端は、main の先端から一直線につながっています。Git は <strong>main のラベルを feature の先端へ動かすだけ</strong>で合流を終えられます。新しいコミットは作られないので、マージコミットもできません。履歴は1本のまま残ります。</p>
+      <p>PR が承認されたら、ホスティングサービスの画面でマージします。画面の <code>Merge pull request</code> ボタンを押すと、feature ブランチの変更が main に取り込まれます。</p>
       <figure>
-        <svg viewBox="0 0 620 236" role="img" aria-label="Fast-forward マージで main のラベルが feature の先端へ動く図">
-          <line x1="50" y1="170" x2="240" y2="170" stroke="#C3CDD5" stroke-width="2"/>
-          <path d="M170 170 C215 170 220 70 265 70 H450" fill="none" stroke="#7C5CBF" stroke-width="2"/>
-          <circle cx="90" cy="170" r="12" fill="#0E7C86"/>
-          <circle cx="170" cy="170" r="12" fill="#0E7C86"/>
-          <circle cx="300" cy="70" r="11" fill="#7C5CBF"/>
-          <circle cx="375" cy="70" r="11" fill="#7C5CBF"/>
-          <circle cx="450" cy="70" r="11" fill="#7C5CBF"/>
-          <text x="375" y="44" text-anchor="middle" class="svg-ms" fill="#7C5CBF">feature で追加した3コミット</text>
-          <text x="170" y="146" text-anchor="middle" class="svg-s">分岐点</text>
-          <rect x="105" y="188" width="130" height="26" rx="6" fill="#EEF2F5" stroke="#8A9AA6"/>
-          <text x="170" y="205" text-anchor="middle" class="svg-ms" fill="#5B6B78">main(マージ前)</text>
-          <text x="170" y="230" text-anchor="middle" class="svg-s">分岐後に main は進んでいない</text>
-          <rect x="392" y="96" width="116" height="26" rx="6" fill="#E1F0F1" stroke="#0E7C86"/>
-          <text x="450" y="113" text-anchor="middle" class="svg-ms" fill="#0A585F">main(マージ後)</text>
-          <path d="M240 200 C350 214 450 208 466 130" fill="none" stroke="#0E7C86" stroke-width="1.8" stroke-dasharray="5 3" marker-end="url(#mgff1)"/>
-          <text x="290" y="132" text-anchor="middle" class="svg-s" fill="#0A585F">ラベルを前へ動かすだけ</text>
-          <text x="290" y="152" text-anchor="middle" class="svg-s">マージコミットは作られない</text>
-          <defs><marker id="mgff1" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0 0 L6 3 L0 6" fill="none" stroke="#0E7C86" stroke-width="1.5"/></marker></defs>
-        </svg>
-        <figcaption>main は分岐後に進んでいないので、<strong>main のラベルを feature の先端へ動かすだけ</strong>で合流が終わる。マージコミットは作られず、履歴は1本のまま。</figcaption>
+        <img src="pr-merge.png" alt="PR画面のマージボックス。No conflicts with base branch と表示され、Merge pull request ボタンがある">
+        <figcaption><code>No conflicts with base branch</code> と出ていれば、そのまま取り込める。<code>Merge pull request</code> を押すとマージが実行される。</figcaption>
       </figure>
-
-      <h5>3-way — 両方が進んだときの合流</h5>
-      <p>分岐したあと、main 側にもコミットが追加されている場合の合流です。ラベルを動かすだけでは、両方の変更を1つにできません。Git は<strong>分岐点・main の先端・feature の先端の3点</strong>を突き合わせて内容を統合し、<strong>両者を親に持つマージコミットを1つ</strong>作ります。この3点を使うことが 3-way という名前の由来です。</p>
-      <p>ここで押さえておくのは、<strong>feature の個々のコミットが main の履歴にそのまま残る</strong>ことです。マージコミットは合流点として増えるだけで、feature 側のコミットを置き換えるわけではありません。マージ後に main で <code>git log</code> を実行すると、feature で作ったコミットが1つずつ表示されます。</p>
-      <figure>
-        <svg viewBox="0 0 620 244" role="img" aria-label="3-way マージで feature の3コミットが main の履歴に残り、マージコミットが2つの親を持つ図">
-          <rect x="60" y="44" width="460" height="161" rx="12" fill="#F6F4FB" stroke="#C9BEE6" stroke-dasharray="5 4"/>
-          <text x="74" y="62" class="svg-ms" fill="#5b3fa0" font-weight="600">マージ後の main の履歴</text>
-          <line x1="78" y1="164" x2="190" y2="164" stroke="#C3CDD5" stroke-width="2"/>
-          <path d="M197 164 H446" fill="none" stroke="#0E7C86" stroke-width="2" marker-end="url(#mg3a)"/>
-          <path d="M105 164 C155 164 158 96 205 96 H390" fill="none" stroke="#7C5CBF" stroke-width="2"/>
-          <path d="M390 96 C445 96 458 104 462 143" fill="none" stroke="#7C5CBF" stroke-width="2" marker-end="url(#mg3b)"/>
-          <circle cx="105" cy="164" r="12" fill="#0E7C86"/>
-          <circle cx="185" cy="164" r="12" fill="#0E7C86"/>
-          <circle cx="250" cy="96" r="11" fill="#7C5CBF"/>
-          <circle cx="320" cy="96" r="11" fill="#7C5CBF"/>
-          <circle cx="390" cy="96" r="11" fill="#7C5CBF"/>
-          <circle cx="465" cy="164" r="13" fill="#C9820A"/>
-          <text x="320" y="74" text-anchor="middle" class="svg-ms" fill="#7C5CBF">feature の3コミット</text>
-          <text x="105" y="190" text-anchor="middle" class="svg-s">分岐点</text>
-          <text x="200" y="190" text-anchor="middle" class="svg-s" fill="#0A585F">main も進んだ</text>
-          <text x="330" y="152" text-anchor="middle" class="svg-s" fill="#0A585F">main から</text>
-          <text x="430" y="120" text-anchor="end" class="svg-s" fill="#5b3fa0">feature から</text>
-          <text x="465" y="190" text-anchor="middle" class="svg-s" fill="#8A5A06">マージコミット</text>
-          <text x="300" y="224" text-anchor="middle" class="svg-s">feature の3コミットは、マージ後も main の履歴に残る</text>
-          <defs>
-            <marker id="mg3a" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0 0 L6 3 L0 6" fill="none" stroke="#0E7C86" stroke-width="1.5"/></marker>
-            <marker id="mg3b" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0 0 L6 3 L0 6" fill="none" stroke="#7C5CBF" stroke-width="1.5"/></marker>
-          </defs>
-        </svg>
-        <figcaption>マージコミットは <strong>main 側と feature 側の両方から線を受ける</strong>(親が2つ)。破線の枠内がマージ後の main の履歴で、<strong>feature の3コミットもその中に含まれる</strong>。</figcaption>
-      </figure>
-      <p>3-way マージは、サイクル4で <code>feature/greeting-en</code> に main を取り込むときに実際に起きます。</p>
-
-      <h5>画面の3つの選択肢</h5>
-      <figure>
-        <img src="pr-merge.png" alt="マージボックス。Merge pull request ボタンと、Create a merge commit / Squash and merge / Rebase and merge の3つが並ぶドロップダウン">
-        <figcaption>マージボタンの右の <code>▼</code> を押すと、方式を選べる。本書では <code>Create a merge commit</code> を選ぶ。</figcaption>
-      </figure>
-      <p>画面の3つと、いま見た Fast-forward / 3-way は1対1では対応しません。<code>Create a merge commit</code> は、Fast-forward で済む状況でも<strong>必ずマージコミットを作ります</strong>。そのため、リモートの main は常にマージコミットで進みます。</p>
-      <div class="tbl-wrap"><table>
-        <thead><tr><th>画面の選択肢</th><th>リモートの main で起きること</th><th>手元で取り込んだときの表示</th></tr></thead>
-        <tbody>
-          <tr><td>Create a merge commit</td><td>親を2つ持つ<strong>マージコミット</strong>が1つ増える</td><td><code>Fast-forward</code>(手元の main は分岐後に進んでいないため)</td></tr>
-          <tr><td>Squash and merge</td><td>まとめられた通常のコミットが1つ増える</td><td><code>Fast-forward</code></td></tr>
-          <tr><td>Rebase and merge</td><td>feature のコミットが main の先端に付け替わる。本書では扱わない</td><td><code>Fast-forward</code></td></tr>
-        </tbody>
-      </table></div>
-      <p>3列目がどれも <code>Fast-forward</code> になるのは、<strong>手元の main が分岐後に進んでいない</strong>からです。進んだのはリモートの main だけで、手元の main は分岐点に置かれたままです。画面で <code>Create a merge commit</code> を選んでも、手元では main のラベルを動かすだけで追いつけます。この表示は、次の「fetch と merge」で実際に確認します。</p>
-
-      <h5>Squash — まとめてから載せる</h5>
-      <p><code>Squash and merge</code> は、Fast-forward や 3-way とは別の方式です。2つのブランチを合流させるのではなく、<strong>feature のコミットを1つにまとめ直してから</strong> main に載せます。main に増えるのは<strong>通常のコミット1つだけ</strong>で、マージコミットは作られません。</p>
-      <figure>
-        <svg viewBox="0 0 620 196" role="img" aria-label="Squash マージで feature の3コミットが1つの通常コミットにまとまって main に載る図">
-          <line x1="55" y1="150" x2="560" y2="150" stroke="#C3CDD5" stroke-width="2"/>
-          <path d="M105 150 C155 150 158 56 205 56 H320" fill="none" stroke="#7C5CBF" stroke-width="2"/>
-          <circle cx="205" cy="56" r="10" fill="#7C5CBF"/>
-          <circle cx="262" cy="56" r="10" fill="#7C5CBF"/>
-          <circle cx="320" cy="56" r="10" fill="#7C5CBF"/>
-          <text x="262" y="32" text-anchor="middle" class="svg-ms" fill="#7C5CBF">feature の3コミット</text>
-          <circle cx="105" cy="150" r="11" fill="#0E7C86"/>
-          <circle cx="470" cy="150" r="12" fill="#0E7C86" stroke="#C9820A" stroke-width="3"/>
-          <text x="105" y="176" text-anchor="middle" class="svg-s">分岐点</text>
-          <text x="470" y="178" text-anchor="middle" class="svg-s" fill="#8A5A06">まとめた通常のコミットが1つ</text>
-          <text x="566" y="154" class="svg-ms" fill="#0A585F" font-weight="600">main</text>
-          <path d="M330 60 C420 60 440 80 458 136" fill="none" stroke="#1F8F63" stroke-width="1.8" stroke-dasharray="5 3" marker-end="url(#mgsq1)"/>
-          <rect x="205" y="104" width="210" height="26" rx="6" fill="#EAF6F0" stroke="#1F8F63"/>
-          <text x="310" y="121" text-anchor="middle" class="svg-ms" fill="#166b48">Squash(3コミット → 1コミット)</text>
-          <defs><marker id="mgsq1" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0 0 L6 3 L0 6" fill="none" stroke="#1F8F63" stroke-width="1.5"/></marker></defs>
-        </svg>
-        <figcaption>feature の3コミットを<strong>1つのコミットにまとめて</strong> main に載せる。マージコミットは作られず、個々の3コミットは main には残らない。</figcaption>
-      </figure>
-      <p>細かい試行錯誤のコミットを main 側では1つに集約でき、履歴を簡潔に保てます。「1機能＝1コミット」で main をそろえたいチームで使われます。ただし、main に載るのは中身が同じ<strong>別のコミット</strong>です。</p>
-      <div class="box stumble">
-        <div class="box-t"><svg class="ico" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 9v4M12 17h.01"/><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg>ボタンの表示は前回選んだ方式で変わる</div>
-        <p>マージボタンには、そのリポジトリで<strong>最後に選んだ方式</strong>が表示されます。<code>Squash and merge</code> と出ていても、右の <code>▼</code> から <code>Create a merge commit</code> を選び直せます。押す前に、いま何が選ばれているかを確かめてください。</p>
-        <p>また <strong>Squash マージを選ぶと、あとで <code>git branch -d</code> が失敗します</strong>。main 側には別のコミットとして載るため、Git からは未マージに見えるからです。その場合は PR がマージ済みであることを確認したうえで <code>git branch -D</code> を使います。</p>
-      </div>
       <div class="box stumble">
         <div class="box-t"><svg class="ico" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 9v4M12 17h.01"/><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg>マージしても、ローカルには古いブランチが残る</div>
         <p>リモート(画面)でマージが完了しても、<strong>手元のローカルには、まだ古い状態の main と feature ブランチが残っています</strong>。ローカルの main を最新にするには、このあと <code>git switch main</code> → <code>git merge origin/main</code> が必要です(次の「fetch と merge」で扱います)。</p>
       </div>
 
       <h4 id="p3-3-fetch">fetch と merge — 手元を最新にする</h4>
-      <p>PR がマージされると、リモートの main が進みます。まず <code>git fetch</code> で<strong>リモートの最新情報だけ</strong>を取得します。<code>fetch</code> は作業ファイルには触れず、<code>origin/main</code>(リモート追跡ブランチ)だけを更新するので、安全に「リモートは今こうなっている」と確認できます。</p>
+      <p>PR がマージされると、リモートの main が進みます。まず <code>git fetch</code> で<strong>リモートの最新情報だけ</strong>を取得します。<code>fetch</code> はローカルブランチには触れず、<code>origin/main</code>(リモート追跡ブランチ)だけを更新します。</p>
       <figure>
-        <svg viewBox="0 0 620 185" role="img" aria-label="git fetch は origin/main だけ更新し作業ファイルは変えない図">
+        <svg viewBox="0 0 620 185" role="img" aria-label="git fetch は origin/main だけ更新し、ローカルブランチとワーキングツリーは変えない図">
           <rect x="45" y="46" width="165" height="60" rx="10" fill="#FBEFD6" stroke="#C9820A"/>
           <text x="127" y="72" text-anchor="middle" class="svg-ms" fill="#8A5A06">リモートリポジトリ</text>
           <text x="127" y="90" text-anchor="middle" class="svg-s" font-size="9" fill="#8A5A06">最新の状態</text>
@@ -1411,34 +1267,211 @@
           <path d="M212 76 H328" stroke="#0E7C86" stroke-width="1.8" marker-end="url(#pfe1)"/>
           <text x="270" y="66" text-anchor="middle" class="svg-ms" fill="#0E7C86" font-size="10">git fetch</text>
           <rect x="330" y="132" width="165" height="40" rx="10" fill="#F4F7F9" stroke="#8A9AA6" stroke-dasharray="4 3"/>
-          <text x="412" y="157" text-anchor="middle" class="svg-ms" fill="#8A9AA6">作業ファイル</text>
+          <text x="412" y="149" text-anchor="middle" class="svg-ms" fill="#8A9AA6">ローカルブランチと</text>
+          <text x="412" y="165" text-anchor="middle" class="svg-ms" fill="#8A9AA6">ワーキングツリー</text>
           <path d="M412 108 V130" stroke="#B8420C" stroke-width="1.5" stroke-dasharray="3 3"/>
           <text x="412" y="122" text-anchor="middle" class="svg-s" font-size="11" fill="#B8420C" font-weight="700">×</text>
           <text x="505" y="126" text-anchor="start" class="svg-s" font-size="9.5" fill="#B8420C">反映しない</text>
           <text x="127" y="150" text-anchor="middle" class="svg-s">取得するのは origin/main だけ。</text>
-          <text x="127" y="166" text-anchor="middle" class="svg-s">作業ファイルは変わらない。</text>
+          <text x="127" y="166" text-anchor="middle" class="svg-s">どちらも変わらない。</text>
           <defs><marker id="pfe1" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0 0 L6 3 L0 6" fill="none" stroke="#0E7C86" stroke-width="1.5"/></marker></defs>
         </svg>
-        <figcaption><code>fetch</code> はリモートの状態を <code>origin/main</code> に取り込むだけ。手元の作業ファイルには手を付けない。</figcaption>
+        <figcaption><code>fetch</code> はリモートの状態を <code>origin/main</code> に取り込むだけ。手元のローカルブランチとワーキングツリーには手を付けない。</figcaption>
       </figure>
-      <pre><button class="copy-btn">コピー</button><span class="term-head"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="label">fetch</span></span><code><span class="pr">$</span> git fetch                       <span class="cmt"># リモートの情報だけ取得(ワーキングツリーは無変更)</span>
+      <pre><button class="copy-btn">コピー</button><span class="term-head"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="label">fetch</span></span><code><span class="pr">$</span> git fetch                       <span class="cmt"># リモートの情報だけ取得(手元は無変更)</span>
 <span class="out">From github.com:you/git-practice-repo</span>
-<span class="out">   f229e49..c2bcc62  main       -&gt; origin/main</span>
-<span class="pr">$</span> git log --oneline origin/main   <span class="cmt"># 取得した origin/main の最新を確認</span>
-<span class="out">c2bcc62 Merge pull request #8 from you/feature/readme</span>
-<span class="out">209a548 README の見出しを修正</span>
-<span class="out">f229e49 最初のコミット</span>
-<span class="pr">$</span> git diff origin/main            <span class="cmt"># 自分の手元とリモートの差分を確認</span></code></pre>
-      <p>確認できたら、その変更を<strong>いまのブランチ(ワーキングツリー)に取り込む</strong>には、<code>git merge origin/main</code> を実行します。<code>fetch</code> は <code>origin/main</code> を更新するだけなので、この <code>merge</code> ではじめて、手元のブランチと作業ファイルに反映されます。</p>
+<span class="out">   f229e49..c2bcc62  main       -&gt; origin/main</span></code></pre>
+      <p><code>origin/main</code> が新しくなりました。この変更を<strong>いまのブランチに取り込む</strong>には、<code>git merge origin/main</code> を実行します。<code>fetch</code> は <code>origin/main</code> を更新するだけなので、この <code>merge</code> ではじめて、手元のローカルブランチとワーキングツリーに反映されます。</p>
       <pre><button class="copy-btn">コピー</button><span class="term-head"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="label">取り込む(merge)</span></span><code><span class="pr">$</span> git switch main            <span class="cmt"># 取り込みたいブランチにいることを確認</span>
 <span class="out">Switched to branch 'main'</span>
 <span class="out">Your branch is behind 'origin/main' by 2 commits, and can be fast-forwarded.</span>
 <span class="out">  (use "git pull" to update your local branch)</span>
 <span class="pr">$</span> git merge origin/main      <span class="cmt"># origin/main の内容を今のブランチに取り込む</span>
 <span class="out">Updating f229e49..c2bcc62</span>
-<span class="out">Fast-forward</span>                   <span class="cmt"># ここで作業ファイルも最新になる</span>
+<span class="out">Fast-forward</span>                   <span class="cmt"># ローカルブランチとワーキングツリーが最新になる</span>
 <span class="out"> README.md | 2 +-</span>
 <span class="out"> 1 file changed, 1 insertion(+), 1 deletion(-)</span></code></pre>
+      <p>いま実行した <code>merge</code> の出力に <code>Fast-forward</code> と出ています。これは、Git がこのブランチをどう合流させたかを表しています。合流のしかたには種類があり、どれになるかで履歴の残り方が変わります。</p>
+
+      <h5>マージの3つの種類</h5>
+      <p>ブランチの合流には、次の3つの種類があります。</p>
+      <ul>
+        <li><strong>Fast-forward</strong> … マージ先が分岐後に進んでいないときの合流。マージ先を前へ進めるだけで済む</li>
+        <li><strong>3-way</strong> … マージ先と取り込み元の両方が進んだときの合流。合流点となるコミットが1つ作られる</li>
+        <li><strong>Squash</strong> … 取り込み元のコミットを1つにまとめ直してから載せる方法</li>
+      </ul>
+      <p>ここからは <code>main</code> に <code>feature</code> を取り込む場面を例に説明します。ただしこの3つは、<strong>どのブランチにどのブランチを取り込むときも同じ</strong>です。種類を決めるのは、分岐したあとに<strong>マージ先と取り込み元がそれぞれ進んだかどうか</strong>だけです。</p>
+      <p>実際、いま実行した <code>git merge origin/main</code> は、マージ先が手元の <code>main</code>、取り込み元が <code>origin/main</code> で、feature ブランチは登場しません。それでも Fast-forward になりました。</p>
+
+      <h5>マージコミットについて</h5>
+      <p>マージコミットとは、ブランチをマージする際に自動で作られる特殊なコミットです。</p>
+      <p>通常のコミットは、直前のコミット1つを<strong>親</strong>として持ちます(リポジトリ作成後の最初のコミットだけは親を持ちません)。<code>git commit</code> を実行するたびに、親が1つのコミットが1個ずつ増えます。</p>
+      <p>これに対して<strong>マージコミット</strong>は、<strong>2つのブランチの合流点として作られる、親を2つ持つコミット</strong>です。<strong>マージ先の先端のコミット</strong>と<strong>取り込み元の先端コミット</strong>、2つを親として持つコミットです。マージコミットが1つあれば、どのブランチとどのブランチがどの時点で合流したかを追えます。</p>
+      <figure>
+        <svg viewBox="0 0 620 210" role="img" aria-label="通常のコミットは親が1つ、feature を main にマージしてできるマージコミットは main の先端と feature の先端の2つを親に持つ図">
+          <rect x="28" y="40" width="258" height="150" rx="12" fill="#F4F7F9" stroke="#C3CDD5" stroke-dasharray="5 4"/>
+          <text x="42" y="60" class="svg-ms" fill="#5B6B78" font-weight="600">通常のコミット</text>
+          <line x1="50" y1="130" x2="262" y2="130" stroke="#C3CDD5" stroke-width="2"/>
+          <path d="M122 130 H201" fill="none" stroke="#0E7C86" stroke-width="2" marker-end="url(#mcp1)"/>
+          <circle cx="110" cy="130" r="12" fill="#0E7C86"/>
+          <circle cx="215" cy="130" r="12" fill="#0E7C86"/>
+          <text x="110" y="158" text-anchor="middle" class="svg-s">親</text>
+          <text x="215" y="158" text-anchor="middle" class="svg-s">コミット</text>
+          <text x="157" y="182" text-anchor="middle" class="svg-s" fill="#0A585F" font-weight="600">親は1つ</text>
+          <rect x="334" y="40" width="258" height="150" rx="12" fill="#FBEFD6" stroke="#E0BE7A" stroke-dasharray="5 4"/>
+          <text x="348" y="60" class="svg-ms" fill="#8A5A06" font-weight="600">マージコミット</text>
+          <line x1="352" y1="130" x2="570" y2="130" stroke="#C3CDD5" stroke-width="2"/>
+          <text x="350" y="107" class="svg-ms" fill="#0A585F" font-weight="600">main</text>
+          <path d="M366 130 C400 130 406 84 459 84" fill="none" stroke="#7C5CBF" stroke-width="2"/>
+          <path d="M437 130 H527" fill="none" stroke="#0E7C86" stroke-width="2" marker-end="url(#mcp2)"/>
+          <path d="M481 84 C505 84 518 96 530 116" fill="none" stroke="#7C5CBF" stroke-width="2" marker-end="url(#mcp3)"/>
+          <circle cx="366" cy="130" r="12" fill="#0E7C86"/>
+          <circle cx="425" cy="130" r="12" fill="#0E7C86"/>
+          <circle cx="470" cy="84" r="11" fill="#7C5CBF"/>
+          <circle cx="540" cy="130" r="13" fill="#C9820A"/>
+          <text x="425" y="158" text-anchor="middle" class="svg-s" fill="#0A585F">main の先端</text>
+          <text x="470" y="66" text-anchor="middle" class="svg-s" fill="#5b3fa0">feature の先端</text>
+          <text x="540" y="158" text-anchor="middle" class="svg-s" fill="#8A5A06" font-weight="600">親は2つ</text>
+          <text x="463" y="182" text-anchor="middle" class="svg-s" fill="#8A5A06">feature を main にマージすると main 上にできる</text>
+          <defs>
+            <marker id="mcp1" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0 0 L6 3 L0 6" fill="none" stroke="#0E7C86" stroke-width="1.5"/></marker>
+            <marker id="mcp2" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0 0 L6 3 L0 6" fill="none" stroke="#0E7C86" stroke-width="1.5"/></marker>
+            <marker id="mcp3" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0 0 L6 3 L0 6" fill="none" stroke="#7C5CBF" stroke-width="1.5"/></marker>
+          </defs>
+        </svg>
+        <figcaption>通常のコミットが親に持つのは<strong>直前のコミット1つだけ</strong>。feature を main にマージすると、<strong>main の線の上に</strong>マージコミットができ、<strong>main の先端と feature の先端の2つ</strong>を親に持つ。</figcaption>
+      </figure>
+      <div class="tbl-wrap"><table>
+        <thead><tr><th>コミットの種類</th><th>親の数</th><th>作られるとき</th></tr></thead>
+        <tbody>
+          <tr><td>通常のコミット</td><td>1つ</td><td><code>git commit</code> を実行したとき</td></tr>
+          <tr><td>マージコミット</td><td>2つ</td><td>マージで2つのブランチが合流したとき</td></tr>
+        </tbody>
+      </table></div>
+
+      <h5>Fast-forward — マージ先を前へ進めるだけ</h5>
+      <p><strong>マージ先が分岐したあと1つも進んでいない</strong>場合の合流です。例では main に feature を取り込むので、main 側にコミットが1つも追加されていない状態にあたります。このとき feature の先端は、main の先端から一直線につながっています。Git は <strong>main を feature の先端まで進めるだけ</strong>で合流を終えられます。新しいコミットは作られないので、マージコミットもできません。履歴は1本のまま残ります。</p>
+      <figure>
+        <svg viewBox="0 0 620 272" role="img" aria-label="Fast-forward マージで、分岐のない1本の直線のまま main だけが先端へ進む図">
+          <text x="40" y="32" class="svg-ms" fill="#5B6B78" font-weight="600">マージ前</text>
+          <line x1="70" y1="70" x2="175" y2="70" stroke="#C3CDD5" stroke-width="2"/>
+          <line x1="175" y1="70" x2="470" y2="70" stroke="#7C5CBF" stroke-width="2"/>
+          <circle cx="100" cy="70" r="12" fill="#0E7C86"/>
+          <circle cx="175" cy="70" r="12" fill="#0E7C86"/>
+          <circle cx="275" cy="70" r="11" fill="#7C5CBF"/>
+          <circle cx="350" cy="70" r="11" fill="#7C5CBF"/>
+          <circle cx="425" cy="70" r="11" fill="#7C5CBF"/>
+          <text x="350" y="44" text-anchor="middle" class="svg-ms" fill="#7C5CBF">feature で追加した3コミット</text>
+          <rect x="112" y="90" width="128" height="26" rx="6" fill="#EEF2F5" stroke="#8A9AA6"/>
+          <text x="176" y="107" text-anchor="middle" class="svg-ms" fill="#5B6B78">main(マージ前)</text>
+          <text x="176" y="134" text-anchor="middle" class="svg-s">分岐後に main は進んでいない</text>
+          <path d="M290 144 V182" fill="none" stroke="#0E7C86" stroke-width="1.8" stroke-dasharray="5 3" marker-end="url(#mgff1)"/>
+          <text x="308" y="158" text-anchor="start" class="svg-s" fill="#0A585F">main を前へ進めるだけ</text>
+          <text x="308" y="176" text-anchor="start" class="svg-s">マージコミットは作られない</text>
+          <text x="40" y="206" class="svg-ms" fill="#0A585F" font-weight="600">マージ後</text>
+          <line x1="70" y1="216" x2="470" y2="216" stroke="#0E7C86" stroke-width="2.5"/>
+          <circle cx="100" cy="216" r="12" fill="#0E7C86"/>
+          <circle cx="175" cy="216" r="12" fill="#0E7C86"/>
+          <circle cx="275" cy="216" r="12" fill="#0E7C86"/>
+          <circle cx="350" cy="216" r="12" fill="#0E7C86"/>
+          <circle cx="425" cy="216" r="12" fill="#0E7C86"/>
+          <rect x="367" y="236" width="128" height="26" rx="6" fill="#E1F0F1" stroke="#0E7C86"/>
+          <text x="431" y="253" text-anchor="middle" class="svg-ms" fill="#0A585F">main(マージ後)</text>
+          <text x="176" y="253" text-anchor="middle" class="svg-s" fill="#0A585F" font-weight="600">分岐のない1本の直線</text>
+          <defs><marker id="mgff1" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0 0 L6 3 L0 6" fill="none" stroke="#0E7C86" stroke-width="1.5"/></marker></defs>
+        </svg>
+        <figcaption>main は分岐後に進んでいないので、feature のコミットは <strong>main の先端からまっすぐ続いている</strong>。<strong>main を feature の先端まで進めるだけ</strong>で合流が終わり、マージコミットは作られない。マージ後の履歴は<strong>分岐のない1本の直線</strong>になる。</figcaption>
+      </figure>
+
+      <h5>3-way — 両方が進んだときの合流</h5>
+      <p><strong>マージ先と取り込み元の両方が分岐後に進んだ</strong>場合の合流です。例では main 側にもコミットが追加されている状態にあたります。main を進めるだけでは、両方の変更を1つにできません。Git は<strong>分岐点・main の先端・feature の先端の3点</strong>を突き合わせて内容を統合し、<strong>両者を親に持つマージコミットを1つ</strong>作ります。この3点を使うことが 3-way という名前の由来です。</p>
+      <p>ここで押さえておくのは、<strong>feature の個々のコミットが main の履歴にそのまま残る</strong>ことです。マージコミットは合流点として増えるだけで、feature 側のコミットを置き換えるわけではありません。マージ後に main で <code>git log</code> を実行すると、feature で作ったコミットが1つずつ表示されます。</p>
+      <figure>
+        <svg viewBox="0 0 620 348" role="img" aria-label="3-way マージのマージ前後。両方が進んだ状態から、両者を親に持つマージコミットが1つ増える図">
+          <text x="40" y="28" class="svg-ms" fill="#5B6B78" font-weight="600">マージ前</text>
+          <line x1="70" y1="96" x2="285" y2="96" stroke="#C3CDD5" stroke-width="2"/>
+          <path d="M112 96 C155 96 158 52 200 52 H345" fill="none" stroke="#7C5CBF" stroke-width="2"/>
+          <circle cx="100" cy="96" r="12" fill="#0E7C86"/>
+          <circle cx="175" cy="96" r="12" fill="#0E7C86"/>
+          <circle cx="250" cy="96" r="12" fill="#0E7C86"/>
+          <circle cx="215" cy="52" r="11" fill="#7C5CBF"/>
+          <circle cx="280" cy="52" r="11" fill="#7C5CBF"/>
+          <circle cx="345" cy="52" r="11" fill="#7C5CBF"/>
+          <text x="280" y="30" text-anchor="middle" class="svg-ms" fill="#7C5CBF">feature の3コミット</text>
+          <text x="100" y="122" text-anchor="middle" class="svg-s">分岐点</text>
+          <text x="212" y="122" text-anchor="middle" class="svg-s" fill="#0A585F">main も進んだ</text>
+          <path d="M300 140 V176" fill="none" stroke="#0E7C86" stroke-width="1.8" stroke-dasharray="5 3" marker-end="url(#mg3a)"/>
+          <text x="318" y="154" class="svg-s" fill="#0A585F">分岐点と両方の先端を突き合わせて統合</text>
+          <text x="318" y="172" class="svg-s">両者を親に持つマージコミットが1つ増える</text>
+          <text x="40" y="204" class="svg-ms" fill="#5b3fa0" font-weight="600">マージ後</text>
+          <rect x="60" y="214" width="478" height="112" rx="12" fill="#F6F4FB" stroke="#C9BEE6" stroke-dasharray="5 4"/>
+          <text x="74" y="232" class="svg-ms" fill="#5b3fa0" font-weight="600">マージ後の main の履歴</text>
+          <line x1="78" y1="292" x2="262" y2="292" stroke="#C3CDD5" stroke-width="2"/>
+          <path d="M262 292 H448" fill="none" stroke="#0E7C86" stroke-width="2" marker-end="url(#mg3b)"/>
+          <path d="M112 292 C155 292 158 252 200 252 H345" fill="none" stroke="#7C5CBF" stroke-width="2"/>
+          <path d="M345 252 C402 252 424 260 452 282" fill="none" stroke="#7C5CBF" stroke-width="2" marker-end="url(#mg3c)"/>
+          <circle cx="100" cy="292" r="12" fill="#0E7C86"/>
+          <circle cx="175" cy="292" r="12" fill="#0E7C86"/>
+          <circle cx="250" cy="292" r="12" fill="#0E7C86"/>
+          <circle cx="215" cy="252" r="11" fill="#7C5CBF"/>
+          <circle cx="280" cy="252" r="11" fill="#7C5CBF"/>
+          <circle cx="345" cy="252" r="11" fill="#7C5CBF"/>
+          <circle cx="465" cy="292" r="13" fill="#C9820A"/>
+          <text x="465" y="318" text-anchor="middle" class="svg-s" fill="#8A5A06" font-weight="600">マージコミット</text>
+          <text x="300" y="342" text-anchor="middle" class="svg-s">feature の3コミットも、そのまま main の履歴に残る</text>
+          <defs>
+            <marker id="mg3a" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0 0 L6 3 L0 6" fill="none" stroke="#0E7C86" stroke-width="1.5"/></marker>
+            <marker id="mg3b" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0 0 L6 3 L0 6" fill="none" stroke="#0E7C86" stroke-width="1.5"/></marker>
+            <marker id="mg3c" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0 0 L6 3 L0 6" fill="none" stroke="#7C5CBF" stroke-width="1.5"/></marker>
+          </defs>
+        </svg>
+        <figcaption>両方が進んでいるので、main を進めるだけでは合流できない。<strong>両者を親に持つマージコミットが1つ増える</strong>。feature の3コミットは<strong>そのまま main の履歴に残り</strong>、分岐と合流の形が履歴に刻まれる。</figcaption>
+      </figure>
+      <p>3-way マージは、サイクル4で <code>feature/greeting-en</code> に main を取り込むときに実際に起きます。</p>
+
+      <h5>Squash — まとめてから載せる</h5>
+      <p><strong>Squash</strong> は、Fast-forward や 3-way とは別の方式です。2つのブランチを合流させるのではなく、<strong>取り込み元のコミットを1つにまとめ直してからマージ先に載せます</strong>。例では feature の3コミットを1つにまとめて main に載せる形です。main に増えるのは<strong>通常のコミット1つだけ</strong>で、マージコミットは作られません。</p>
+      <figure>
+        <svg viewBox="0 0 620 336" role="img" aria-label="Squash マージのマージ前後。feature の3コミットが1つの通常コミットにまとまり、元の3コミットは main に残らない図">
+          <text x="40" y="28" class="svg-ms" fill="#5B6B78" font-weight="600">マージ前</text>
+          <line x1="70" y1="96" x2="300" y2="96" stroke="#C3CDD5" stroke-width="2"/>
+          <path d="M112 96 C155 96 158 52 200 52 H320" fill="none" stroke="#7C5CBF" stroke-width="2"/>
+          <circle cx="100" cy="96" r="12" fill="#0E7C86"/>
+          <circle cx="200" cy="52" r="11" fill="#7C5CBF"/>
+          <circle cx="260" cy="52" r="11" fill="#7C5CBF"/>
+          <circle cx="320" cy="52" r="11" fill="#7C5CBF"/>
+          <text x="260" y="30" text-anchor="middle" class="svg-ms" fill="#7C5CBF">feature の3コミット</text>
+          <text x="100" y="122" text-anchor="middle" class="svg-s">分岐点</text>
+          <rect x="205" y="140" width="210" height="26" rx="6" fill="#EAF6F0" stroke="#1F8F63"/>
+          <text x="310" y="157" text-anchor="middle" class="svg-ms" fill="#166b48">Squash(3コミット → 1コミット)</text>
+          <path d="M310 176 V206" fill="none" stroke="#1F8F63" stroke-width="1.8" stroke-dasharray="5 3" marker-end="url(#mgsq1)"/>
+          <text x="40" y="228" class="svg-ms" fill="#0A585F" font-weight="600">マージ後</text>
+          <path d="M112 292 C155 292 158 252 200 252 H320" fill="none" stroke="#D5CCE9" stroke-width="2" stroke-dasharray="4 3"/>
+          <circle cx="200" cy="252" r="11" fill="#FFFFFF" stroke="#C9BEE6" stroke-width="2" stroke-dasharray="3 2"/>
+          <circle cx="260" cy="252" r="11" fill="#FFFFFF" stroke="#C9BEE6" stroke-width="2" stroke-dasharray="3 2"/>
+          <circle cx="320" cy="252" r="11" fill="#FFFFFF" stroke="#C9BEE6" stroke-width="2" stroke-dasharray="3 2"/>
+          <text x="260" y="230" text-anchor="middle" class="svg-s" fill="#8A9AA6">元の3コミットは main の履歴に残らない</text>
+          <line x1="70" y1="292" x2="470" y2="292" stroke="#0E7C86" stroke-width="2.5"/>
+          <circle cx="100" cy="292" r="12" fill="#0E7C86"/>
+          <circle cx="400" cy="292" r="12" fill="#0E7C86" stroke="#C9820A" stroke-width="3"/>
+          <text x="100" y="318" text-anchor="middle" class="svg-s">分岐点</text>
+          <text x="400" y="318" text-anchor="middle" class="svg-s" fill="#8A5A06" font-weight="600">まとめた通常のコミットが1つ</text>
+          <text x="486" y="296" class="svg-ms" fill="#0A585F" font-weight="600">main</text>
+          <defs><marker id="mgsq1" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0 0 L6 3 L0 6" fill="none" stroke="#1F8F63" stroke-width="1.5"/></marker></defs>
+        </svg>
+        <figcaption>feature の3コミットを<strong>1つのコミットにまとめてから</strong> main に載せる。増えるのは<strong>通常のコミット1つだけ</strong>でマージコミットは作られず、<strong>元の3コミットは main の履歴に残らない</strong>。履歴は分岐のない1本の直線のままになる。</figcaption>
+      </figure>
+      <p>細かい試行錯誤のコミットを main 側では1つに集約でき、履歴を簡潔に保てます。「1機能＝1コミット」で main をそろえたいチームで使われます。ただし、main に載るのは中身が同じ<strong>別のコミット</strong>です。</p>
+
+      <h5>3つの違いを整理する</h5>
+      <div class="tbl-wrap"><table>
+        <thead><tr><th>種類</th><th>マージコミット</th><th>取り込み元のコミット</th><th>履歴の形</th><th><code>git branch -d</code></th></tr></thead>
+        <tbody>
+          <tr><td>Fast-forward</td><td>作られない</td><td>そのまま残る</td><td>1本のまま</td><td>消せる</td></tr>
+          <tr><td>3-way</td><td>1つ作られる</td><td>そのまま残る</td><td>分岐と合流が残る</td><td>消せる</td></tr>
+          <tr><td>Squash</td><td>作られない</td><td>残らない(1つにまとまる)</td><td>1本のまま</td><td>失敗する(<code>-D</code> が必要)</td></tr>
+        </tbody>
+      </table></div>
 
       <h4 id="p3-3-delete">ブランチ削除 — 役目を終えたブランチを片付ける</h4>
       <p>PR がマージされ、main を最新化したら、<strong>役目を終えた feature ブランチを削除</strong>して整理します。ローカルとリモートの両方を消します。マージ済みのブランチは <code>-d</code> で安全に削除できます(未マージのものを強制削除するときだけ <code>-D</code>)。</p>
@@ -1457,13 +1490,13 @@
       </div>
 
       <h3 id="p3-4">サイクル2 — 確認と取り消し</h3>
-      <p>2周目です。今度は <code>memo.txt</code> を新しく作り、あわせて <code>README.md</code> にも1行足してみます。ところが README への追記は<strong>やめることにした</strong>、という筋で進めます。記録する前に中身を確かめる方法と、いらなくなった変更を捨てる方法をここで覚えます。</p>
+      <p>2周目です。今度は <code>memo.txt</code> を新しく作り、あわせて <code>README.md</code> にも1行足してみます。ところが README への追記はやめることにした、というシナリオで進めます。記録する前に中身を確かめる方法と、いらなくなった変更を捨てる方法をここで覚えます。</p>
       <pre><button class="copy-btn">コピー</button><span class="term-head"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="label">2周目をはじめる</span></span><code><span class="pr">$</span> git switch -c feature/memo   <span class="cmt"># 最新の main から新しいブランチを切る</span>
 <span class="pr">$</span> touch memo.txt                <span class="cmt"># 新しいファイルを作る</span>
 <span class="pr">$</span> echo <span class="st">"使い方はここに書きます。"</span> &gt;&gt; README.md   <span class="cmt"># README にも1行足してみる</span></code></pre>
 
       <h4 id="p3-4-diff">diff — 変更の中身を確認する</h4>
-      <p><code>git status</code> は「どのファイルが変わったか」を教えてくれますが、<strong>中身がどう変わったか</strong>までは分かりません。それを見るのが <code>git diff</code> です。記録する前に、自分が何を変えたのかをここで確かめます。</p>
+      <p><code>git status</code> は「どのファイルが変わったか」を教えてくれますが、<strong>中身がどう変わったか</strong>までは分かりません。それを見るのが <code>git diff</code> です。記録する前に、自分が何を変えたのかをここで確認します。</p>
       <pre><button class="copy-btn">コピー</button><span class="term-head"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="label">diff</span></span><code><span class="pr">$</span> git status -s                  <span class="cmt"># まず今の状態を確認</span>
 <span class="hl"> M</span> README.md
 <span class="hl">??</span> memo.txt
@@ -1496,17 +1529,7 @@
           <tr><td><code>git diff &lt;A&gt;..&lt;B&gt;</code></td><td>ブランチ ↔ ブランチ。<strong>2つのブランチの違い</strong>が見える</td></tr>
         </tbody>
       </table></div>
-      <p><code>--staged</code> は <code>git add</code> のあと、<code>main..feature/memo</code> は <code>git commit</code> のあとに実行したものです。参考として出力を載せておきます。</p>
-      <pre><button class="copy-btn">コピー</button><span class="term-head"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="label">diff --staged / diff A..B</span></span><code><span class="pr">$</span> git diff --staged              <span class="cmt"># add 済みの中身と直前のコミットを比べる</span>
-<span class="out">diff --git a/memo.txt b/memo.txt</span>
-<span class="out">new file mode 100644</span>
-<span class="out">index 0000000..e69de29</span>
-<span class="cmt"># memo.txt は空ファイルなので、追加された行は出ない</span>
-
-<span class="pr">$</span> git diff main..feature/memo    <span class="cmt"># main と作業ブランチの違いを見る</span>
-<span class="out">diff --git a/memo.txt b/memo.txt</span>
-<span class="out">new file mode 100644</span>
-<span class="out">index 0000000..e69de29</span></code></pre>
+      <p><code>--staged</code> が差分を出すのは、ステージングに追加したあと、コミットする前だけです。<code>main..feature/memo</code> は、コミットしたあとに使います。どちらも、このあとの節で試せます。</p>
 
       <h4 id="p3-4-restore">restore — 変更を元に戻す</h4>
       <p>差分を見て、<code>README.md</code> への追記はやめることにしました。<code>git restore</code> で、この変更を捨てます。</p>
@@ -1529,13 +1552,13 @@
           <text x="311" y="94" text-anchor="middle" class="svg-s" font-size="9.5" fill="#5B6B78">アンステージ:ステージングから外すだけ(変更はワーキングツリーに残る)</text>
           <line x1="40" y1="112" x2="580" y2="112" stroke="#E4E7EA" stroke-width="1"/>
           <!-- 下段: restore <file>(ワーキングツリーの変更を破棄。ステージングは変えない) -->
-          <rect x="45" y="130" width="150" height="46" rx="9" fill="#F4F7F9" stroke="#8A9AA6"/>
-          <text x="120" y="151" text-anchor="middle" class="svg-ms" fill="#5B6B78">ワーキングツリー</text>
-          <text x="120" y="167" text-anchor="middle" class="svg-s" font-size="8.5" fill="#B8420C">編集した変更</text>
-          <path d="M197 153 H404" stroke="#B8420C" stroke-width="1.8" marker-end="url(#pr3L)"/>
-          <text x="300" y="122" text-anchor="middle" class="svg-ms" fill="#B8420C" font-size="10">git restore &lt;file&gt;</text>
-          <text x="424" y="159" class="svg-ms" fill="#B8420C" font-size="15" font-weight="700">✕</text>
-          <text x="470" y="157" text-anchor="middle" class="svg-s" font-size="9.5" fill="#B8420C">破棄</text>
+          <rect x="425" y="130" width="150" height="46" rx="9" fill="#F4F7F9" stroke="#8A9AA6"/>
+          <text x="500" y="151" text-anchor="middle" class="svg-ms" fill="#5B6B78">ワーキングツリー</text>
+          <text x="500" y="167" text-anchor="middle" class="svg-s" font-size="8.5" fill="#B8420C">編集した変更</text>
+          <path d="M423 153 H199" stroke="#B8420C" stroke-width="1.8" marker-end="url(#pr3L)"/>
+          <text x="311" y="122" text-anchor="middle" class="svg-ms" fill="#B8420C" font-size="10">git restore &lt;file&gt;</text>
+          <text x="178" y="159" text-anchor="middle" class="svg-ms" fill="#B8420C" font-size="15" font-weight="700">✕</text>
+          <text x="132" y="157" text-anchor="middle" class="svg-s" font-size="9.5" fill="#B8420C">破棄</text>
           <text x="311" y="196" text-anchor="middle" class="svg-s" font-size="9.5" fill="#5B6B78">編集した変更を破棄して元に戻す(ステージングは変えない)</text>
           <defs>
             <marker id="pr3L" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0 0 L6 3 L0 6" fill="none" stroke="#B8420C" stroke-width="1.5"/></marker>
@@ -1596,13 +1619,13 @@
         <div class="box-t"><svg class="ico" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2Z"/><path d="M9 21h6"/></svg>短いハッシュでも指定できる</div>
         <p>コミットを指定するとき、40桁すべてを打つ必要はありません。<code>--oneline</code> に出る先頭7桁のように、<strong>ほかと区別できる長さ</strong>があれば足ります。<code>git log ac52c03</code> のように使えます。</p>
       </div>
-      <p><code>--oneline</code> に <code>--graph</code> を加えると、ブランチの分岐と合流を線で表示できます。今の時点では分岐がなく、線を引いても1本のままで効果が分かりません。実際の表示は、分岐と合流の両方がそろうサイクル4で確認します。</p>
 
       <h4 id="p3-4-pull">pull — 取得して取り込む</h4>
       <p>取り込みの前に、プッシュと PR 作成を済ませます。ここはサイクル1と同じ手順です。</p>
       <pre><button class="copy-btn">コピー</button><span class="term-head"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="label">push</span></span><code><span class="pr">$</span> git push -u origin feature/memo   <span class="cmt"># 初回なので -u 付き</span></code></pre>
-      <p>プッシュしたら、ホスティングサービスの画面で PR を作り、<code>Create a merge commit</code> でマージします。画面の操作はサイクル1の「PR作成」「マージ」と同じです。</p>
-      <p>マージが済んだら、手元の <code>main</code> を最新にします。サイクル1では <code>git fetch</code> と <code>git merge origin/main</code> の2手に分けました。ここでは <code>git pull</code> の1手で済ませます。</p>
+      <p>プッシュしたら、ホスティングサービスの画面で PR を作り、マージします。画面の操作はサイクル1の「PR作成」「マージ」と同じです。</p>
+      <p>マージが済んだら、手元の <code>main</code> を最新にします。サイクル1では <code>git fetch</code> と <code>git merge origin/main</code> の2手に
+        分けました。ここでは <code>git pull</code> の1手で済ませます。</p>
       <pre><button class="copy-btn">コピー</button><span class="term-head"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="label">pull</span></span><code><span class="pr">$</span> git switch main                <span class="cmt"># 取り込みたいブランチへ移動</span>
 <span class="out">Switched to branch 'main'</span>
 <span class="out">Your branch is up to date with 'origin/main'.</span>   <span class="cmt"># ← 取得前なので、まだ最新に見えている</span>
@@ -1634,7 +1657,10 @@
       </div>
 
       <h3 id="p3-5">サイクル3 — 管理から外す</h3>
-      <p>3周目の題材は <code>.gitignore</code> です。プロジェクトには、Git で管理したくないファイルがあります。パスワードや API キーを書いた秘密の設定ファイル、自動で作られるログやビルド結果などです。これらを Git の管理対象から外す方法と、<strong>うっかりコミットしてしまったあとの外し方</strong>を扱います。</p>
+      <p>3周目の題材は <code>.gitignore</code> です。プロジェクトのフォルダには、Git で管理したくないファイルが混ざります。</p>
+      <p>管理から外したい理由は大きく2つあります。<br>1つは<strong>共有すると困るもの</strong>です。パスワードや API キーを書いた設定ファイルがこれにあたります。リポジトリはチームで共有されます。リモートで共有できる状態であるということは、漏洩の危険が常につきまとうということです。しかも一度コミットすると履歴に残り続け、あとから消しても過去のコミットをたどれば読めてしまいます。<br>もう1つは<strong>共有しても意味がないもの</strong>です。ログやビルド結果、外部ライブラリの実体などは、各自の環境で自動的に作られます。容量が大きく、実行のたびに中身も変わります。そのため、本来見たい変更が差分に埋もれます。</p>
+      <p>もう1つ押さえておきたいのは、<strong>Git がフォルダの中身を勝手に管理しはじめるわけではない</strong>ことです。ファイルを作っただけでは、Git はその存在を <code>untracked</code> として知らせるだけです。中身の変更までは追いません。<strong><code>git add</code> でステージングに追加した時点から追跡が始まります</strong>。それ以降は、そのファイルを変更すると <code>git status</code> に表示されます。</p>
+      <p><code>.gitignore</code> が効くのは<strong>まだ追跡していないファイル</strong>だけです。すでに追跡が始まったファイルは、あとから <code>.gitignore</code> に書いても無視されません。このあと <code>.gitignore</code> の書き方を確認します。続けて、うっかり追跡してしまったファイルの外し方を扱います。</p>
       <pre><button class="copy-btn">コピー</button><span class="term-head"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="label">3周目をはじめる</span></span><code><span class="pr">$</span> git switch -c feature/ignore   <span class="cmt"># 最新の main から新しいブランチを切る</span></code></pre>
 
       <h4 id="p3-5-ignore">ignore — Git に含めないファイルを決める</h4>
@@ -1684,7 +1710,7 @@
         <div class="box-t"><svg class="ico" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 9v4M12 17h.01"/><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg>すでに追跡中のファイルは無視されない</div>
         <p><code>.gitignore</code> に追記しても、<strong>すでに追跡済み</strong>のファイルは追跡対象のままです。あとから管理を外すには <code>git rm --cached &lt;file&gt;</code> で追跡だけを解除します(ファイル自体は手元に残ります)。</p>
       </div>
-      <p>この落とし穴を、手を動かして確かめます。秘密情報を含む <code>.env</code> を、うっかりステージングに追加してコミットしてしまった、という筋で進めます。</p>
+      <p>この落とし穴を、手を動かして確かめます。秘密情報を含む <code>.env</code> を、うっかりステージングに追加してコミットしてしまった、というシナリオで進めます。</p>
       <pre><button class="copy-btn">コピー</button><span class="term-head"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="label">追跡を解除する</span></span><code><span class="pr">$</span> echo <span class="st">"SECRET_KEY=12345"</span> &gt; .env       <span class="cmt"># 秘密情報を含む .env を作る</span>
 <span class="pr">$</span> git add .env <span class="hl">&amp;&amp;</span> git commit -m <span class="st">"設定を追加"</span>   <span class="cmt"># うっかり追跡・コミットしてしまったとする</span>
 
@@ -1717,7 +1743,7 @@
       </div>
 
       <h5>プッシュして PR を出す</h5>
-      <p>ここからはサイクル1・2と同じ手順です。プッシュして PR を作り、<code>Create a merge commit</code> でマージします。</p>
+      <p>ここからはサイクル1・2と同じ手順です。プッシュして PR を作り、マージします。</p>
       <pre><button class="copy-btn">コピー</button><span class="term-head"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="label">push</span></span><code><span class="pr">$</span> git push -u origin feature/ignore   <span class="cmt"># 初回なので -u 付き</span></code></pre>
       <p>マージが済んだら、サイクル2と同じく <code>git pull</code> で手元の <code>main</code> を最新にします。</p>
       <pre><button class="copy-btn">コピー</button><span class="term-head"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="label">pull</span></span><code><span class="pr">$</span> git switch main
@@ -1757,8 +1783,7 @@
       <p>最後は、チーム開発で必ず出会う<strong>コンフリクト(競合)</strong>です。2人が同じファイルの同じ行を別々に書き換えると、Git はどちらが正しいか判断できず、手で決めてほしいと言って止まります。ここでは、わざとコンフリクトを起こして、自分の手で解消するところまでやります。</p>
 
       <h4 id="p3-6-branches">2本のブランチで同じ行を変える</h4>
-      <p>コンフリクトを起こすには、ブランチが2本必要です。1本目の <code>feature/greeting-ja</code> では <code>README.md</code> に「こんにちは」と書きます。2本目の <code>feature/greeting-en</code> は<strong>同じ <code>main</code> から切って</strong>、同じ場所に「Hello」と書きます。2人が別々に作業した状況を、1人で再現するわけです。</p>
-      <p>ここで大事なのは、<strong>両方のブランチでコミットまで済ませておく</strong>ことです。変更をコミットしていないまま <code>git merge</code> を実行すると、Git は作業中の変更が失われるのを避けるため、マージそのものを拒否します。</p>
+      <p>コンフリクトを起こすには、ブランチが2本必要です。1本目の <code>feature/greeting-ja</code> では <code>README.md</code> に「こんにちは」と書きます。2本目の <code>feature/greeting-en</code> は<strong>同じ <code>main</code> から切って</strong>、同じ場所に「Hello」と書きます。ここでは2人が別々に作業した状況を、1人で再現します。</p>
       <pre><button class="copy-btn">コピー</button><span class="term-head"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="label">2本のブランチを作る</span></span><code><span class="pr">$</span> git switch -c feature/greeting-ja   <span class="cmt"># 1本目のブランチを切る</span>
 <span class="pr">$</span> printf <span class="st">'# Git 練習リポジトリ\n\nこんにちは\n'</span> &gt; README.md
 <span class="pr">$</span> git add README.md <span class="hl">&amp;&amp;</span> git commit -m <span class="st">"日本語のあいさつを追加"</span>
@@ -1789,7 +1814,7 @@
         </svg>
         <figcaption>同じ行を両側で変えると、Git はどちらが正しいか判断できず、手で解決してもらうために停止する。</figcaption>
       </figure>
-      <p>実際に起こしてみます。2本の PR を作り、<strong><code>feature/greeting-ja</code> の PR だけ</strong>を <code>Create a merge commit</code> でマージします。すると <code>main</code> の3行目は「こんにちは」になります。この時点で、もう片方の PR の画面はコンフリクトの表示に変わります。反映まで十数秒かかることがあります。</p>
+      <p>実際に起こしてみます。2本の PR を作り、<strong><code>feature/greeting-ja</code> の PR だけ</strong>をマージします。すると <code>main</code> の3行目は「こんにちは」になります。この時点で、もう片方の PR の画面はコンフリクトの表示に変わります。反映まで十数秒かかることがあります。</p>
       <figure>
         <img src="pr-conflict.png" alt="PR画面のコンフリクト表示。This branch has conflicts that must be resolved とコンフリクトしたファイル README.md が示され、Merge pull request ボタンが押せなくなっている">
         <figcaption>先に片方がマージされると、もう片方の PR はコンフリクトの状態になる。<code>Merge pull request</code> ボタンは<strong>押せなくなる</strong>。コンフリクトしたファイル名(<code>README.md</code>)もここに出る。</figcaption>
@@ -1802,7 +1827,7 @@
 <span class="out">Auto-merging README.md</span>
 <span class="out">CONFLICT (content): Merge conflict in README.md</span>
 <span class="out">Automatic merge failed; fix conflicts and then commit the result.</span></code></pre>
-      <p>コンフリクトが起きました。マージは途中で止まっています。こういうときこそ <code>git status</code> です。</p>
+      <p>コンフリクトが起きました。マージは途中で止まっています。<code>git status</code> で状態を確認します。</p>
       <pre><button class="copy-btn">コピー</button><span class="term-head"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="label">status</span></span><code><span class="pr">$</span> git status
 <span class="out">On branch feature/greeting-en</span>
 <span class="out">Your branch is up to date with 'origin/feature/greeting-en'.</span>
@@ -1831,21 +1856,21 @@
 <span class="out">こんにちは</span>                      <span class="cmt"># 取り込もうとしている相手(main)側</span>
 <span class="st">&gt;&gt;&gt;&gt;&gt;&gt;&gt; main</span></code></pre>
       <p>最終的に残したい形に手で書き直し、<strong>マーカーの3行は必ず消します</strong>。今回は両方のあいさつを残すことにします。</p>
-      <p>書き直したら <code>git add</code> で「解決した」と Git に伝え、<code>git commit</code> でマージを完了します。</p>
+      <p>書き直したら <code>git add</code> を実行し、<code>git commit</code> でマージを完了します。</p>
       <pre><button class="copy-btn">コピー</button><span class="term-head"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="label">解消してコミット</span></span><code><span class="pr">$</span> printf <span class="st">'# Git 練習リポジトリ\n\nこんにちは\nHello\n'</span> &gt; README.md   <span class="cmt"># マーカーを消して両方残す</span>
-<span class="pr">$</span> git add README.md                <span class="cmt"># 解決したことを Git に伝える</span>
+<span class="pr">$</span> git add README.md
 <span class="pr">$</span> git status -s
 <span class="hl">M</span>  README.md                      <span class="cmt"># UU が消え、左列 M＝staged になった</span>
 <span class="pr">$</span> git commit -m <span class="st">"コンフリクトを解消"</span>
 <span class="out">[feature/greeting-en 01d99d2] コンフリクトを解消</span>
 <span class="pr">$</span> git push</code></pre>
       <p>コミットの出力に <code>1 file changed</code> のような行が出ていません。これはマージコミットだからです。ふつうのコミットと違い、2つの親を持つ合流点として記録されます。</p>
-      <p>プッシュすると、PR 画面のコンフリクト表示は消え、<code>Merge pull request</code> ボタンが押せる状態に戻ります。ここからはサイクル1〜3と同じ手順です。<code>Create a merge commit</code> でマージし、<code>git pull</code> で手元の <code>main</code> を最新にします。</p>
+      <p>プッシュすると、PR 画面のコンフリクト表示は消え、<code>Merge pull request</code> ボタンが押せる状態に戻ります。ここからはサイクル1〜3と同じ手順です。マージし、<code>git pull</code> で手元の <code>main</code> を最新にします。</p>
       <pre><button class="copy-btn">コピー</button><span class="term-head"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="label">pull</span></span><code><span class="pr">$</span> git switch main
 <span class="pr">$</span> git pull</code></pre>
 
       <h4 id="p3-6-graph">log --graph — 分岐と合流を線で見る</h4>
-      <p>2本のブランチのマージが終わったため、サイクル2で触れた <code>--graph</code> を実際に使います。<code>--oneline</code> と組み合わせると、コミットを線でつなぎ、分岐と合流の場所が分かる表示になります。</p>
+      <p>2本のブランチのマージが終わったため、コミットの履歴が、分岐と合流を経てどうつながっているかを確認します。<code>--graph</code>と<code>--oneline</code> を組み合わせると、コミットを線でつなぎ、分岐と合流の場所が分かる表示になります。</p>
       <pre><button class="copy-btn">コピー</button><span class="term-head"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="label">log --graph</span></span><code><span class="pr">$</span> git log --oneline --graph      <span class="cmt"># 分岐と合流を線で表示</span>
 <span class="out">*   75037e4 Merge pull request #17 from you/feature/greeting-en</span>
 <span class="out">|\</span>
@@ -1873,7 +1898,7 @@
 <span class="out">| * c4c0d77 README の見出しを修正</span>
 <span class="out">|/</span>
 <span class="out">* c01ae1e 最初のコミット</span></code></pre>
-      <p><code>*</code> が1つのコミットです。<code>5e32744</code> と <code>75037e4</code> は今回の2本のマージコミットで、それぞれ左右2本の線を受けています。これが、親を2つ持つマージコミットの見た目です。<code>--graph</code> を付けないと <code>--oneline</code> の一覧は単なる縦のリストになり、この分岐と合流の形は分かりません。</p>
+      <p><code>*</code> が1つのコミットです。<strong>左右2本の線を受けている <code>*</code></strong> がマージコミットで、親を2つ持っています。<code>Merge pull request</code> で始まる行がそれにあたります。<code>--graph</code> を付けないと <code>--oneline</code> の一覧は単なる縦のリストになり、この分岐と合流の形は分かりません。</p>
 
       <h5>役目を終えたブランチを片付ける</h5>
       <p>最後に、今回使った2本のブランチを、ローカルとリモートの両方で削除します。</p>
@@ -1894,155 +1919,9 @@
     <section class="section" id="p4">
       <span class="eyebrow branch"><span class="num">4</span>発展編</span>
       <h2>発展</h2>
-      <p>ここからは一歩進んだ内容です。<strong>HEAD</strong> の仕組み、<strong>やり直しと取り消し(amend / revert / reset)</strong>、作業の<strong>一時退避(stash)</strong>を扱います。さらにリリースの<strong>タグ</strong>や <strong>worktree</strong> なども取り上げます。これらは実務でいずれ必要になる操作です。実践章の内容に慣れてから読むのがおすすめです。</p>
+      <p>ここからは一歩進んだ内容です。リリースの節目に名前を付ける<strong>タグ</strong>、複数のブランチを同時に開く<strong>worktree</strong>、よく使うコマンドを短くする<strong>エイリアス</strong>を扱います。これらは実務でいずれ必要になる操作です。実践編の内容に慣れてから読むのがおすすめです。</p>
 
-      <h3 id="p4-1">HEAD — 今いる位置を知る</h3>
-      <p>switch のところで出てきた <strong>HEAD</strong> を、もう少し掘り下げます。HEAD は「今どのコミットにいるか」を指す特別なポインタです。ポインタとは「どこかを指し示す印」のことです。ふだんは現在のブランチを指し、そのブランチが最新コミットを指す、という2段構えになっています。つまりブランチも実はポインタです。コミットするたびに、ブランチと HEAD が新しいコミットへ一緒に進みます。</p>
-      <figure>
-        <svg viewBox="0 0 620 150" role="img" aria-label="HEAD がブランチを介してコミットを指す図">
-          <line x1="70" y1="105" x2="470" y2="105" stroke="#C3CDD5" stroke-width="2"/>
-          <circle cx="110" cy="105" r="13" fill="#0E7C86"/>
-          <circle cx="270" cy="105" r="13" fill="#0E7C86"/>
-          <circle cx="430" cy="105" r="14" fill="#0E7C86"/>
-          <rect x="388" y="60" width="84" height="24" rx="6" fill="#E1F0F1" stroke="#0E7C86"/>
-          <text x="430" y="77" text-anchor="middle" class="svg-ms" fill="#0A585F" font-size="10">feature</text>
-          <path d="M430 84 V90" stroke="#0E7C86" stroke-width="1.5" marker-end="url(#phe1)"/>
-          <rect x="392" y="20" width="76" height="26" rx="6" fill="#FBEFD6" stroke="#C9820A"/>
-          <text x="430" y="37" text-anchor="middle" class="svg-ms" fill="#8A5A06" font-weight="600">HEAD</text>
-          <path d="M430 48 V58" stroke="#C9820A" stroke-width="1.5" stroke-dasharray="3 3" marker-end="url(#phe2)"/>
-          <text x="235" y="140" text-anchor="middle" class="svg-s">HEAD → ブランチ → 最新コミット、と辿って「今いる場所」が決まる</text>
-          <defs>
-            <marker id="phe1" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0 0 L6 3 L0 6" fill="none" stroke="#0E7C86" stroke-width="1.5"/></marker>
-            <marker id="phe2" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0 0 L6 3 L0 6" fill="none" stroke="#C9820A" stroke-width="1.5"/></marker>
-          </defs>
-        </svg>
-        <figcaption>HEAD は現在のブランチを、ブランチは最新コミットを指す。<code>git log --oneline</code> の出力にも <code>(HEAD -&gt; ...)</code> として位置が表示される。</figcaption>
-      </figure>
-      <pre><button class="copy-btn">コピー</button><span class="term-head"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="label">HEAD の位置</span></span><code><span class="pr">$</span> git log --oneline
-<span class="out">a1b2c3d (HEAD -&gt; feature/greeting) README の見出しを修正</span>   <span class="cmt"># ← 今ここにいる</span>
-<span class="out">c3d4e5f (origin/main, main) 最初のコミット</span></code></pre>
-
-      <h3 id="p4-2">直前のコミットをやり直す <code>git commit --amend</code></h3>
-      <p>メッセージの打ち間違いや、ステージングへの追加を忘れたファイルに気づいたときは <code>git commit --amend</code> で直前のコミットをやり直せます。実行するとエディタ(多くは vi)が開き、メッセージを編集できます。</p>
-      <pre><button class="copy-btn">コピー</button><span class="term-head"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="label">amend / -v</span></span><code><span class="pr">$</span> git commit --amend           <span class="cmt"># エディタが開き、メッセージを直せる</span>
-<span class="pr">$</span> git commit -v                <span class="cmt"># 差分を見ながらメッセージを書く</span></code></pre>
-      <div class="box tip">
-        <div class="box-t"><svg class="ico" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2Z"/><path d="M9 21h6"/></svg>vi が開いて戸惑ったら</div>
-        <p>エディタが vi の場合、最初は文字を打てません。次の操作だけ覚えておけば足ります。<kbd>i</kbd> で入力モードに入り、編集したら <kbd>Esc</kbd> で抜け、<code>:wq</code> と打って <kbd>Enter</kbd> で<strong>保存して終了</strong>。変更を捨てて終了したいときは <code>:q!</code> です。</p>
-      </div>
-      <div class="box stumble">
-        <div class="box-t"><svg class="ico" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 9v4M12 17h.01"/><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg>プッシュ済みのコミットには <code>--amend</code> を使わない</div>
-        <p><code>--amend</code> はコミットを作り直すため、<strong>すでにプッシュ済み</strong>のコミットに使うとリモートと履歴が食い違います。まだプッシュしていない直前のコミットにだけ使ってください。</p>
-      </div>
-
-      <h3 id="p4-3">revert — 履歴を残して打ち消す</h3>
-      <p><code>git revert &lt;commit&gt;</code> は、指定したコミットの変更を打ち消す<strong>新しいコミットを作成</strong>します。元のコミットは履歴に残したまま「取り消し」を1つ足すので、<strong>すでにプッシュ済みのコミットでも安全に取り消せます</strong>。実行にはワーキングツリーをクリーンにしておく必要があります。</p>
-      <pre><button class="copy-btn">コピー</button><span class="term-head"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="label">revert</span></span><code><span class="pr">$</span> git revert a1b2c3d           <span class="cmt"># 指定コミットの変更を打ち消すコミットを作る</span>
-<span class="out">[main 5a6b7c8] Revert "README の見出しを修正"</span></code></pre>
-
-      <h4>revert と reset の違い</h4>
-      <p>取り消しには2つの考え方があります。<strong>履歴を残したまま打ち消す <code>revert</code></strong> と、<strong>履歴そのものを巻き戻す <code>reset</code></strong> です。</p>
-      <figure>
-        <svg viewBox="0 0 620 195" role="img" aria-label="revertとresetの違いの図">
-          <text x="155" y="24" text-anchor="middle" class="svg-t" font-weight="600" fill="#1F8F63">git revert</text>
-          <text x="155" y="42" text-anchor="middle" class="svg-s">打ち消すコミットを新しく足す</text>
-          <line x1="40" y1="90" x2="270" y2="90" stroke="#C3CDD5" stroke-width="2"/>
-          <circle cx="70" cy="90" r="12" fill="#0E7C86"/>
-          <circle cx="150" cy="90" r="12" fill="#0E7C86"/>
-          <circle cx="230" cy="90" r="13" fill="#1F8F63"/>
-          <text x="230" y="120" text-anchor="middle" class="svg-s" fill="#166b48">取消コミット</text>
-          <text x="155" y="150" text-anchor="middle" class="svg-s">→ 履歴は消えない。共有済みでも安全。</text>
-          <line x1="310" y1="55" x2="310" y2="175" stroke="#DAE1E7"/>
-          <text x="465" y="24" text-anchor="middle" class="svg-t" font-weight="600" fill="#B8420C">git reset</text>
-          <text x="465" y="42" text-anchor="middle" class="svg-s">HEAD を過去へ巻き戻す</text>
-          <line x1="360" y1="90" x2="590" y2="90" stroke="#C3CDD5" stroke-width="2"/>
-          <circle cx="390" cy="90" r="12" fill="#0E7C86"/>
-          <circle cx="470" cy="90" r="13" fill="#0E7C86" stroke="#C9820A" stroke-width="3"/>
-          <circle cx="550" cy="90" r="12" fill="#DAE1E7" stroke="#C3CDD5"/>
-          <text x="470" y="66" text-anchor="middle" class="svg-s" fill="#8A5A06">ここへ戻す</text>
-          <text x="550" y="120" text-anchor="middle" class="svg-s" fill="#B8420C">切り離される</text>
-          <text x="465" y="150" text-anchor="middle" class="svg-s">→ 履歴を書き換える。共有済みには使わない。</text>
-        </svg>
-        <figcaption>左:<code>revert</code> は取り消し用のコミットを追加するので履歴が残る。右:<code>reset</code> は HEAD を戻して以降を切り離す。</figcaption>
-      </figure>
-      <div class="box stumble">
-        <div class="box-t"><svg class="ico" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 9v4M12 17h.01"/><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg>チームでの使い分け</div>
-        <p><strong>共有(push)済み</strong>のコミットを取り消すなら、履歴を壊さない <code>revert</code>。<strong>まだ自分しか持っていない未共有</strong>のコミットを整理するなら <code>reset</code>。この線引きを守れば、他の開発メンバーの履歴を壊す事故を防げます。</p>
-      </div>
-
-      <h4>revert を revert する(取り消しの取り消し)</h4>
-      <p><code>revert</code> しすぎたときは、その<strong>revert コミット自体をさらに <code>revert</code></strong> すれば、打ち消しを打ち消して元に戻せます。revert コミットは普通のコミットなので、同じ操作でやり直せます。</p>
-      <pre><button class="copy-btn">コピー</button><span class="term-head"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="label">revert の revert</span></span><code><span class="pr">$</span> git revert 5a6b7c8           <span class="cmt"># さっきの取消コミットを、さらに打ち消す</span>
-<span class="out">[main 9f8e7d6] Revert "Revert \"README の見出しを修正\""</span></code></pre>
-
-      <h3 id="p4-4">reset — HEAD を巻き戻す</h3>
-      <p><code>git reset &lt;commit&gt;</code> は、指定したコミットまで HEAD を戻します。<code>--soft</code> / <code>--mixed</code> / <code>--hard</code> の3モードで、<strong>どこまで戻すか(ワーキングツリー・ステージング・HEAD)</strong>が変わります。</p>
-      <figure>
-        <svg viewBox="0 0 620 185" role="img" aria-label="reset の3モードがどこまで戻すかの図">
-          <rect x="60" y="34" width="150" height="40" rx="8" fill="#F4F7F9" stroke="#8A9AA6"/>
-          <text x="135" y="59" text-anchor="middle" class="svg-ms" fill="#5B6B78">ワーキングツリー</text>
-          <rect x="230" y="34" width="150" height="40" rx="8" fill="#E1F0F1" stroke="#0E7C86"/>
-          <text x="305" y="59" text-anchor="middle" class="svg-ms" fill="#0A585F">ステージング</text>
-          <rect x="400" y="34" width="160" height="40" rx="8" fill="#EDE7F8" stroke="#7C5CBF"/>
-          <text x="480" y="59" text-anchor="middle" class="svg-ms" fill="#5b3fa0">HEAD(コミット)</text>
-          <rect x="400" y="88" width="160" height="22" rx="6" fill="#E1F1EA" stroke="#1F8F63"/>
-          <text x="480" y="103" text-anchor="middle" class="svg-ms" fill="#166b48" font-size="10">--soft ここまで戻す</text>
-          <rect x="230" y="120" width="330" height="22" rx="6" fill="#FBEFD6" stroke="#C9820A"/>
-          <text x="395" y="135" text-anchor="middle" class="svg-ms" fill="#8A5A06" font-size="10">--mixed（既定）ここまで戻す</text>
-          <rect x="60" y="152" width="500" height="22" rx="6" fill="#FBE9E1" stroke="#B8420C"/>
-          <text x="310" y="167" text-anchor="middle" class="svg-ms" fill="#B8420C" font-size="10">--hard ここまで戻す（変更も破棄・要注意）</text>
-        </svg>
-        <figcaption>戻す範囲は <code>--soft</code>＜<code>--mixed</code>＜<code>--hard</code> の順に広がる。<code>--soft</code> は変更がステージに残り、<code>--mixed</code> はワーキングツリーに残り、<code>--hard</code> は変更ごと消える。</figcaption>
-      </figure>
-      <pre><button class="copy-btn">コピー</button><span class="term-head"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="label">reset</span></span><code><span class="pr">$</span> git reset --soft HEAD~1     <span class="cmt"># コミットだけ取消。変更はステージングに残る</span>
-<span class="pr">$</span> git reset --mixed HEAD~1    <span class="cmt"># 既定。ステージングも取消、変更はワーキングツリーに残る</span>
-<span class="pr">$</span> git reset --hard HEAD~1     <span class="cmt"># 変更ごと破棄(戻せない・要注意)</span></code></pre>
-      <div class="box stumble">
-        <div class="box-t"><svg class="ico" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 9v4M12 17h.01"/><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg><code>--hard</code> はデータが失われる</div>
-        <p><code>git reset --hard</code> は、コミットしていない変更を<strong>すべて削除</strong>します。元に戻せないので、実行前に必ず <code>git status</code> で内容を確認してください。共有済みのコミットには使わないこと。</p>
-      </div>
-
-      <h4>reflog で「消えたコミット」を復元する</h4>
-      <p>もし誤って <code>--hard</code> でコミットを消してしまっても、あきらめる前に <code>git reflog</code> を確認します。reflog には <strong>HEAD が移動した履歴</strong>が残っているので、消える前の位置を見つけて戻せることが多いです。</p>
-      <pre><button class="copy-btn">コピー</button><span class="term-head"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="label">reflog で復元</span></span><code><span class="pr">$</span> git reflog
-<span class="out">a1b2c3d HEAD@{0}: reset: moving to HEAD~1</span>
-<span class="out">e5f6a7b HEAD@{1}: commit: 消えたはずのコミット</span>   <span class="cmt"># ← これを探す</span>
-<span class="pr">$</span> git reset --hard e5f6a7b    <span class="cmt"># 消える前の状態へ戻す</span>
-<span class="cmt"># あるいは git switch -c recover e5f6a7b で新ブランチとして救出</span></code></pre>
-
-      <h3 id="p4-5">stash — 作業を一時退避する</h3>
-      <p>変更の途中で急に別のブランチに移りたいけれど、まだコミットはしたくない。そんなときに使うのが <code>git stash</code> です。今の変更をいったん stash 専用の領域に<strong>スタックで退避</strong>し、ワーキングツリーをクリーンな状態に戻します。あとで <code>git stash pop</code> で元に戻せます。</p>
-      <pre><button class="copy-btn">コピー</button><span class="term-head"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="label">stash</span></span><code><span class="pr">$</span> git stash                   <span class="cmt"># 今の変更を退避、ワーキングツリーはクリーンに</span>
-<span class="out">Saved working directory and index state WIP on feature/greeting: a1b2c3 ...</span>
-<span class="pr">$</span> git status -s               <span class="cmt"># 何も出ない＝クリーン。別ブランチへ移れる</span>
-
-<span class="pr">$</span> git stash list              <span class="cmt"># 退避したものの一覧(スタック)</span>
-<span class="out">stash@{0}: WIP on feature/greeting: a1b2c3 ...</span>
-
-<span class="pr">$</span> git stash pop               <span class="cmt"># 最新(stash@{0})を復元し、スタックから削除</span>
-<span class="pr">$</span> git stash drop stash@{0}    <span class="cmt"># 不要な退避を削除(復元せずに捨てる)</span></code></pre>
-      <figure>
-        <svg viewBox="0 0 620 170" role="img" aria-label="git stash で変更を退避・復元する図">
-          <rect x="60" y="58" width="180" height="60" rx="10" fill="#F4F7F9" stroke="#8A9AA6"/>
-          <text x="150" y="84" text-anchor="middle" class="svg-ms" fill="#5B6B78">ワーキングツリー</text>
-          <text x="150" y="102" text-anchor="middle" class="svg-s" font-size="9">編集中の変更</text>
-          <rect x="380" y="58" width="180" height="60" rx="10" fill="#EDE7F8" stroke="#7C5CBF"/>
-          <text x="470" y="84" text-anchor="middle" class="svg-ms" fill="#5b3fa0">stash スタック</text>
-          <text x="470" y="102" text-anchor="middle" class="svg-s" font-size="9">stash@{0}, {1}, … と積まれる</text>
-          <path d="M242 78 H378" stroke="#5B6B78" stroke-width="1.6" marker-end="url(#ph1)"/>
-          <text x="310" y="68" text-anchor="middle" class="svg-ms" fill="#5B6B78" font-size="10">git stash（退避）</text>
-          <path d="M378 100 H244" stroke="#7C5CBF" stroke-width="1.6" marker-end="url(#ph2)"/>
-          <text x="310" y="114" text-anchor="middle" class="svg-ms" fill="#7C5CBF" font-size="10">git stash pop（復元）</text>
-          <text x="310" y="150" text-anchor="middle" class="svg-s">退避中はワーキングツリーがクリーンになり、別ブランチへ移れる</text>
-          <defs>
-            <marker id="ph1" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0 0 L6 3 L0 6" fill="none" stroke="#5B6B78" stroke-width="1.5"/></marker>
-            <marker id="ph2" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0 0 L6 3 L0 6" fill="none" stroke="#7C5CBF" stroke-width="1.5"/></marker>
-          </defs>
-        </svg>
-        <figcaption>変更を棚に上げてワーキングツリーをクリーンに(<code>stash</code>)、あとで取り出す(<code>pop</code>)。捨ててよければ <code>drop</code>。</figcaption>
-      </figure>
-
-      <h3 id="p4-6">タグ</h3>
+      <h3 id="p4-1">タグ</h3>
       <p><strong>タグ</strong>は、特定のコミットに名前をつける参照です。リリースバージョン(例:<code>v1.0.0</code>)などの節目に付けることが多いです。軽量タグ(lightweight)とアノテーションタグ(annotated)の2種類があり、リリース用途にはメッセージや署名を持てる<strong>アノテーションタグ</strong>が推奨されます。</p>
       <figure>
         <svg viewBox="0 0 620 130" role="img" aria-label="コミット履歴にタグを付ける図">
@@ -2070,43 +1949,7 @@
 <span class="out">v1.0.0</span>
 <span class="pr">$</span> git push origin v1.0.0              <span class="cmt"># タグをリモートへ反映</span></code></pre>
 
-      <h3 id="p4-7">git clone --shared</h3>
-      <p><code>--shared</code> は、<strong>同じマシン上の既存ローカルリポジトリ</strong>から、オブジェクト(履歴データ)を<strong>共有する形で</strong>複製します。通常のクローンがデータを丸ごとコピーするのに対し、<code>--shared</code> は元リポジトリの <code>.git/objects</code> を参照するので、コピーが速くディスク消費も少なくて済みます。</p>
-      <figure>
-        <svg viewBox="0 0 620 185" role="img" aria-label="通常のcloneとclone --sharedの違いの図">
-          <text x="310" y="20" text-anchor="middle" class="svg-s" fill="#5b3fa0" font-weight="600">通常の clone（独立）</text>
-          <rect x="45" y="30" width="155" height="46" rx="9" fill="#EDE7F8" stroke="#7C5CBF"/>
-          <text x="122" y="50" text-anchor="middle" class="svg-ms" fill="#5b3fa0" font-size="11">元リポジトリ</text>
-          <text x="122" y="67" text-anchor="middle" class="svg-s" font-size="9" fill="#5b3fa0">.git/objects</text>
-          <path d="M200 53 H358" stroke="#7C5CBF" stroke-width="1.6" marker-end="url(#pcs1)"/>
-          <text x="279" y="45" text-anchor="middle" class="svg-s" font-size="9">丸ごとコピー</text>
-          <rect x="360" y="30" width="205" height="46" rx="9" fill="#EDE7F8" stroke="#7C5CBF"/>
-          <text x="462" y="50" text-anchor="middle" class="svg-ms" fill="#5b3fa0" font-size="11">複製</text>
-          <text x="462" y="67" text-anchor="middle" class="svg-s" font-size="9" fill="#5b3fa0">独自の .git/objects を持つ</text>
-          <line x1="30" y1="92" x2="590" y2="92" stroke="#DAE1E7"/>
-          <text x="310" y="110" text-anchor="middle" class="svg-s" fill="#8A5A06" font-weight="600">clone --shared（共有・軽量）</text>
-          <rect x="45" y="120" width="155" height="46" rx="9" fill="#EDE7F8" stroke="#7C5CBF"/>
-          <text x="122" y="140" text-anchor="middle" class="svg-ms" fill="#5b3fa0" font-size="11">元リポジトリ</text>
-          <text x="122" y="157" text-anchor="middle" class="svg-s" font-size="9" fill="#5b3fa0">.git/objects</text>
-          <rect x="360" y="120" width="205" height="46" rx="9" fill="#FDF4E3" stroke="#C9820A"/>
-          <text x="462" y="140" text-anchor="middle" class="svg-ms" fill="#8A5A06" font-size="11">複製</text>
-          <text x="462" y="157" text-anchor="middle" class="svg-s" font-size="9" fill="#8A5A06">objects は持たず元を参照</text>
-          <path d="M358 143 H202" stroke="#C9820A" stroke-width="1.6" stroke-dasharray="4 3" marker-end="url(#pcs2)"/>
-          <text x="279" y="135" text-anchor="middle" class="svg-s" font-size="9" fill="#8A5A06">参照</text>
-          <defs>
-            <marker id="pcs1" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0 0 L6 3 L0 6" fill="none" stroke="#7C5CBF" stroke-width="1.5"/></marker>
-            <marker id="pcs2" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0 0 L6 3 L0 6" fill="none" stroke="#C9820A" stroke-width="1.5"/></marker>
-          </defs>
-        </svg>
-        <figcaption>通常のクローンは履歴データを丸ごと複製して独立する。<code>--shared</code> は元の <code>objects</code> を参照するため軽量だが、元リポジトリに依存する。</figcaption>
-      </figure>
-      <pre><button class="copy-btn">コピー</button><span class="term-head"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="label">clone --shared</span></span><code><span class="pr">$</span> git clone --shared ~/dev/practice practice-copy   <span class="cmt"># 同じマシンの既存リポジトリから軽量複製</span></code></pre>
-      <div class="box stumble">
-        <div class="box-t"><svg class="ico" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 9v4M12 17h.01"/><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg>元リポジトリを消すと壊れる</div>
-        <p><code>--shared</code> は元リポジトリの <code>objects</code> に依存します。元を削除したり <code>git gc</code> で整理すると、複製側が壊れてしまいます。<strong>同じマシン上の一時的な用途</strong>(検証・並行作業)向けで、恒久利用や配布には通常の <code>git clone</code> を使います。</p>
-      </div>
-
-      <h3 id="p4-8">git worktree — 複数ブランチを同時に開く</h3>
+      <h3 id="p4-2">git worktree — 複数ブランチを同時に開く</h3>
       <p><strong>worktree</strong> は、1つのリポジトリから<strong>複数の作業フォルダを同時に</strong>持つ仕組みです。履歴(<code>.git</code>)や設定は共有したまま、作業する場所だけを分けられます。クローンを増やすのとは、まったく別のやり方です。</p>
       <figure>
         <svg viewBox="0 0 620 210" role="img" aria-label="1つの.gitから複数の作業フォルダが枝分かれするworktreeの図">
@@ -2141,7 +1984,7 @@
         </tbody>
       </table></div>
       <h4>なぜ使うのか(AI エージェントとの相性)</h4>
-      <p>ワーキングツリーが1つだと、ブランチを切り替えるたびに <code>commit</code> か <code>stash</code> を迫られます。worktree なら、その手間なく複数の作業を同時に進められます。</p>
+      <p>ワーキングツリーが1つだと、ブランチを切り替えるたびに、作業中の変更をコミットするか、どこかへ退避しなければなりません。worktree なら、その手間なく複数の作業を同時に進められます。</p>
       <ul>
         <li><strong>緊急修正に強い</strong> … 機能開発を止めず、別フォルダで割り込みの hotfix を進められる。</li>
         <li><strong>PR レビューが楽</strong> … 自分の作業を残したまま、他の開発メンバーの PR を別フォルダで動かして確認できる。</li>
@@ -2152,12 +1995,8 @@
 <span class="pr">$</span> git worktree add -b feature/a ../practice-feat      <span class="cmt"># 新ブランチを作って展開(-b)</span>
 <span class="pr">$</span> git worktree list                                  <span class="cmt"># 今ある worktree の一覧</span>
 <span class="pr">$</span> git worktree remove ../practice-hotfix              <span class="cmt"># 片付け(手で消さない)</span></code></pre>
-      <div class="box stumble">
-        <div class="box-t"><svg class="ico" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 9v4M12 17h.01"/><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg>依存は共有されない・片付けは remove で</div>
-        <p><code>node_modules</code> などの依存は worktree ごとに別なので、作るたびに <code>npm install</code> が必要です。<strong>同じブランチは二重に展開できません</strong>(Git が防いでくれます)。不要になったら手で消さず、<code>git worktree remove</code> を使ってください(手で消すと管理情報が残り、<code>git worktree prune</code> が必要になります)。</p>
-      </div>
 
-      <h3 id="p4-9">エイリアスを設定する</h3>
+      <h3 id="p4-3">エイリアスを設定する</h3>
       <p><strong>エイリアス(別名)</strong>は、よく使うコマンドやオプションに短い別名を付ける機能です。タイプ量を減らせます。<code>git config --global alias.&lt;別名&gt; &lt;コマンド&gt;</code> で登録し、設定は <code>~/.gitconfig</code> に保存されます。</p>
       <pre><button class="copy-btn">コピー</button><span class="term-head"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="label">alias の設定</span></span><code><span class="pr">$</span> git config --global alias.st status
 <span class="pr">$</span> git config --global alias.br branch
@@ -2170,79 +2009,6 @@
 <span class="out">alias.br branch</span>
 <span class="out">alias.co switch</span>
 <span class="out">alias.lg log --oneline --graph --all</span></code></pre>
-    </section>
-
-    <!-- ============ APPENDIX ============ -->
-    <section class="section" id="appendix">
-      <span class="eyebrow"><span class="num">A</span>付録</span>
-      <h2 id="cheatsheet">コマンド早見表</h2>
-      <div class="tbl-wrap"><table>
-        <thead><tr><th>コマンド</th><th>何をする</th><th>いつ使う</th></tr></thead>
-        <tbody>
-          <tr><td><code>git init</code></td><td>今のフォルダをリポジトリにする</td><td>ゼロから自分で始めるとき</td></tr>
-          <tr><td><code>git config --global user.name/email</code></td><td>名前・メールを設定</td><td>最初の1回だけ</td></tr>
-          <tr><td><code>git clone &lt;URL&gt;</code></td><td>リモートを手元に複製</td><td>プロジェクトに最初に参加するとき</td></tr>
-          <tr><td><code>git remote -v</code></td><td>リモート(origin)を一覧</td><td>接続先を確認したいとき</td></tr>
-          <tr><td><code>git branch</code> / <code>-a</code></td><td>ブランチ一覧(・追跡ブランチも)</td><td>今どこにいるか見るとき</td></tr>
-          <tr><td><code>git switch &lt;name&gt;</code></td><td>ブランチを移動</td><td>別のブランチで作業するとき</td></tr>
-          <tr><td><code>git switch -c &lt;name&gt;</code></td><td>ブランチを作って移動</td><td>新しい作業を始めるとき</td></tr>
-          <tr><td><code>git status</code> / <code>-s</code></td><td>今の状態を表示(・短縮)</td><td>迷ったらいつでも</td></tr>
-          <tr><td><code>git diff</code></td><td>ワーキングツリー vs ステージングの差分</td><td>何を変えたか確認したいとき</td></tr>
-          <tr><td><code>git diff --staged</code></td><td>ステージング vs 直前コミットの差分</td><td>ステージングに追加した内容を確認するとき</td></tr>
-          <tr><td><code>git add &lt;file&gt;</code> / <code>.</code></td><td>変更をステージングに追加(・まとめて)</td><td>記録したい変更を選ぶとき</td></tr>
-          <tr><td><code>git add -p</code></td><td>ハンク単位で選んでステージングへ追加</td><td>一部分だけ追加したいとき</td></tr>
-          <tr><td><code>git restore &lt;file&gt;</code></td><td>ワーキングツリーの変更を破棄</td><td>編集を取り消して元に戻すとき</td></tr>
-          <tr><td><code>git restore --staged &lt;file&gt;</code></td><td>ステージングから外す(アンステージ)</td><td><code>git add</code> を取り消すとき</td></tr>
-          <tr><td><code>.gitignore</code> / <code>git rm --cached</code></td><td>無視設定 / 追跡だけ解除</td><td>管理したくないファイルがあるとき</td></tr>
-          <tr><td><code>git commit -m "..."</code></td><td>変更を履歴に確定</td><td>キリの良いところで記録するとき</td></tr>
-          <tr><td><code>git commit --amend</code></td><td>直前のコミットをやり直す</td><td>プッシュ前のコミットを直したいとき</td></tr>
-          <tr><td><code>git log --oneline --graph</code></td><td>履歴を簡潔に・分岐も表示</td><td>これまでの流れを確認したいとき</td></tr>
-          <tr><td><code>git stash</code> / <code>pop</code></td><td>一時退避 / 取り出し</td><td>作業を中断して切り替えるとき</td></tr>
-          <tr><td><code>git push -u origin &lt;name&gt;</code></td><td>ひも付けてプッシュする(初回)</td><td>そのブランチで最初にプッシュするとき</td></tr>
-          <tr><td><code>git push</code></td><td>リモートへプッシュする</td><td>コミットを共有するとき</td></tr>
-          <tr><td><code>git fetch</code></td><td>リモート情報を取得のみ</td><td>まず状況だけ確認したいとき</td></tr>
-          <tr><td><code>git pull</code></td><td>取得して取り込む</td><td>作業開始前に最新化するとき</td></tr>
-          <tr><td><code>git merge &lt;name&gt;</code></td><td>変更を合流させる</td><td>ブランチを本流へ取り込むとき</td></tr>
-          <tr><td><code>git branch -d &lt;name&gt;</code></td><td>ローカルのブランチを削除</td><td>マージ後の片付け(未マージは <code>-D</code>)</td></tr>
-          <tr><td><code>git push origin --delete &lt;name&gt;</code></td><td>リモートのブランチを削除</td><td>役目を終えたブランチを消すとき</td></tr>
-          <tr><td><code>git tag -a &lt;name&gt;</code></td><td>コミットに名前を付ける</td><td>リリースの節目を記録するとき</td></tr>
-          <tr><td><code>git revert</code> / <code>reset --hard</code></td><td>取り消し(安全 / 巻き戻し)</td><td>共有済みは revert・未共有は reset</td></tr>
-        </tbody>
-      </table></div>
-
-      <h2 id="glossary" style="margin-top:44px">用語集</h2>
-      <dl class="glossary">
-        <dt>リポジトリ</dt><dd>変更履歴を保管する箱。手元の「ローカル」とサーバー上の「リモート」がある。</dd>
-        <dt>ワーキングツリー</dt><dd>実際にファイルを編集する作業スペース。いま手元で見えているファイル群。</dd>
-        <dt>ステージング(index)</dt><dd>次のコミットに含める変更を組み立てる控え室。<code>add</code> で追加する。</dd>
-        <dt>コミット</dt><dd>ある時点のファイル全体を記録したスナップショット。履歴の最小単位。</dd>
-        <dt>ブランチ</dt><dd>作業を枝分かれさせるためのラベル(ポインタ)。本流は通常 <code>main</code>。</dd>
-        <dt>HEAD</dt><dd>今どのブランチ・コミットにいるかを指す特別なポインタ。</dd>
-        <dt>tracked / untracked</dt><dd>ファイルが Git の監視対象か否か。一度 <code>add</code> すると tracked になる。</dd>
-        <dt>upstream / remote-tracking branch</dt><dd>ローカルブランチの紐づけ先がupstream。リモートの状態の写しが <code>origin/main</code> などの remote-tracking branch。</dd>
-        <dt>origin</dt><dd>いつものリモートリポジトリに付いた標準のあだ名。</dd>
-        <dt>コンフリクト</dt><dd>同じ箇所への競合する変更について、どちらを残すか人が選ぶ状態。</dd>
-        <dt>マージ / リベース</dt><dd>ブランチを統合する2つのやり方。マージは分岐を残し、リベースは履歴を一直線にする。</dd>
-        <dt>PR / MR</dt><dd>変更を本流に取り込むための依頼書。GitHub/CodeCommit は Pull Request、GitLab は Merge Request。</dd>
-        <dt>スナップショット</dt><dd>コミットが保存する、その時点のファイル全体の状態。差分ではなく丸ごとの記録。</dd>
-        <dt>コミットハッシュ</dt><dd>コミットを一意に識別する ID(既定は SHA-1)。<code>a1b2c3d</code> のように先頭数文字で指せる。</dd>
-        <dt>init(初期化)</dt><dd>今のフォルダを新しいリポジトリにする操作。中に <code>.git</code> が作られる。ゼロから始めるとき。</dd>
-        <dt>clone(クローン)</dt><dd>リモートリポジトリを、履歴ごとまるごと手元に複製すること。参加時の出発点。</dd>
-        <dt>base / feature ブランチ</dt><dd>PR での役割。取り込み先が base(通常 <code>main</code>)、変更を載せる作業用が feature。</dd>
-        <dt>push / fetch / pull</dt><dd>ローカルとリモートで変更をやり取りする操作。push=リモートへ反映、fetch=取得だけ、pull=取得して取り込む(fetch + merge)。</dd>
-        <dt>タグ(tag)</dt><dd>特定のコミットに付ける名前。リリース(例: <code>v1.0.0</code>)などの節目に使う。</dd>
-        <dt>stash(スタッシュ)</dt><dd>未コミットの変更を一時退避しておく棚。<code>pop</code> で戻す。</dd>
-        <dt>.gitignore</dt><dd>Git に追跡させないファイルのパターンを書くファイル。ここに書いたものは untracked にならない。</dd>
-        <dt>restore / reset / revert</dt><dd>取り消し系。restore=ワーキングツリーの変更を戻す、reset=HEAD を巻き戻す(履歴書き換え)、revert=打ち消しコミットを足す(履歴を残す)。</dd>
-        <dt>reflog</dt><dd>HEAD が移動した履歴。<code>reset --hard</code> で消したコミットの復元などに使える。</dd>
-        <dt>マージの種類</dt><dd>Fast-forward(ラベルを進めるだけ)、3-way(マージコミットを作る)、Squash(複数コミットを1つにまとめる)。</dd>
-        <dt>ブランチ戦略</dt><dd>チームのブランチ運用ルール。Git Flow(5種類)や GitHub Flow(main と feature だけ)が代表例。</dd>
-        <dt>worktree</dt><dd>1つのリポジトリから複数の作業フォルダを同時に持つ仕組み。<code>.git</code> を共有したままブランチを並行して開ける。</dd>
-      </dl>
-
-      <div class="footer">
-        Git ハンドブック — はじめての人のための入門資料。手を動かしながら読み進めてください。分からないコマンドが出てきたら、まず <code>git status</code> で現状を確認するのが基本です。
-      </div>
     </section>
 
   </div>
