@@ -954,7 +954,6 @@
       <p>ここで使っている <code>git add</code> や <code>git commit</code> などのコマンドは、このあとの各節でくわしく説明します。</p>
       <pre><button class="copy-btn">コピー</button><span class="term-head"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="label">新規作成</span></span><code><span class="pr">$</span> mkdir git-practice-repo <span class="hl">&amp;&amp;</span> cd git-practice-repo   <span class="cmt"># フォルダを作って移動</span>
 <span class="pr">$</span> git init                        <span class="cmt"># このフォルダを Git リポジトリにする</span>
-<span class="out">Initialized empty Git repository in .../git-practice-repo/.git/</span>
 <span class="pr">$</span> echo <span class="st">"# git-practice-repo"</span> &gt; README.md   <span class="cmt"># README.md を作成</span>
 <span class="pr">$</span> git add README.md               <span class="cmt"># ステージングに追加</span>
 <span class="pr">$</span> git commit -m <span class="st">"最初のコミット"</span>       <span class="cmt"># 最初のコミット</span></code></pre>
@@ -981,9 +980,6 @@
       </figure>
       <pre><button class="copy-btn">コピー</button><span class="term-head"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="label">clone</span></span><code><span class="pr">$</span> cd ~/dev                       <span class="cmt"># 作業を置きたいフォルダへ移動</span>
 <span class="pr">$</span> git clone <span class="st">&lt;練習用リポジトリのURL&gt;</span>
-<span class="out">Cloning into 'git-practice-repo'...</span>
-<span class="out">remote: Enumerating objects: 24, done.</span>
-<span class="out">Receiving objects: 100% (24/24), done.</span>
 <span class="pr">$</span> cd git-practice-repo           <span class="cmt"># できたフォルダに入る</span></code></pre>
       <h4>origin(オリジン)とは</h4>
       <p><strong>origin(オリジン)</strong>とは、クローン元のリモートリポジトリの <strong>URL に対して自動で付けられるエイリアス(別名)</strong>です。毎回長い URL を打つ代わりに、<code>origin</code> と短く書けます。このあとの <code>push</code> / <code>fetch</code> / <code>pull</code> でも、送り先・取得元としてこの <code>origin</code> を使います。<code>origin</code> がどの URL を指しているかは <code>git remote -v</code> で確認できます。なお、このように<strong>リモートリポジトリの URL に名前を付けた参照</strong>のことを、Git では<strong>リモート</strong>と呼びます。<code>origin</code> は、その既定のリモート名です。</p>
@@ -1131,8 +1127,18 @@
       <h5>短縮表示 <code>git status -s</code></h5>
       <p>毎回の長い出力が煩わしいときは、<code>-s</code>(short)で1行ずつ簡潔に表示できます。左の2文字が状態を表し、左列がステージング、右列がワーキングツリーの状態です。</p>
       <pre><button class="copy-btn">コピー</button><span class="term-head"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="label">status -s</span></span><code><span class="pr">$</span> git status -s
-<span class="hl"> M</span> README.md      <span class="cmt"># M=modified(変更)。右列Mなので未ステージング</span>
-<span class="cmt"># 例) ??=untracked(Git が未追跡の新規ファイル) / A=追加(staged) / D=削除 / MM=一部ステージング済みでさらに変更</span></code></pre>
+<span class="hl"> M</span> README.md      <span class="cmt"># M=modified(変更)。右列Mなので未ステージング</span></code></pre>
+      <p>2文字に使われる主な記号は次のとおりです。</p>
+      <div class="tbl-wrap"><table>
+        <thead><tr><th>記号</th><th>意味</th></tr></thead>
+        <tbody>
+          <tr><td><code>??</code></td><td>untracked(Git が未追跡の新規ファイル)</td></tr>
+          <tr><td><code>M</code></td><td>modified(変更)</td></tr>
+          <tr><td><code>A</code></td><td>追加(staged)</td></tr>
+          <tr><td><code>D</code></td><td>削除</td></tr>
+          <tr><td><code>MM</code></td><td>一部ステージング済みで、さらに変更</td></tr>
+        </tbody>
+      </table></div>
       <div class="box tip">
         <div class="box-t"><svg class="ico" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2Z"/><path d="M9 21h6"/></svg>出力はヒント</div>
         <p><code>git status</code> の <code>(use "git add ..." ...)</code> のような行は、<strong>次に打つべきコマンドの案内</strong>です。迷ったら、まず <code>git status</code> を打って、書いてあるヒントに従えばたいてい先に進めます。</p>
@@ -1444,7 +1450,6 @@
       <h3 id="p3-4">サイクル2 — 確認と取り消し</h3>
       <p>2周目です。今度は <code>memo.txt</code> を新しく作り、あわせて <code>README.md</code> にも1行足してみます。ところが README への追記は<strong>やめることにした</strong>、という筋で進めます。記録する前に中身を確かめる方法と、いらなくなった変更を捨てる方法をここで覚えます。</p>
       <pre><button class="copy-btn">コピー</button><span class="term-head"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="label">2周目をはじめる</span></span><code><span class="pr">$</span> git switch -c feature/memo   <span class="cmt"># 最新の main から新しいブランチを切る</span>
-<span class="out">Switched to a new branch 'feature/memo'</span>
 <span class="pr">$</span> touch memo.txt                <span class="cmt"># 新しいファイルを作る</span>
 <span class="pr">$</span> echo <span class="st">"使い方はここに書きます。"</span> &gt;&gt; README.md   <span class="cmt"># README にも1行足してみる</span></code></pre>
 
@@ -1461,7 +1466,15 @@
 <span class="out">@@ -1 +1,2 @@</span>
 <span class="out"> # Git 練習リポジトリ</span>
 <span class="hl">+使い方はここに書きます。</span></code></pre>
-      <p>出力の読み方は次のとおりです。<code>---</code> の行が変更前、<code>+++</code> の行が変更後のファイルを表します。<code>@@ -1 +1,2 @@</code> は「変更前は1行目から1行、変更後は1行目から2行」という位置の目印です。行頭が <code>+</code> なら追加された行、<code>-</code> なら削除された行、空白なら変わっていない行です。</p>
+      <p>出力の読み方は次のとおりです。</p>
+      <ul>
+        <li><code>---</code> の行 … 変更前のファイル。</li>
+        <li><code>+++</code> の行 … 変更後のファイル。</li>
+        <li><code>@@ -1 +1,2 @@</code> … 位置の目印。「変更前は1行目から1行、変更後は1行目から2行」を表す。</li>
+        <li>行頭の <code>+</code> … 追加された行。</li>
+        <li>行頭の <code>-</code> … 削除された行。</li>
+        <li>行頭が空白 … 変わっていない行。</li>
+      </ul>
       <p>ここで <code>memo.txt</code> が出てこない点に注意してください。<code>git diff</code> が比べるのは<strong>Git が追跡しているファイル</strong>だけです。<code>memo.txt</code> はまだ一度もステージングに追加していない <code>untracked</code> なので、差分の対象になりません。</p>
 
       <h5>どこと どこを比べるか</h5>
@@ -1577,14 +1590,7 @@
 
       <h4 id="p3-4-pull">pull — 取得して取り込む</h4>
       <p>取り込みの前に、プッシュと PR 作成を済ませます。ここはサイクル1と同じ手順です。</p>
-      <pre><button class="copy-btn">コピー</button><span class="term-head"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="label">push</span></span><code><span class="pr">$</span> git push -u origin feature/memo   <span class="cmt"># 初回なので -u 付き</span>
-<span class="out">remote:</span>
-<span class="out">remote: Create a pull request for 'feature/memo' on GitHub by visiting:</span>
-<span class="out">remote:      https://github.com/you/git-practice-repo/pull/new/feature/memo</span>
-<span class="out">remote:</span>
-<span class="out">To github.com:you/git-practice-repo.git</span>
-<span class="out"> * [new branch]      feature/memo -&gt; feature/memo</span>
-<span class="out">branch 'feature/memo' set up to track 'origin/feature/memo'.</span></code></pre>
+      <pre><button class="copy-btn">コピー</button><span class="term-head"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="label">push</span></span><code><span class="pr">$</span> git push -u origin feature/memo   <span class="cmt"># 初回なので -u 付き</span></code></pre>
       <p>プッシュしたら、ホスティングサービスの画面で PR を作り、<code>Create a merge commit</code> でマージします。画面の操作はサイクル1の「PR作成」「マージ」と同じです。</p>
       <p>マージが済んだら、手元の <code>main</code> を最新にします。サイクル1では <code>git fetch</code> と <code>git merge origin/main</code> の2手に分けました。ここでは <code>git pull</code> の1手で済ませます。</p>
       <pre><button class="copy-btn">コピー</button><span class="term-head"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="label">pull</span></span><code><span class="pr">$</span> git switch main                <span class="cmt"># 取り込みたいブランチへ移動</span>
@@ -1608,10 +1614,7 @@
       <h5>役目を終えたブランチを片付ける</h5>
       <p>最後に、サイクル1と同じくブランチを削除します。ローカルとリモートの両方を消します。</p>
       <pre><button class="copy-btn">コピー</button><span class="term-head"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="label">ブランチ削除</span></span><code><span class="pr">$</span> git branch -d feature/memo               <span class="cmt"># ローカルのブランチを削除</span>
-<span class="out">Deleted branch feature/memo (was ac52c03).</span>
 <span class="pr">$</span> git push origin --delete feature/memo    <span class="cmt"># リモートのブランチも削除</span>
-<span class="out">To github.com:you/git-practice-repo.git</span>
-<span class="out"> - [deleted]         feature/memo</span>
 <span class="pr">$</span> git branch -a                            <span class="cmt"># main だけが残った</span>
 <span class="out">* main</span>
 <span class="out">  remotes/origin/main</span></code></pre>
@@ -1622,8 +1625,7 @@
 
       <h3 id="p3-5">サイクル3 — 管理から外す</h3>
       <p>3周目の題材は <code>.gitignore</code> です。プロジェクトには、Git で管理したくないファイルがあります。パスワードや API キーを書いた秘密の設定ファイル、自動で作られるログやビルド結果などです。これらを Git の管理対象から外す方法と、<strong>うっかりコミットしてしまったあとの外し方</strong>を扱います。</p>
-      <pre><button class="copy-btn">コピー</button><span class="term-head"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="label">3周目をはじめる</span></span><code><span class="pr">$</span> git switch -c feature/ignore   <span class="cmt"># 最新の main から新しいブランチを切る</span>
-<span class="out">Switched to a new branch 'feature/ignore'</span></code></pre>
+      <pre><button class="copy-btn">コピー</button><span class="term-head"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="label">3周目をはじめる</span></span><code><span class="pr">$</span> git switch -c feature/ignore   <span class="cmt"># 最新の main から新しいブランチを切る</span></code></pre>
 
       <h4 id="p3-5-ignore">ignore — Git に含めないファイルを決める</h4>
       <p>無視したいファイルは <code>.gitignore</code> というファイルに書きます。ここに書いたパターンと一致するファイルは <code>untracked</code> として扱われず、<code>git status</code> にも現れなくなります。秘密情報のつもりのファイルを1つ作って、実際に消えるところを確認します。</p>
@@ -1675,9 +1677,6 @@
       <p>この落とし穴を、手を動かして確かめます。秘密情報を含む <code>.env</code> を、うっかりステージングに追加してコミットしてしまった、という筋で進めます。</p>
       <pre><button class="copy-btn">コピー</button><span class="term-head"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="label">追跡を解除する</span></span><code><span class="pr">$</span> echo <span class="st">"SECRET_KEY=12345"</span> &gt; .env       <span class="cmt"># 秘密情報を含む .env を作る</span>
 <span class="pr">$</span> git add .env <span class="hl">&amp;&amp;</span> git commit -m <span class="st">"設定を追加"</span>   <span class="cmt"># うっかり追跡・コミットしてしまったとする</span>
-<span class="out">[feature/ignore a587493] 設定を追加</span>
-<span class="out"> 1 file changed, 1 insertion(+)</span>
-<span class="out"> create mode 100644 .env</span>
 
 <span class="pr">$</span> echo <span class="st">".env"</span> &gt;&gt; .gitignore           <span class="cmt"># あとから .gitignore に .env を追記しても……</span>
 <span class="pr">$</span> echo <span class="st">"KEY=xyz"</span> &gt;&gt; .env               <span class="cmt"># .env を変更してみると</span>
@@ -1686,7 +1685,6 @@
 <span class="hl">??</span> .gitignore                     <span class="cmt"># .gitignore 自体はまだ untracked</span>
 
 <span class="pr">$</span> git rm --cached .env             <span class="cmt"># 追跡だけをやめる(ファイルは手元に残す)</span>
-<span class="out">rm '.env'</span>
 <span class="pr">$</span> git status -s
 <span class="hl">D</span>  .env                           <span class="cmt"># 左列 D＝削除がステージされた</span>
 <span class="hl">??</span> .gitignore</code></pre>
@@ -1710,18 +1708,9 @@
 
       <h5>プッシュして PR を出す</h5>
       <p>ここからはサイクル1・2と同じ手順です。プッシュして PR を作り、<code>Create a merge commit</code> でマージします。</p>
-      <pre><button class="copy-btn">コピー</button><span class="term-head"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="label">push</span></span><code><span class="pr">$</span> git push -u origin feature/ignore   <span class="cmt"># 初回なので -u 付き</span>
-<span class="out">remote:</span>
-<span class="out">remote: Create a pull request for 'feature/ignore' on GitHub by visiting:</span>
-<span class="out">remote:      https://github.com/you/git-practice-repo/pull/new/feature/ignore</span>
-<span class="out">remote:</span>
-<span class="out">To github.com:you/git-practice-repo.git</span>
-<span class="out"> * [new branch]      feature/ignore -&gt; feature/ignore</span>
-<span class="out">branch 'feature/ignore' set up to track 'origin/feature/ignore'.</span></code></pre>
+      <pre><button class="copy-btn">コピー</button><span class="term-head"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="label">push</span></span><code><span class="pr">$</span> git push -u origin feature/ignore   <span class="cmt"># 初回なので -u 付き</span></code></pre>
       <p>マージが済んだら、サイクル2と同じく <code>git pull</code> で手元の <code>main</code> を最新にします。</p>
       <pre><button class="copy-btn">コピー</button><span class="term-head"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="label">pull</span></span><code><span class="pr">$</span> git switch main
-<span class="out">Switched to branch 'main'</span>
-<span class="out">Your branch is up to date with 'origin/main'.</span>
 <span class="pr">$</span> git pull
 <span class="out">From github.com:you/git-practice-repo</span>
 <span class="out">   0435096..b56e896  main       -&gt; origin/main</span>
@@ -1735,10 +1724,7 @@
       <h5>役目を終えたブランチを片付ける</h5>
       <p>最後に、ローカルとリモートの両方でブランチを削除します。</p>
       <pre><button class="copy-btn">コピー</button><span class="term-head"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="label">ブランチ削除</span></span><code><span class="pr">$</span> git branch -d feature/ignore               <span class="cmt"># ローカルのブランチを削除</span>
-<span class="out">Deleted branch feature/ignore (was 6b72e1f).</span>
 <span class="pr">$</span> git push origin --delete feature/ignore    <span class="cmt"># リモートのブランチも削除</span>
-<span class="out">To github.com:you/git-practice-repo.git</span>
-<span class="out"> - [deleted]         feature/ignore</span>
 <span class="pr">$</span> git branch -a                              <span class="cmt"># main だけが残った</span>
 <span class="out">* main</span>
 <span class="out">  remotes/origin/main</span></code></pre>
@@ -1764,37 +1750,15 @@
       <p>コンフリクトを起こすには、ブランチが2本必要です。1本目の <code>feature/greeting-ja</code> では <code>README.md</code> に「こんにちは」と書きます。2本目の <code>feature/greeting-en</code> は<strong>同じ <code>main</code> から切って</strong>、同じ場所に「Hello」と書きます。2人が別々に作業した状況を、1人で再現するわけです。</p>
       <p>ここで大事なのは、<strong>両方のブランチでコミットまで済ませておく</strong>ことです。変更をコミットしていないまま <code>git merge</code> を実行すると、Git は作業中の変更が失われるのを避けるため、マージそのものを拒否します。</p>
       <pre><button class="copy-btn">コピー</button><span class="term-head"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="label">2本のブランチを作る</span></span><code><span class="pr">$</span> git switch -c feature/greeting-ja   <span class="cmt"># 1本目のブランチを切る</span>
-<span class="out">Switched to a new branch 'feature/greeting-ja'</span>
 <span class="pr">$</span> printf <span class="st">'# Git 練習リポジトリ\n\nこんにちは\n'</span> &gt; README.md
 <span class="pr">$</span> git add README.md <span class="hl">&amp;&amp;</span> git commit -m <span class="st">"日本語のあいさつを追加"</span>
-<span class="out">[feature/greeting-ja 9afe800] 日本語のあいさつを追加</span>
-<span class="out"> 1 file changed, 2 insertions(+)</span>
 <span class="pr">$</span> git push -u origin feature/greeting-ja
-<span class="out">remote:</span>
-<span class="out">remote: Create a pull request for 'feature/greeting-ja' on GitHub by visiting:</span>
-<span class="out">remote:      https://github.com/you/git-practice-repo/pull/new/feature/greeting-ja</span>
-<span class="out">remote:</span>
-<span class="out">To github.com:you/git-practice-repo.git</span>
-<span class="out"> * [new branch]      feature/greeting-ja -&gt; feature/greeting-ja</span>
-<span class="out">branch 'feature/greeting-ja' set up to track 'origin/feature/greeting-ja'.</span>
 
 <span class="pr">$</span> git switch main                     <span class="cmt"># 2本目は main から切りたいので戻る</span>
-<span class="out">Switched to branch 'main'</span>
-<span class="out">Your branch is up to date with 'origin/main'.</span>
 <span class="pr">$</span> git switch -c feature/greeting-en   <span class="cmt"># 2本目のブランチを切る</span>
-<span class="out">Switched to a new branch 'feature/greeting-en'</span>
 <span class="pr">$</span> printf <span class="st">'# Git 練習リポジトリ\n\nHello\n'</span> &gt; README.md   <span class="cmt"># 同じ3行目を別の内容にする</span>
 <span class="pr">$</span> git add README.md <span class="hl">&amp;&amp;</span> git commit -m <span class="st">"英語のあいさつを追加"</span>
-<span class="out">[feature/greeting-en ac92a8c] 英語のあいさつを追加</span>
-<span class="out"> 1 file changed, 2 insertions(+)</span>
-<span class="pr">$</span> git push -u origin feature/greeting-en
-<span class="out">remote:</span>
-<span class="out">remote: Create a pull request for 'feature/greeting-en' on GitHub by visiting:</span>
-<span class="out">remote:      https://github.com/you/git-practice-repo/pull/new/feature/greeting-en</span>
-<span class="out">remote:</span>
-<span class="out">To github.com:you/git-practice-repo.git</span>
-<span class="out"> * [new branch]      feature/greeting-en -&gt; feature/greeting-en</span>
-<span class="out">branch 'feature/greeting-en' set up to track 'origin/feature/greeting-en'.</span></code></pre>
+<span class="pr">$</span> git push -u origin feature/greeting-en</code></pre>
       <p>2本ともプッシュできました。ここまでは、いつもどおりです。</p>
 
       <h4 id="p3-6-conflict">コンフリクトを起こす</h4>
@@ -1822,18 +1786,8 @@
       </figure>
       <p>画面上の <code>Resolve conflicts</code> からも解消できますが、ここでは仕組みを理解するために手元で解消します。まず <code>main</code> を最新にして、それを <code>feature/greeting-en</code> に取り込みます。</p>
       <pre><button class="copy-btn">コピー</button><span class="term-head"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="label">merge</span></span><code><span class="pr">$</span> git switch main
-<span class="out">Switched to branch 'main'</span>
-<span class="out">Your branch is up to date with 'origin/main'.</span>
 <span class="pr">$</span> git pull                          <span class="cmt"># マージ済みの main を手元に取り込む</span>
-<span class="out">From github.com:you/git-practice-repo</span>
-<span class="out">   b56e896..cba953b  main       -&gt; origin/main</span>
-<span class="out">Updating b56e896..cba953b</span>
-<span class="out">Fast-forward</span>
-<span class="out"> README.md | 2 ++</span>
-<span class="out"> 1 file changed, 2 insertions(+)</span>
 <span class="pr">$</span> git switch feature/greeting-en    <span class="cmt"># コンフリクトが起きているブランチへ移動</span>
-<span class="out">Switched to branch 'feature/greeting-en'</span>
-<span class="out">Your branch is up to date with 'origin/feature/greeting-en'.</span>
 <span class="pr">$</span> git merge main                    <span class="cmt"># main の変更を今のブランチに取り込む</span>
 <span class="out">Auto-merging README.md</span>
 <span class="out">CONFLICT (content): Merge conflict in README.md</span>
@@ -1874,35 +1828,19 @@
 <span class="hl">M</span>  README.md                      <span class="cmt"># UU が消え、左列 M＝staged になった</span>
 <span class="pr">$</span> git commit -m <span class="st">"コンフリクトを解消"</span>
 <span class="out">[feature/greeting-en 01d99d2] コンフリクトを解消</span>
-<span class="pr">$</span> git push
-<span class="out">To github.com:you/git-practice-repo.git</span>
-<span class="out">   ac92a8c..01d99d2  feature/greeting-en -&gt; feature/greeting-en</span></code></pre>
+<span class="pr">$</span> git push</code></pre>
       <p>コミットの出力に <code>1 file changed</code> のような行が出ていません。これはマージコミットだからです。ふつうのコミットと違い、2つの親を持つ合流点として記録されます。</p>
       <p>プッシュすると、PR 画面のコンフリクト表示は消え、<code>Merge pull request</code> ボタンが押せる状態に戻ります。ここからはサイクル1〜3と同じ手順です。<code>Merge pull request</code> ボタンを押してマージし、<code>git pull</code> で手元の <code>main</code> を最新にします。</p>
       <pre><button class="copy-btn">コピー</button><span class="term-head"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="label">pull</span></span><code><span class="pr">$</span> git switch main
-<span class="out">Switched to branch 'main'</span>
-<span class="out">Your branch is up to date with 'origin/main'.</span>
-<span class="pr">$</span> git pull
-<span class="out">From github.com:you/git-practice-repo</span>
-<span class="out">   cba953b..59dd7e5  main       -&gt; origin/main</span>
-<span class="out">Updating cba953b..59dd7e5</span>
-<span class="out">Fast-forward</span>
-<span class="out"> README.md | 1 +</span>
-<span class="out"> 1 file changed, 1 insertion(+)</span></code></pre>
+<span class="pr">$</span> git pull</code></pre>
 
       <h5>役目を終えたブランチを片付ける</h5>
       <p>最後に、今回使った2本のブランチを、ローカルとリモートの両方で削除します。</p>
       <pre><button class="copy-btn">コピー</button><span class="term-head"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="label">ブランチ削除</span></span><code><span class="pr">$</span> git branch -d feature/greeting-en          <span class="cmt"># ローカルのブランチを削除</span>
-<span class="out">Deleted branch feature/greeting-en (was 01d99d2).</span>
 <span class="pr">$</span> git branch -d feature/greeting-ja          <span class="cmt"># もう一方も削除</span>
-<span class="out">Deleted branch feature/greeting-ja (was 9afe800).</span>
 <span class="pr">$</span> git push origin --delete feature/greeting-en   <span class="cmt"># リモートのブランチも削除</span>
-<span class="out">To github.com:you/git-practice-repo.git</span>
-<span class="out"> - [deleted]         feature/greeting-en</span>
 <span class="pr">$</span> git push origin --delete feature/greeting-ja   <span class="cmt"># もう一方も削除</span>
-<span class="out">To github.com:you/git-practice-repo.git</span>
-<span class="out"> - [deleted]         feature/greeting-ja</span>
-<span class="pr">$</span> git branch -a                              <span class="cmt"># main だけが残った</span>
+<span class="pr">$</span> git branch -a                                  <span class="cmt"># main だけが残った</span>
 <span class="out">* main</span>
 <span class="out">  remotes/origin/main</span></code></pre>
       <div class="box tip">
@@ -2152,7 +2090,15 @@
         <figcaption>1つの <code>.git</code> を共有しつつ、複数のフォルダで別々のブランチを同時に展開できる。</figcaption>
       </figure>
       <h4>通常のクローンとの違い</h4>
-      <p>「もう1つクローンすればいい」とも思えます。ただ、クローンを増やすと履歴やファイルが重複し、設定もばらつき、同じブランチを二重に操作してしまう危険があります。worktree は <code>.git</code> を共有するので軽く、同じリポジトリとして一貫します。</p>
+      <p>「もう1つクローンすればいい」とも思えます。ただ、次の3点が違います。</p>
+      <div class="tbl-wrap"><table>
+        <thead><tr><th>観点</th><th>クローンを増やす</th><th>worktree</th></tr></thead>
+        <tbody>
+          <tr><td>履歴・ファイル</td><td>重複する</td><td><code>.git</code> を共有するので軽い</td></tr>
+          <tr><td>設定</td><td>ばらつく</td><td>共有され、同じリポジトリとして一貫する</td></tr>
+          <tr><td>同じブランチ</td><td>二重に操作してしまう危険がある</td><td>二重に展開できない(Git が防ぐ)</td></tr>
+        </tbody>
+      </table></div>
       <h4>なぜ使うのか(AI エージェントとの相性)</h4>
       <p>ワーキングツリーが1つだと、ブランチを切り替えるたびに <code>commit</code> か <code>stash</code> を迫られます。worktree なら、その手間なく複数の作業を同時に進められます。</p>
       <ul>
@@ -2180,6 +2126,8 @@
 <span class="pr">$</span> git st                      <span class="cmt"># git status と同じ意味で使える</span>
 <span class="pr">$</span> git config --global --get-regexp alias   <span class="cmt"># 登録済みエイリアスの一覧</span>
 <span class="out">alias.st status</span>
+<span class="out">alias.br branch</span>
+<span class="out">alias.co switch</span>
 <span class="out">alias.lg log --oneline --graph --all</span></code></pre>
     </section>
 
